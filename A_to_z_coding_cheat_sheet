@@ -4,7 +4,7 @@ A_to_z_coding_cheat_sheet
 patterns  -->
    
 -----------------------trust the process you will win.
-Input Format: N = 6
+Input Format: N = 6  ques 1
 Result:   
 1          1
 12        21
@@ -44,7 +44,7 @@ static void pattern(int n)
 }
 -----------------------trust the process you will definitely win.
 
-  int n=6
+  int n=6   ques 2
 
      A     
     ABA    
@@ -83,7 +83,7 @@ public static void pattern(int n)
 		}
 }
 -----------------------trust the process you will definitely win.
-Input Format: N = 6
+Input Format: N = 6   ques 3
 Result:   
 ************
 *****  *****
@@ -139,7 +139,7 @@ public static void pat(int n)
     }
 }
 -----------------------trust the process you will definitely win.
-Input Format: N = 3
+Input Format: N = 3 ques 4
 Result: 
 *    *
 **  **
@@ -185,7 +185,7 @@ int spaces = 2*n-2;
 }
 
 -----------------------trust the process you will definitely win.
-Input Format: N = 6
+Input Format: N = 6 ques 5
 Result:   
 ******
 *    *
@@ -214,3 +214,30 @@ public static void fun(int n)
     }
 }
 ----------------------trust the process you will definitely win
+
+Input Format: N = 3 ques 6
+Result: 
+3 3 3 3 3 
+3 2 2 2 3 
+3 2 1 2 3 
+3 2 2 2 3 
+3 3 3 3 3
+
+static void pattern22(int n)
+{
+      
+      for(int i=0;i<2*n-1;i++){
+         for(int j=0;j<2*n-1;j++){
+             
+             
+             int top = i;
+             int bottom = j;
+             int right = (2*n - 2) - j;
+             int left = (2*n - 2) - i;
+             System.out.print(n- Math.min(Math.min(top,bottom), Math.min(left,right)) + " ");
+         }
+           System.out.println();
+     }
+}
+----------------------trust the process you will definitely win
+ 
