@@ -254,3 +254,16 @@ public static int floor(int n)
 }
 
 ----------------------trust the process you will definitely win
+ques 8
+
+ find missing number
+ int ans=0;
+      int n=nums.length;
+        int sum=(n*(n+1))/2;
+        for(int i=0;i<n;i++)
+        {
+            ans+=nums[i];
+        }
+        return sum-ans;
+    end
+----------------------trust the process you will definitely win
