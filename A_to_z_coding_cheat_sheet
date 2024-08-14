@@ -42,6 +42,7 @@ static void pattern(int n)
 
 	}
 }
+end
 -----------------------trust the process you will definitely win.
 
   int n=6   ques 2
@@ -82,6 +83,7 @@ public static void pattern(int n)
 
 		}
 }
+end
 -----------------------trust the process you will definitely win.
 Input Format: N = 6   ques 3
 Result:   
@@ -138,6 +140,7 @@ public static void pat(int n)
         System.out.println();
     }
 }
+end
 -----------------------trust the process you will definitely win.
 Input Format: N = 3 ques 4
 Result: 
@@ -183,7 +186,7 @@ int spaces = 2*n-2;
           else spaces +=2;
       }
 }
-
+end
 -----------------------trust the process you will definitely win.
 Input Format: N = 6 ques 5
 Result:   
@@ -213,6 +216,7 @@ public static void fun(int n)
         System.out..println();
     }
 }
+end
 ----------------------trust the process you will definitely win
 
 Input Format: N = 3 ques 6
@@ -239,6 +243,7 @@ static void pattern22(int n)
            System.out.println();
      }
 }
+end
 ----------------------trust the process you will definitely win
  square root of a number optimized approach ques 7
 
@@ -252,7 +257,7 @@ public static int floor(int n)
     }
     return i-1;
 }
-
+end
 ----------------------trust the process you will definitely win
 ques 8
 
@@ -267,5 +272,30 @@ ques 8
         return sum-ans;
     end
 ----------------------trust the process you will definitely win
+question 9
 
+  sort colors
+  
+  st=0,mid=0,end=n-1;
+  if(n==1)->return;
+  while(mid<=end)
+  {
+     if(arr[mid]==2)
+     {
+           swap(arr[mid],arr[end])
+           end--
+     }
+     else if(arr[mid]==0)
+     {
+          swap(arr[mid],arr[st])
+          st++;
+          mid++;
+     }
+     else
+     {
+         mid++
+     }  
+  }
+  end
 
+----------------------trust the process you will definitely win
