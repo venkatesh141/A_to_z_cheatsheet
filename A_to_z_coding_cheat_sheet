@@ -283,7 +283,7 @@ question 9
      if(arr[mid]==2)
      {
            swap(arr[mid],arr[end])
-           end--
+           end--;
      }
      else if(arr[mid]==0)
      {
@@ -293,7 +293,7 @@ question 9
      }
      else
      {
-         mid++
+         mid++;
      }  
   }
   end
