@@ -1,0 +1,45 @@
+
+abstract class Animal {
+    
+    abstract void makeSound();
+
+    
+    void sleep() {
+        System.out.println("This animal is sleeping.");
+    }
+}
+
+
+class Dog extends Animal {
+    // The body of makeSound() is provided here
+    @Override
+    void makeSound() {
+        System.out.println("Woof Woof");
+    }
+}
+
+
+class Cat extends Animal {
+    // The body of makeSound() is provided here
+    @Override
+    void makeSound() {
+        System.out.println("Meow Meow");
+    }
+}
+
+
+public class AbstractionExample {
+    public static void main(String[] args) {
+        // Create objects of Dog and Cat
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+        
+        // Call the makeSound() method on both objects
+        myDog.makeSound(); // Outputs: Woof Woof
+        myCat.makeSound(); // Outputs: Meow Meow
+        
+        // Call the sleep() method on both objects
+        myDog.sleep(); // Outputs: This animal is sleeping.
+        myCat.sleep(); // Outputs: This animal is sleeping.
+    }
+}
