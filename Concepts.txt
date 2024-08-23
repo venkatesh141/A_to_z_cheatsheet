@@ -44,3 +44,64 @@ public class AbstractionExample {
     }
 }
 -----------trust the process you will win .
+Interface
+
+  package railway;
+
+public interface Vehicle {
+
+	void speedInfo();
+	void vehicleInfo();
+}
+
+package railway;
+
+public class Car implements Vehicle {
+
+	@Override
+	public void speedInfo() {
+		// TODO Auto-generated method stub
+		System.out.println("500 km");
+		
+	}
+
+	@Override
+	public void vehicleInfo() {
+		// TODO Auto-generated method stub
+		System.out.println("it is car");
+	}
+
+}
+package railway;
+
+public class Bike implements Vehicle {
+
+	@Override
+	public void speedInfo() {
+		// TODO Auto-generated method stub
+		System.out.println("180 km ");		
+	}
+
+	@Override
+	public void vehicleInfo() {
+		// TODO Auto-generated method stub
+		System.out.println("it is bike");
+	}
+
+}
+package railway;
+
+public class Main {
+
+	public static void main(String[] args)
+	{
+		Vehicle car = new Car();
+		Vehicle bike = new Bike();
+		
+		car.vehicleInfo();
+		car.speedInfo();
+		bike.vehicleInfo();
+		bike.speedInfo();
+	}
+}
+-----------trust the process you will win .
