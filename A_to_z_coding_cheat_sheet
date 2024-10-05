@@ -771,3 +771,18 @@ int factorial(n)
 return n * factorial(n-1);
 }
 ----------------------trust the process you will definitely win
+question 21 print fib series of a number
+ static int fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    // Function to print the Fibonacci series up to the nth term
+    static void printFibonacciSeries(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.print(fibonacci(i) + " ");
+        }
+    }
+----------------------trust the process you will definitely win
