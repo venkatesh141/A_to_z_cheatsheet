@@ -759,3 +759,15 @@ question 19 sum of first n natural nos
             return n + func(n-1);
             
 ----------------------trust the process you will definitely win
+question 20 factorial of a number 
+
+int factorial(n)
+{
+   if(n == 0)
+   {
+     return 1;
+   }
+
+return n * factorial(n-1);
+}
+----------------------trust the process you will definitely win
