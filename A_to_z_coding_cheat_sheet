@@ -720,3 +720,28 @@ public class Main {
 
 ----------------------trust the process you will definitely win
 question 18 
+
+selection sort
+    static void selectionSort(int[] arr, int n, int index) {
+        // Base case: If index is at the last element
+        if (index == n)
+            return;
+
+        // Find the minimum element in the unsorted part of the array
+        int minIndex = index;
+        for (int i = index + 1; i < n; i++) {
+            if (arr[i] < arr[minIndex]) {
+                minIndex = i;
+            }
+        }
+
+        // Swap the found minimum element with the current element at index
+        int temp = arr[minIndex];
+        arr[minIndex] = arr[index];
+        arr[index] = temp;
+
+        // Recursively call selectionSort for the next index
+        selectionSort(arr, n, index + 1);
+    }
+
+----------------------trust the process you will definitely win
