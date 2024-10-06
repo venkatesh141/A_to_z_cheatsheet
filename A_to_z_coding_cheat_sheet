@@ -562,7 +562,7 @@ public class ArrayQueue {
 
     // Enqueue: Add an element to the end of the queue
     public void enqueue(int data) {
-        if (size == capacity) {
+        if (isFull()) {
             throw new RuntimeException("Queue is full");
         }
         rear = (rear + 1) % capacity;
