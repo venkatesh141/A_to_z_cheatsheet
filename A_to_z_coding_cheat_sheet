@@ -808,3 +808,25 @@ Output: [0, 2, 2, 0, 1]
         
     }
 ----------------------trust the process you will definitely win
+question 23 
+leetcode 1838. Frequency of the Most Frequent Element
+public int maxFrequency(int[] nums, int k) {
+       
+       int max=0;
+       long total=0;
+       Arrays.sort(nums);
+       int right=0,left=0;
+       for(right=0;right<nums.length;right++)
+       {
+         total+=nums[right];
+
+         while((long)nums[right]*(right-left+1)>total+k)
+         {
+            total-=nums[left];
+            left++;
+         }
+         max=Math.max(max,right-left+1);
+       }
+       return max;
+    }
+----------------------trust the process you will definitely win
