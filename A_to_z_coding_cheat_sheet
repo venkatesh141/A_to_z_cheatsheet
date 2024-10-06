@@ -398,7 +398,7 @@ end
 ----------------------trust the process you will definitely win
 qusstion 13 insertion sort 
 
- public static void recursiveInsertionSort(int[] arr, int n) {
+ public static void insertionSort(int[] arr, int n) {
         if (n <= 1) {
             return;
         }
@@ -415,7 +415,7 @@ qusstion 13 insertion sort
         arr[j + 1] = last;
 
         // Recursively sort the first n-1 elements (after insertion, which is incorrect)
-        insertionSortTailRecursive(arr, n - 1);
+        insertionSort(arr, n - 1);
     }
 ----------------------trust the process you will definitely win
 Implementation of linked list question 14
