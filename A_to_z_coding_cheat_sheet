@@ -890,3 +890,14 @@ public static void second_largest(int[] arr)
 	System.out.println(second);
 }
 ----------------------trust the process you will definitely win
+question 26
+check if array is sorted or not
+static boolean isSorted(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+      if (arr[i] < arr[i - 1])
+        return false;
+    }
+
+    return true;
+  }
+----------------------trust the process you will definitely win
