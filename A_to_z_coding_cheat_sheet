@@ -901,3 +901,16 @@ static boolean isSorted(int arr[], int n) {
     return true;
   }
 ----------------------trust the process you will definitely win
+question 27
+linear search 
+int search(int arr[],int n,int num)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        if(arr[i]==num)
+        return i;
+    }
+    return -1;
+}
+----------------------trust the process you will definitely win
