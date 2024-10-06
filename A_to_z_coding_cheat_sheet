@@ -399,26 +399,23 @@ end
 qusstion 13 insertion sort 
 
  public static void recursiveInsertionSort(int[] arr, int n) {
-        // Base case: If the array has only one element, it's already sorted
         if (n <= 1) {
             return;
         }
 
-        // Sort the first n-1 elements
-        recursiveInsertionSort(arr, n - 1);
-
-        // Insert the nth element into its correct position
+        // Insert the nth element into its correct position first (out of order)
         int last = arr[n - 1];
         int j = n - 2;
 
-        // Move elements that are greater than the last element one position ahead
         while (j >= 0 && arr[j] > last) {
             arr[j + 1] = arr[j];
             j--;
         }
 
-        // Insert the last element at its correct position
         arr[j + 1] = last;
+
+        // Recursively sort the first n-1 elements (after insertion, which is incorrect)
+        insertionSortTailRecursive(arr, n - 1);
     }
 ----------------------trust the process you will definitely win
 Implementation of linked list question 14
