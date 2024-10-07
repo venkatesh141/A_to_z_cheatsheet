@@ -948,7 +948,7 @@ Remove Duplicates from sorted array
 
 ----------------------trust the process you will definitely win
 question 29
-set matrix zeros
+set matrix zeros leetcode 73
 row length ku oru array , col length ku oru array create paniko
 matrix ah traverse panni
   if mat[i][j]==0
@@ -964,7 +964,7 @@ matrix ah traverse panni
 ----------------------trust the process you will definitely win
 question 30
 kadane's algo max subarray
-  
+  leetcode 53
   sum=0,max=Integer.minvalue set panniko
   array ah traverse pannu
      {
@@ -976,7 +976,7 @@ return max
     end
 ----------------------trust the process you will definitely win
 question 31
-
+leetcode 121
  best time to buy and sell stock
 
  profit =0,besttime=arr[0];
@@ -988,4 +988,20 @@ question 31
     profit=arr[i]-besttime
 }
 return profit
+----------------------trust the process you will definitely win
+question 32
+rotate 90 deg
+leetcode 48
+nested loops
+i=0 to n
+j=i to n
+{
+swap(mat[i][j],mat[j][i])
+}
+another nested loop
+i=0 to n
+j=0 to n/2
+{
+swap(ma[i][j],mat[i][n-j-1])
+}
 ----------------------trust the process you will definitely win
