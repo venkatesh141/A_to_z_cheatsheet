@@ -962,3 +962,16 @@ matrix ah traverse panni
      
      end
 ----------------------trust the process you will definitely win
+question 30
+kadane's algo max subarray
+  
+  sum=0,max=Integer.minvalue set panniko
+  array ah traverse pannu
+     {
+     sum+=arr[i];
+     if(sum>max)->max=sum
+     if(sum<0)->sum=0
+     }
+return max
+    end
+----------------------trust the process you will definitely win
