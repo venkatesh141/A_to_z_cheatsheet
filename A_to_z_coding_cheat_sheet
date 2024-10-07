@@ -809,26 +809,43 @@ Output: [0, 2, 2, 0, 1]
     }
 ----------------------trust the process you will definitely win
 question 23 
-leetcode 1838. Frequency of the Most Frequent Element
 public int maxFrequency(int[] nums, int k) {
-       
-       int max=0;
-       long total=0;
-       Arrays.sort(nums);
-       int right=0,left=0;
-       for(right=0;right<nums.length;right++)
-       {
-         total+=nums[right];
+    // Variable to store the maximum frequency of an element
+    int max = 0;
 
-         while((long)nums[right]*(right-left+1)>total+k)
-         {
-            total-=nums[left];
+    // To track the total sum of the elements within the current window (between left and right)
+    long total = 0;
+
+    // Sorting the array so that we can try to make elements the same by adding 'k'
+    Arrays.sort(nums);
+
+    // Initializing two pointers for the sliding window: right and left
+    int right = 0, left = 0;
+
+    // Iterate through the array with the right pointer
+    for (right = 0; right < nums.length; right++) {
+        // Add the current element to the total sum
+        total += nums[right];
+
+        // Check if the current window [left, right] can be made equal to nums[right]
+        // We check if the total value of all elements in the window after adding 'k' operations
+        // is greater than or equal to making every element in the window equal to nums[right]
+        // If not, shrink the window from the left
+        while ((long) nums[right] * (right - left + 1) > total + k) {
+            // Remove the leftmost element from the total sum
+            total -= nums[left];
+            // Move the left pointer to shrink the window
             left++;
-         }
-         max=Math.max(max,right-left+1);
-       }
-       return max;
+        }
+
+        // Update the maximum frequency found so far
+        max = Math.max(max, right - left + 1);
     }
+
+    // Return the maximum frequency
+    return max;
+}
+
 ----------------------trust the process you will definitely win
 question 24 quick sort
 public static void quickSort(int[] arr, int low, int high) {
