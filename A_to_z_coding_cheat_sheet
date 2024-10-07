@@ -975,3 +975,17 @@ kadane's algo max subarray
 return max
     end
 ----------------------trust the process you will definitely win
+question 31
+
+ best time to buy and sell stock
+
+ profit =0,besttime=arr[0];
+ traverse array from index 1 to n
+ {
+   if(besttime>arr[i])
+     besttime=arr[i];
+    if(profit<(arr[i]-besttime))
+    profit=arr[i]-besttime
+}
+return profit
+----------------------trust the process you will definitely win
