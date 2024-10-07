@@ -931,3 +931,19 @@ int search(int arr[],int n,int num)
     return -1;
 }
 ----------------------trust the process you will definitely win
+question 28 
+Remove Duplicates from sorted array
+
+    static int removeDuplicates(int[] arr) {
+        int i = 0;
+        for (int j = 1; j < arr.length; j++) {
+            if (arr[i] != arr[j]) {
+                i++;
+                arr[i] = arr[j];
+            }
+        }
+        return i + 1;//return just index that up to this index have only non duplicate
+
+    }
+
+----------------------trust the process you will definitely win
