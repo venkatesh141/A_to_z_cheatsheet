@@ -1005,3 +1005,28 @@ j=0 to n/2
 swap(ma[i][j],mat[i][n-j-1])
 }
 ----------------------trust the process you will definitely win
+question 33
+leetcode 189
+Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+class Solution {
+    public void rotate(int[] nums, int k) {
+        
+        k = k%nums.length;
+        reverse(nums,0,nums.length-1);
+        reverse(nums,0,k-1);
+        reverse(nums,k,nums.length-1);
+    }
+    public void reverse(int[] arr,int s,int e)
+    {
+        while(s<=e)
+        {
+            int t=arr[s];
+            arr[s]=arr[e];
+            arr[e]=t;
+            s++;
+            e--;
+        }
+    }
+}
+----------------------trust the process you will definitely win
+ 
