@@ -1131,7 +1131,7 @@ class Solution {
 }
 ----------------------trust the process you will definitely win
 question 38
-get length of longest subarray with given sum
+get length of longest subarray with given sum // for positives values only
  public static int getLongestSubarray(int []a, long k) {
         int n = a.length; // size of the array.
 
