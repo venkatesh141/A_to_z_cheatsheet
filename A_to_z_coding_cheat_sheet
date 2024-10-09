@@ -1159,3 +1159,19 @@ get length of longest subarray with given sum // for positives values only
         return maxLen;
     }
 ----------------------trust the process you will definitely win
+question 39
+2 sum leetcode 1
+   public static String twoSum(int n, int []arr, int target) {
+        HashMap<Integer, Integer> mpp = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int num = arr[i];
+            int moreNeeded = target - num;
+            if (mpp.containsKey(moreNeeded)) {
+                return "YES";
+            }
+
+            mpp.put(arr[i], i);
+        }
+        return "NO";
+    }
+----------------------trust the process you will definitely win
