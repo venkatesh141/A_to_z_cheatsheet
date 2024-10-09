@@ -1215,3 +1215,17 @@ public static int getLongestSubarray(int []a, int k) {
         return len;
     }
 ----------------------trust the process you will definitely win
+question 42
+leetcode 287 (question 6)
+find duplicate O(n)
+frequency array onu create panniko
+freq[]
+traverse the org arry
+    if(freq[arr[i]]==0)
+      freq[arr[i]]++;
+     else
+     return arr[i];
+     end of loop
+     return -1
+     end
+----------------------trust the process you will definitely win
