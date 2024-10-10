@@ -1253,3 +1253,30 @@ public int[] rearrangeArray(int[] nums) {
      	return res;
 }
 ----------------------trust the process you will definitely win
+question 44
+leetcode 31 
+next permutation
+ declare ind1=-1,ind2=-1;
+   for(int i=n-2;i>=0;i--)
+   {
+       if(arr[i]<arr[i+1])
+      {
+        ind1=i;break;  
+      }
+   }
+   if(ind1==-1)
+   reverse(arr,0)-->0 is starting index
+   else
+   {
+    for(int i=n-1;i>ind1;i--)
+    {
+      if(arr[i]>arr[ind1])
+      {
+        ind2=i;break;
+      }
+    }
+    swap(arr,ind1,ind2);---passing index swaps based on position
+    reverse(arr,ind1+1);
+   }
+   end
+----------------------trust the process you will definitely win
