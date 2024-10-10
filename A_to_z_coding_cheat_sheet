@@ -1229,3 +1229,26 @@ traverse the org arry
      return -1
      end
 ----------------------trust the process you will definitely win
+question 43 pos no first neg no second ...  relative order should not change
+leetcode 2149. Rearrange Array Elements by Sign
+public int[] rearrangeArray(int[] nums) {
+        
+        int n = nums.length;
+        int res[]=new int[n];
+        int pos=0,neg=1;
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]>=0)
+            {
+                res[pos]=nums[i];
+                pos+=2;
+            }
+            else
+            {
+                res[neg]=nums[i];
+                neg+=2;
+            }
+            
+        }
+     
+----------------------trust the process you will definitely win
