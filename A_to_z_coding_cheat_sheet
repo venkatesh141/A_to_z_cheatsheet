@@ -1337,3 +1337,36 @@ int n = a.length;
         int[] ans = {repeating, missing};
         return ans;
 ----------------------trust the process you will definitely win
+question 48
+leetcode 128. Longest Consecutive Sequence
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        
+        if(nums.length==0)
+        return 0;
+        Arrays.sort(nums);
+        int max=-1;
+        int count=0;
+        for(int i=1;i<nums.length;i++)
+        {
+            if(nums[i-1]==nums[i])
+            continue;
+            else if(nums[i]-nums[i-1]==1)
+            count++;
+            else
+            {
+                if(count>max)
+                {
+                    max=count;
+                }
+                count=0;
+            }
+        }
+        if(count>max)
+        max=count;
+
+        return max+1;
+
+    }
+}
+----------------------trust the process you will definitely win
