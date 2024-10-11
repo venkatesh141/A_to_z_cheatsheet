@@ -1504,3 +1504,5 @@ public static int search(int a[],int target,int l,int r)
         return -1;
     }
 ----------------------trust the process you will definitely win
+question 52
+
