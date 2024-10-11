@@ -1395,3 +1395,90 @@ merge two sorted array
     }
 }
 ----------------------trust the process you will definitely win
+question 50
+binary search tree implementation
+// Node class to represent a node in the tree
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int data) {
+        this.data = data;
+        left = right = null;
+    }
+}
+
+// Binary Search Tree class
+class BinarySearchTree {
+    Node root;
+
+    // Constructor
+    BinarySearchTree() {
+        root = null;
+    }
+
+    // This method calls the recursive insert method
+    void insert(int data) {
+        root = insertRec(root, data);
+    }
+
+    // A recursive function to insert a new key in the BST
+    Node insertRec(Node root, int data) {
+        // If the tree is empty, return a new node
+        if (root == null) {
+            root = new Node(data);
+            return root;
+        }
+
+        // Otherwise, recur down the tree
+        if (data < root.data)
+            root.left = insertRec(root.left, data);
+        else 
+            root.right = insertRec(root.right, data);
+
+        // Return the (unchanged) node pointer
+        return root;
+    }
+
+    // This method calls the recursive search method
+    boolean search(int data) {
+        return searchRec(root, data);
+    }
+
+    // A recursive function to search a key in the BST
+    boolean searchRec(Node root, int data) {
+        // Base Cases: root is null or key is present at root
+        if (root == null)
+            return false;
+        if (root.data == data)
+            return true;
+
+        // Key is greater than root's key
+        if (root.data < data)
+            return searchRec(root.right, data);
+
+        // Key is smaller than root's key
+        return searchRec(root.left, data);
+    }
+
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+
+        // Insert nodes into the tree
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(70);
+        tree.insert(60);
+        tree.insert(80);
+
+        // Search for a key in the BST
+        int data = 40;
+        if (tree.search(data))
+            System.out.println("Key " + key + " found in the tree.");
+        else
+            System.out.println("Key " + key + " not found in the tree.");
+    }
+}
+----------------------trust the process you will definitely win
