@@ -1482,3 +1482,25 @@ class BinarySearchTree {
     }
 }
 ----------------------trust the process you will definitely win
+question 51
+binary search
+public static int search(int a[],int target,int l,int r)
+    {
+        int mid=(l+r)/2;
+        if(a[mid]==target)
+        {
+            return mid;
+        }
+        else if(a[mid]<target)
+        {
+            l=mid+1;
+            search(a,target,l,r);
+        }
+        else
+        {
+            r=mid-1;
+            search(a,target,l,r);
+        }
+        return -1;
+    }
+----------------------trust the process you will definitely win
