@@ -1370,3 +1370,28 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
+question 49
+ leetcode 88 
+merge two sorted array 
+      class Solution {
+    public void merge(int[] nums1, int n1, int[] nums2, int n2) {
+        
+        int p1=n1-1;//nums1 size is n+m
+        int p2=n2-1;
+        int curr=n1+n2-1;
+        
+        while(p2>=0)
+        {
+            if(p1>=0 && nums1[p1]>nums2[p2])
+            {
+                nums1[curr--] = nums1[p1--];
+
+            }
+            else
+            {
+                nums1[curr--] = nums2[p2--];
+            }
+        }
+    }
+}
+----------------------trust the process you will definitely win
