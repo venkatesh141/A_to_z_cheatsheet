@@ -1177,9 +1177,10 @@ question 39
 ----------------------trust the process you will definitely win
 question 40
 leetcode 169
+Moore’s Voting Algorithm
 class Solution {
     public int majorityElement(int[] nums) {
-        
+        //more than n/2 times
         int count=0;
         int candidate=0;
        for(int element : nums)
