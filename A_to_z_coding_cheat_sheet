@@ -1742,3 +1742,16 @@ public int[][] merge(int[][] intervals) {
           return res.toArray(new int[0][]);
     }
 ----------------------trust the process you will definitely win
+question 59
+
+public static int numberOfInversions(int[] a, int n) {
+        // Count the number of pairs:
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (a[i] > a[j]) cnt++;
+            }
+        }
+        return cnt;
+    }
+----------------------trust the process you will definitely win
