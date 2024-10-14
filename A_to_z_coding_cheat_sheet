@@ -1943,3 +1943,48 @@ binary search based problem so array should be sorted
         return ans;
     }
 ----------------------trust the process you will definitely win
+question 66
+leetcode 34. Find First and Last Position of Element in Sorted Array
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int res[]={-1,-1};
+        int left=helper(nums,target,true);
+        int right=helper(nums,target,false);
+        res[0]=left;
+        res[1]=right;
+        return res;
+    }
+    public int helper(int[] arr,int target,boolean isSearchingLeft)
+    {
+        int left=0,right=arr.length-1,idx=-1;
+        while(left<=right)
+        {
+            int mid=(left+right)/2;
+            if(arr[mid]>target)
+            {
+                right=mid-1;
+            }
+            else if(arr[mid]<target)
+            {
+                left=mid+1;
+            }
+            else
+            {
+                idx=mid;
+                if(isSearchingLeft)
+                {
+                    right=mid-1;
+
+                }
+                else
+                {
+                    left=mid+1;
+                }
+            }
+        }
+        return idx;
+
+
+    }
+}
+----------------------trust the process you will definitely win
