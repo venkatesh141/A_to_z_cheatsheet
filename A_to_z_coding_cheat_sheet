@@ -1879,3 +1879,27 @@ public static int lowerBound(int []arr, int n, int x) {
         return ans;
     }
 ----------------------trust the process you will definitely win
+question 64 leetcode 35 
+Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+You must write an algorithm with O(log n) runtime complexity.
+
+public int searchInsert(int[] arr, int x) {
+
+      int n = arr.length; // size of the array
+        int low = 0, high = n - 1;
+        int ans = n;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            // maybe an answer
+            if (arr[mid] >= x) {
+                ans = mid;
+                //look for smaller index on the left
+                high = mid - 1;
+            } else {
+                low = mid + 1; // look on the right
+            }
+        }
+        return ans;   
+    }
+----------------------trust the process you will definitely win
