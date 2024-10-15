@@ -1907,7 +1907,14 @@ public int searchInsert(int[] arr, int x) {
     }
 ----------------------trust the process you will definitely win
 question 65 
-find floor and ceil 
+find floor and ceil
+
+The floor of x is the largest element in the array which is smaller than or equal to x.
+The ceiling of x is the smallest element in the array greater than or equal to x.
+
+Input Format: n = 6, arr[] ={3, 4, 4, 7, 8, 10}, x= 5
+Result: 4 7
+Explanation: The floor of 5 in the array is 4, and the ceiling of 5 in the array is 7.
 binary search based problem so array should be sorted
 
  static int findFloor(int[] arr, int n, int x) {
