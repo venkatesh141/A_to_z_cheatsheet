@@ -1967,7 +1967,7 @@ class Solution {
     }
     public int helper(int[] arr,int target,boolean isSearchingLeft)
     {
-        int left=0,right=arr.length-1,idx=-1;
+        int left=0,right=arr.length-1,ind=-1;
         while(left<=right)
         {
             int mid=(left+right)/2;
@@ -1993,7 +1993,7 @@ class Solution {
                 }
             }
         }
-        return idx;
+        return ind;
 
 
     }
