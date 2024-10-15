@@ -2123,3 +2123,42 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
+question 70
+leetcode 153 (find min rotated sorted array)
+class Solution {
+    public static int findMin(int[] arr) {
+        int start = 0, end = arr.length - 1;
+        int ans = Integer.MAX_VALUE;
+        while (start <= end) {
+            int mid = (start + end) / 2;
+
+            // Search space is already sorted,
+            // then arr[low] will always be
+            // the minimum in that search space:
+            if (arr[start] <= arr[end]) {
+                ans = Math.min(ans, arr[start]);
+                break;
+            }
+
+            // If left part is sorted:
+            if (arr[start] <= arr[mid]) {
+                // Keep the minimum:
+                ans = Math.min(ans, arr[start]);
+
+                // Eliminate left half:
+                start = mid + 1;
+
+            } else { // If right part is sorted:
+
+                // Keep the minimum:
+                ans = Math.min(ans, arr[mid]);
+
+                // Eliminate right half:
+                end = mid - 1;
+            }
+        }
+        return ans;
+    }
+}
+----------------------trust the process you will definitely win
+
