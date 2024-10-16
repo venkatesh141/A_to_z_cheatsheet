@@ -2303,7 +2303,6 @@ class Solution {
     }
     public boolean isPossible(int[] piles, int value, int h){
         int hours = 0;
-        int i = 0;
         for(int pile : piles){
             int div = pile / value;
             hours += div;
