@@ -2312,3 +2312,37 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
+question 76
+leetcode 1283 
+class Solution {
+    public int smallestDivisor(int[] nums, int t) {
+        int low = 1, high = 1, ans =-1;
+
+        for(int i : nums) {
+            if(i > high) high = i;
+        }
+
+        while(low <= high) {
+            int mid = (low + high) / 2;
+
+            int val = getThreshold(nums, mid);
+            if(val <= t) {
+                high = mid - 1;
+                ans = mid;
+            } else {
+                low = mid +1;
+            }
+        }
+        return ans;
+    }
+    
+    public int getThreshold(int[] map, int val){
+        
+        int ans = 0;
+        for(int i : map) {
+            ans += (i + val - 1) / val;
+        }
+        return ans;
+    }
+}
+----------------------trust the process you will definitely win
