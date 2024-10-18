@@ -2717,3 +2717,35 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
+question 87
+
+public class FibonacciMemoization {
+    public static int fib(int n, int[] memo) {
+        // Base cases
+        if (n <= 1) {
+            return n;
+        }
+
+        // If already calculated, return the stored result
+        if (memo[n] != -1) {
+            return memo[n];
+        }
+
+        // Recursively calculate Fibonacci and store in the memo array
+        memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
+        return memo[n];
+    }
+
+    public static void main(String[] args) {
+        int n = 10; // Example
+
+        // Array to store results, initialized to -1
+        int[] memo = new int[n + 1];
+        for (int i = 0; i <= n; i++) {
+            memo[i] = -1;
+        }
+
+        System.out.println("Fibonacci of " + n + " is: " + fib(n, memo));
+    }
+}
+----------------------trust the process you will definitely win
