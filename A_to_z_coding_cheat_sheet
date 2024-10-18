@@ -2603,14 +2603,17 @@ class Solution {
         int subarrays = 1, sum = 0;
 
         for (int num : nums) {
-            if (sum + num > maxSum) {
+            if(sum+num<=maxSum)
+            {
+                sum+=num;
+            }
+            else
+            {
                 sum = num;
                 subarrays++;
 
                 if (subarrays > k)
                     return false;
-            } else {
-                sum += num;
             }
         }
 
