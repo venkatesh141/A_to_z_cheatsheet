@@ -2286,7 +2286,7 @@ class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         //binary search
         Arrays.sort(piles);//sorting is not neccasary  you can find max in O(n)
-        int start = 1;
+        int start = 1;//one hour ku minimum ah ethana bananas sapdum a monkey min is 1 max is max(arr0
         //taking the largest value possible as end
         int max=piles[piles.length-1];
         int end = max;
