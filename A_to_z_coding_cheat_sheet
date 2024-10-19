@@ -2146,7 +2146,7 @@ class Solution {
                 ans = Math.min(ans, arr[start]);
 
                 // Eliminate left half:
-                start = mid + 1;
+                start = mid + 1;//right 
 
             } else { // If right part is sorted:
 
@@ -2154,7 +2154,7 @@ class Solution {
                 ans = Math.min(ans, arr[mid]);
 
                 // Eliminate right half:
-                end = mid - 1;
+                end = mid - 1;//left
             }
         }
         return ans;
@@ -2189,7 +2189,7 @@ public static int findKRotation(int[] arr) {
                 }
 
                 // Eliminate left half:
-                start = mid + 1;
+                start = mid + 1;//right
             } else { //if right part is sorted:
 
                 // keep the minimum:
@@ -2199,7 +2199,7 @@ public static int findKRotation(int[] arr) {
                 }
 
                 // Eliminate right half:
-                end = mid - 1;
+                end = mid - 1;//left
             }
         }
         return index;
@@ -2223,11 +2223,11 @@ class Solution {
 
             // If nums[m] equals nums[m + 1], the single element is in the right half
             if (nums[m] == nums[m + 1]) {
-                l = m + 2;
+                l = m + 2;//right
             } 
             // Otherwise, it's in the left half
             else {
-                r = m;
+                r = m;//left
             }
         }
 
@@ -2249,11 +2249,11 @@ class Solution {
             int mid=(left+right)/2;
             if(arr[mid]>arr[mid+1])
             {
-                right=mid;
+                right=mid;//left
             }
             else
             {
-                left=mid+1;
+                left=mid+1;//right
             }
         }
         return left;
@@ -2270,10 +2270,10 @@ public static int floorSqrt(int n) {
             long val = mid * mid;
             if (val <= (long)(n)) {
                 //eliminate the left half:
-                low = (int)(mid + 1);
+                low = (int)(mid + 1);//right
             } else {
                 //eliminate the right half:
-                high = (int)(mid - 1);
+                high = (int)(mid - 1);//left
             }
         }
         return high;
@@ -2294,9 +2294,9 @@ class Solution {
             int mid =(start+end)/ 2;
             //check whether mid is a possible candidate or not
             if(isPossible(piles, mid, h)){
-                end = mid;
+                end = mid;//left
             }else{
-                start = mid + 1;
+                start = mid + 1;//rigth
             }
         }
         return start;
@@ -2327,10 +2327,10 @@ class Solution {
 
             int val = getThreshold(nums, mid);
             if(val <= t) {
-                high = mid - 1;
+                high = mid - 1;//left
                 ans = mid;
             } else {
-                low = mid +1;
+                low = mid +1;//right
             }
         }
         return ans;
@@ -2365,9 +2365,9 @@ class Solution {
             if(isValid(mid, bloomDay, m, k))
             {
                 minDays = mid;
-                r = mid - 1;
+                r = mid - 1;//left
             } else {
-                l = mid + 1;
+                l = mid + 1;//right
             }
         }
         return minDays;
@@ -2419,9 +2419,9 @@ Explanation:
             if (midN == 1) {
                 return mid;
             } else if (midN == 0) {
-                low = mid + 1;
+                low = mid + 1;//right
             } else {
-                high = mid - 1;
+                high = mid - 1;//left
             }
         }
         return -1;
@@ -2458,9 +2458,9 @@ class Solution {
             int mid = (low+high)/2;
             int daysToLoad = loadOnShip(mid, weights);
             if(daysToLoad <= days) {
-                high = mid - 1;
+                high = mid - 1;//left
             } else {
-                low = mid + 1;
+                low = mid + 1;//right
             }
         }
         return low;
@@ -2480,9 +2480,9 @@ class Solution {
             int totMissing = arr[mid] - (mid + 1);
 
             if (totMissing < k)
-                low = mid + 1;
+                low = mid + 1;//right
             else
-                high = mid - 1;
+                high = mid - 1;//left
         }
 
         return k + high + 1;
@@ -2504,9 +2504,9 @@ class Solution {
             if(matrix[row][col]==target)
             return true;
             else if(matrix[row][col]<target)
-            low=mid+1;
+            low=mid+1;//right
             else
-            high=mid-1;
+            high=mid-1;//left
         }
         return false;
     }
@@ -2537,8 +2537,8 @@ aggressive cows only on take you forward
         while (low <= high) {
             int mid = (low + high) / 2;
             if (canWePlace(stalls, mid, k) == true) {
-                low = mid + 1;
-            } else high = mid - 1;
+                low = mid + 1;//right
+            } else high = mid - 1;//left
         }
         return high;
     }
@@ -2585,11 +2585,11 @@ public static int findPages(int[] arr,int n,int m)
         int students=countStudents(arr,mid);
         if(students>m)
         {
-            low=mid+1;
+            low=mid+1;//rigth
         }
         else
         {
-            high=mid-1;
+            high=mid-1;//left
         }
 
     }
@@ -2633,9 +2633,9 @@ class Solution {
 
             if (isPossible(nums, mid, k)) {
                 result = mid;
-                high = mid - 1;
+                high = mid - 1;//left
             } else {
-                low = mid + 1;
+                low = mid + 1;//right
             }
         }
 
@@ -2687,11 +2687,11 @@ public static int findLargestMinDistance(int[] boards,int k)
         int painters = countPainters(boards,mid);
         if(painters > k)
         {
-            low = mid+1;
+            low = mid+1;//right
         }
         else
         {
-            high = mid-1;
+            high = mid-1;//left
         }
     }
 
