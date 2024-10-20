@@ -2784,6 +2784,7 @@ class Solution {
 ----------------------trust the process you will definitely win
 question 89
 leetcode 151
+Reverse a sentences
 public static  String result(String s)
 {
 	int left = 0;
@@ -2830,5 +2831,19 @@ public static  String result(String s)
 	}
 
 	return ans;
+}
+----------------------trust the process you will definitely win
+question 90
+1903. Largest Odd Number in String
+class Solution {
+    public String largestOddNumber(String num) {
+
+        for (int i = num.length()-1;i >= 0;i--){
+
+            if ((num.charAt(i)-'0')%2 !=0 ) 
+            return num.substring(0,i+1);
+        }
+        return "";
+    }
 }
 ----------------------trust the process you will definitely win
