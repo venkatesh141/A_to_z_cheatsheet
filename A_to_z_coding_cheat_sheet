@@ -2847,3 +2847,15 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
+question 91
+796. Rotate String
+class Solution {
+    public boolean rotateString(String s, String g) {
+        if(s.length()!=g.length()) return false;
+        s=s+""+s;
+        if(s.indexOf(g)==-1)
+        return false;
+        return true;
+    }
+}
+----------------------trust the process you will definitely win
