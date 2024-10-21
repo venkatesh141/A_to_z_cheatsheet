@@ -1297,6 +1297,28 @@ for(int i=0;i<n;i++)
 }
 
  end
+with out using arrays
+
+public class PascalTriangle {
+    public static void main(String[] args) {
+        int n = 5; // Number of rows for Pascal's Triangle
+        
+        // Iterate through each row
+        for (int i = 0; i < n; i++) {
+            int value = 1; // The first value in each row is always 1
+            System.out.print(value + " "); // Print the first value
+            
+            // Compute and print the rest of the values in the row
+            for (int j = 1; j <= i; j++) {
+                value = value * (i - j + 1) / j; // Binomial coefficient calculation
+                System.out.print(value + " "); // Print values in the same row
+            }
+            
+            System.out.println(); // Newline after each row
+        }
+    }
+}
+
 ----------------------trust the process you will definitely win
 question 46
 leaders in an array 
