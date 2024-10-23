@@ -2960,3 +2960,27 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
+question 95
+leetcode 1614. Maximum Nesting Depth of the Parentheses
+class Solution {
+   public int maxDepth(String s) {
+    int left = 0; // To track current depth
+    int maxInt = 0; // To track maximum depth
+    int i = 0; // Iterator for the string
+
+    while (i <= s.length() - 1) {
+        if (s.charAt(i) == '(') {
+            left++; // Increment current depth
+            maxInt = Math.max(left, maxInt); // Update maximum depth if needed
+            i++; // Move to next character
+        } else if (s.charAt(i) == ')') {
+            left--; // Decrement current depth
+            i++; // Move to next character
+        } else {
+            i++; // Move to next character for any non-parenthesis character
+        }
+    }
+    return maxInt; // Return the maximum depth found
+}
+}
+----------------------trust the process you will definitely win
