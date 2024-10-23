@@ -3053,3 +3053,6 @@ treemap nopredefinedsize treeset nopredefinedsize concurrent hashmap 16
 
 linkedhashset 16 
 ----------------------trust the process you will definitely win
+Collections.sort(people, (p1, p2) -> p1.name.compareTo(p2.name));
+Collections.sort(people, (p1, p2) -> Integer.compare(p1.age, p2.age));
+----------------------trust the process you will definitely win
