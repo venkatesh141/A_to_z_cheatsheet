@@ -3056,3 +3056,29 @@ linkedhashset 16
 Collections.sort(people, (p1, p2) -> p1.name.compareTo(p2.name));
 Collections.sort(people, (p1, p2) -> Integer.compare(p1.age, p2.age));
 ----------------------trust the process you will definitely win
+question 99
+Integer to roman
+public class IntegerToRoman {
+    public static String intToRoman(int num) {
+        String result = "";  // Use a simple string for concatenation
+
+        // Define arrays for roman numerals and corresponding integer values
+        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] numerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+        for (int i = 0; i < values.length; i++) {
+            while (num >= values[i]) {
+                result = result + numerals[i];  // Concatenate the result manually
+                num -= values[i];
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int number = 1994;  // Example input
+        System.out.println("Integer: " + number + " = " + intToRoman(number));
+    }
+}
+----------------------trust the process you will definitely win
