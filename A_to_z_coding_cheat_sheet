@@ -3193,4 +3193,31 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
- 
+ question 103
+leetcode 1781. Sum of Beauty of All Substrings
+class Solution {
+    public int beautySum(String s) {
+
+        int ans = 0;
+        char arr[] = s.toCharArray();
+
+        for(int i=0;i<arr.length;i++){
+            int freq[] = new int[26];
+            for(int j=i;j<arr.length;j++){
+                freq[arr[j]-'a']++;
+                int minFreq = arr.length;
+                int maxFreq = 0;
+                
+                for(int k:freq){
+                    if(k!=0){
+                        minFreq = Math.min(minFreq,k);
+                        maxFreq = Math.max(maxFreq,k);
+                    }
+                }       
+                ans += (maxFreq - minFreq);
+            }
+        }
+        return ans;
+    }
+}
+----------------------trust the process you will definitely win
