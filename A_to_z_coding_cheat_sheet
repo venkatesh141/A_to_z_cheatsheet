@@ -3099,17 +3099,18 @@ class Solution {
             bucket[freq].add(key);
         }
 
-        StringBuilder sb = new StringBuilder();
-        for(int i=bucket.length-1; i>=0; i--) {
-            if(bucket[i] != null) {
-                for(char ch : bucket[i]) {
-                    for(int j=0; j<map.get(ch); j++) {
-                        sb.append(ch);
-                    }
-                }
+        String result = "";
+       for (int i = bucket.length - 1; i >= 0; i--) {
+          if  (bucket[i] != null) {
+          for (char ch : bucket[i]) {
+            for (int j = 0; j < map.get(ch); j++) {
+                result += ch;  // Concatenate character to the result string
             }
+          }
         }
-        return sb.toString();
+     }
+return result;
+
     }
 }
 
