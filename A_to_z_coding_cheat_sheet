@@ -3150,7 +3150,7 @@ class Solution {
         return neg ? -ans : ans;
     }
 }
-c
+----------------------trust the process you will definitely win
 question 102
 geeksforgeeks
 Given a string of lowercase alphabets, count all possible substrings (not necessarily distinct) that have exactly k distinct characters. 
@@ -3192,4 +3192,5 @@ class Solution {
         return countSubstring(S, K) - countSubstring(S, K - 1);
     }
 }
-Given a string of lowercase alphabets, count all possible substrings (not necessarily distinct) that have exactly k distinct characters. 
+----------------------trust the process you will definitely win
+ 
