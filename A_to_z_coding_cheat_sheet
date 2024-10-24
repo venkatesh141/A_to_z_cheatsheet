@@ -3082,3 +3082,45 @@ public class IntegerToRoman {
     }
 }
 ----------------------trust the process you will definitely win
+question 100
+Frequency sorting Engineering fault
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] arr = new int[1000], count = new int[1000];
+        int N, c, i, j, ind;
+
+        N = sc.nextInt();  // Read the size of the array
+
+        for (ind = 0; ind < N; ind++) {
+            arr[ind] = sc.nextInt();  // Read array values
+        }
+
+        for (i = 0; i < N; i++) {
+            if (count[i] != -1) {  // Check past value
+                c = 1;
+                for (j = i + 1; j < N; j++) {
+                    if (arr[i] == arr[j]) {
+                        c++;  // Frequency count
+                        count[j] = -1;  // Mark the visited elements
+                    }
+                }
+                count[i] = c;  // Update the count array
+            }
+        }
+
+        for (i = N; i >= 1; i--) {  // Sort by frequency
+            for (ind = 0; ind < N; ind++) {
+                if (count[ind] == i) {
+                    for (j = 1; j <= i; j++) {
+                        System.out.print(arr[ind] + " ");  // Print elements based on frequency
+                    }
+                }
+            }
+        }
+    }
+}
+
+----------------------trust the process you will definitely win
