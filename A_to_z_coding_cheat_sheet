@@ -2395,6 +2395,10 @@ question 77
 leetcode 1482. Minimum Number of Days to Make m Bouquets
 see coders campt youtube video to understand this question...
 class Solution {
+
+//oru boque ku k flowers theva padum
+//min days to make m boques
+//take adajacent flowers to make one boque
     public int minDays(int[] bloomDay, int m, int k) {
 
         if((long) m * k > bloomDay.length) 
