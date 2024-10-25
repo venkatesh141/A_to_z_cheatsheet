@@ -2399,14 +2399,21 @@ class Solution {
 //oru boque ku k flowers theva padum
 //min days to make m boques
 //take adajacent flowers to make one boque
+ class Solution {
     public int minDays(int[] bloomDay, int m, int k) {
 
         if((long) m * k > bloomDay.length) 
-            return -1;
+        return -1;
+
         int minDays = -1;
-        int l = 1, r = Integer.MIN_VALUE, n = bloomDay.length;
-        for(int i=0; i<n; i++) 
-            r = Math.max(r, bloomDay[i]);
+        int l = -1, r = Integer.MIN_VALUE, n = bloomDay.length;
+        
+        for(int i=0; i<n; i++)
+        {
+           r = Math.max(r, bloomDay[i]);
+           l = Math.min(l,bloomDay[i]);
+        } 
+        
 
         while(l <= r) 
         {
@@ -2414,9 +2421,9 @@ class Solution {
             if(isValid(mid, bloomDay, m, k))
             {
                 minDays = mid;
-                r = mid - 1;//left
+                r = mid - 1;
             } else {
-                l = mid + 1;//right
+                l = mid + 1;
             }
         }
         return minDays;
@@ -2426,10 +2433,14 @@ class Solution {
         int cons = 0, numberOfB = 0;
         for(int i=0; i<bloomDay.length; i++)
         {
-            if(bloomDay[i] <= mid) 
-                ++cons;
-            else 
-                cons = 0;
+            if(bloomDay[i] <= mid)
+            { 
+            ++cons;
+            }
+            else
+            { 
+            cons = 0;
+            }
 
             if(cons == k) {
                 numberOfB++;
