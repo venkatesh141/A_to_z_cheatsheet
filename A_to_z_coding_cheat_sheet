@@ -3310,6 +3310,7 @@ public class SubsequencePrinter {
 question 106
 leetcode 240. Search a 2D Matrix II
 public class Solution {
+ public class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if(matrix == null || matrix.length < 1 || matrix[0].length <1) {
             return false;
@@ -3319,10 +3320,12 @@ public class Solution {
         while(col >= 0 && row <= matrix.length-1) {
             if(target == matrix[row][col]) {
                 return true;
-            } else if(target < matrix[row][col]) {
-                col--;
             } else if(target > matrix[row][col]) {
                 row++;
+            }
+            else
+            {
+                col--;
             }
         }
         return false;
