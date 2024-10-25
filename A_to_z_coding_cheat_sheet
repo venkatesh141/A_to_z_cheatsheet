@@ -3268,3 +3268,35 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
+question 105
+public class SubsequencePrinter {
+    public static void main(String[] args) {
+        String str = "abc";
+        printSubsequences(str);
+    }
+
+    public static void printSubsequences(String str) {
+        int n = str.length();
+        int totalSubsequences = 1 << n; // 2^n without using Math.pow
+
+        // Loop through each possible subsequence
+        for (int i = 0; i < totalSubsequences; i++) {
+            String subsequence = "";
+
+            // Temporary variable to check each bit of i
+            int temp = i;
+            for (int j = 0; j < n; j++) {
+                // Check if the last bit of temp is set
+                if (temp % 2 == 1) {
+                    subsequence += str.charAt(j);
+                }
+                // Shift temp right by dividing by 2
+                temp /= 2;
+            }
+
+            System.out.println(subsequence);
+        }
+    }
+}
+----------------------trust the process you will definitely win
+
