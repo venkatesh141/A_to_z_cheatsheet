@@ -2576,6 +2576,18 @@ class Solution {
 ----------------------trust the process you will definitely win
 question 82
 aggressive cows only on take you forward
+
+first stalls ah sort pannu cows =4
+
+  stalls  0   3   4   7   10   9
+  cows    c1  c2 c3   c4
+  now find disance between two consective cows
+  
+  comb1  c1-c2 is 3 c2 -c3 is  1 c3 -c4 is 3   its is min is 1
+       you can place 4 cows anywhere and their min 
+       
+       after take max among them           
+
  public static boolean canWePlace(int[] stalls, int dist, int cows) {
         int n = stalls.length; //size of array
         int cntCows = 1; //no. of cows placed
