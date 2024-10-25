@@ -2529,6 +2529,8 @@ class Solution {
 ----------------------trust the process you will definitely win
 question 80
 leetcode 1539. Kth Missing Positive Number
+//take max value in array up to that value find kth missing value 
+it starts from 1 only
 
 class Solution {
     public int findKthPositive(int[] arr, int k) {
