@@ -3259,3 +3259,12 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
+question 104
+leetcode 237
+class Solution {
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+}
+----------------------trust the process you will definitely win
