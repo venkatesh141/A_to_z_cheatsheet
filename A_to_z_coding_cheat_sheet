@@ -453,6 +453,29 @@ class LinkedList {
         last.next = newNode;
     }
 
+    public void delete(int ele)
+    {
+        if(head!=null && head.data==ele)
+         {
+             head=head.next;
+             return;
+         }
+         Node current=head;
+         Node previous=null;
+         while(current!=null && current.data!=ele)
+         {
+           previous=current;
+           current=current.next;
+          }
+          if(current==null)
+          {
+             System.out.pritnln("element is not found");
+             return;
+          }
+          previous.next=current.next;
+         
+    }
+
     // Method to display the linked list
     public void display() {
         Node current = head;
