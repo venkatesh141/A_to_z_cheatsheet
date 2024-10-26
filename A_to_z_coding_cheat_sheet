@@ -2359,6 +2359,9 @@ class Solution {
 ----------------------trust the process you will definitely win
 question 76
 leetcode 1283 
+ We can get a sum to 17 (1+2+5+9) if the divisor is 1. 
+If the divisor is 4 we can get a sum of 7 (1+1+2+3) and if the divisor is 5 the sum will be 5 (1+1+1+2). 
+
 class Solution {
     public int smallestDivisor(int[] nums, int t) {
         int low = 1, high = 1, ans =-1;
