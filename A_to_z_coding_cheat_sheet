@@ -3337,8 +3337,6 @@ public class Solution {
 ----------------------trust the process you will definitely win
 question 107
 Doubly linked list implementation
-up to lunch spring
-after that 5 problems
 // Node class for creating a node
     class Node {
         int data;
