@@ -3449,4 +3449,17 @@ class DoublyLinkedList {
         list.display();
     }
 ----------------------trust the process you will definitely win
-
+question 108
+leetcode 876
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode slow=head,fast=head;
+        while( fast!=null && fast.next!=null )
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+    }
+}
+----------------------trust the process you will definitely win
