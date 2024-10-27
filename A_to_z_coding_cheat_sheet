@@ -3463,3 +3463,19 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
+question 109
+leetcode 206
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode node=null;
+        while(head!=null)
+        {
+            ListNode next=head.next;
+            head.next=node;
+            node=head;
+            head=next;
+        }
+        return node;
+    }
+}
+----------------------trust the process you will definitely win
