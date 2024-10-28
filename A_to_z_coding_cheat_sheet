@@ -3,7 +3,7 @@ A_to_z_coding_cheat_sheet
 
 patterns  -->
    
------------------------trust the process you will win.
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 Input Format: N = 6  ques 1
 Result:   
 1          1
@@ -43,7 +43,7 @@ static void pattern(int n)
 	}
 }
 end
------------------------trust the process you will definitely win.
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 
   int n=6   ques 2
 
@@ -84,7 +84,8 @@ public static void pattern(int n)
 		}
 }
 end
------------------------trust the process you will definitely win.
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 Input Format: N = 6   ques 3
 Result:   
 ************
@@ -141,7 +142,8 @@ public static void pat(int n)
     }
 }
 end
------------------------trust the process you will definitely win.
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 Input Format: N = 3 ques 4
 Result: 
 *    *
@@ -187,7 +189,8 @@ int spaces = 2*n-2;
       }
 }
 end
------------------------trust the process you will definitely win.
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 Input Format: N = 6 ques 5
 Result:   
 ******
@@ -217,7 +220,8 @@ public static void fun(int n)
     }
 }
 end
-----------------------trust the process you will definitely win
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 
 Input Format: N = 3 ques 6
 Result: 
@@ -244,7 +248,8 @@ static void pattern22(int n)
      }
 }
 end
-----------------------trust the process you will definitely win
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
  square root of a number optimized approach ques 7
 
 public static int floor(int n)
@@ -258,7 +263,8 @@ public static int floor(int n)
     return i-1;
 }
 end
-----------------------trust the process you will definitely win
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 ques 8
 
  find missing number
@@ -271,7 +277,8 @@ ques 8
         }
         return sum-ans;
     end
-----------------------trust the process you will definitely win
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 9
 
   sort colors
@@ -298,7 +305,8 @@ question 9
   }
   end
 
-----------------------trust the process you will definitely win
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 10
 check if two arrays are equal are not
 public static boolean check(int[] arr1, int[] arr2) {
@@ -3476,4 +3484,5 @@ class Solution {
         return node;
     }
 }
-----------------------trust the process you will definitely win
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
