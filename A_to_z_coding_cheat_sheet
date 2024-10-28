@@ -2630,6 +2630,22 @@ first stalls ah sort pannu cows =4
 ----------------------trust the process you will definitely win
 question 83
 Allocate Minimum No of Pages
+
+
+arr[]={25,46,28,49,24}; pages of books
+students=4
+
+s1      s2     s3      s4   
+25      46     28     49,24   max is s4 73 pages
+
+25      46    28,49    24      max is s3 77 pages
+.
+.
+.
+.
+.
+         take min of all
+
 public static int countStudents(int[] arr,int pages)
 {
     int n=arr.length;
