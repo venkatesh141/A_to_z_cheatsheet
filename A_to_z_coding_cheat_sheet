@@ -3516,3 +3516,19 @@ Row with maximum ones
         return -1;
  }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 111
+public int medianofarray(int[][] matrix,int R,int C)
+{
+  int arr[]=new int[R*C];
+        int start=0;
+        for(int i=0;i<R;i++){
+            for(int j=0;j<C;j++){
+                arr[start]=matrix[i][j];
+                start++;
+            }
+        }
+        Arrays.sort(arr);
+        return (arr[(0+arr.length)/2]);
+        
+ }
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
