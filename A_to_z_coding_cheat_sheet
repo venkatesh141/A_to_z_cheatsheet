@@ -3574,3 +3574,18 @@ class Solution {
 }
 
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 113
+reverse a linked list (recursive)
+public Node reverse(Node curr)
+{
+    if(curr==null || curr.next==null)
+    {
+        return curr;
+    }
+    Node newnode=rev(curr.next);
+    curr.next.next=curr;
+    curr.next=null;
+    
+    return newnode;
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
