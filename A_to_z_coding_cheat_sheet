@@ -3589,3 +3589,25 @@ public Node reverse(Node curr)
     return newnode;
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 114
+linked list cycle 
+leetcode 141
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if(head==null){
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast= fast.next.next;
+            if(slow==fast){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
