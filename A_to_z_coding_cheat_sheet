@@ -3502,3 +3502,14 @@ class Solution {
 }
 
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 110
+Row with maximum ones
+ for(int j =0;j<arr[0].length;j++){
+            for(int i = 0;i<arr.length;i++){
+                if(arr[i][j]==1){
+                   return i;
+                }
+            }
+        }
+        return -1;
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
