@@ -2334,25 +2334,30 @@ public static int floorSqrt(int n) {
 
 ----------------------trust the process you will definitely win
 question 75
-875. Koko Eating Bananas
+875. Koko Eating Bananas bruteforce
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         //binary search
-        Arrays.sort(piles);//sorting is not neccasary  you can find max in O(n)
-        int start = 1;//one hour ku minimum ah ethana bananas sapdum a monkey min is 1 max is max(arr0
+        
+        //one hour ku minimum ah ethana bananas sapdum a monkey min is 1 max is max(arr0
         //taking the largest value possible as end
-        int max=piles[piles.length-1];
-        int end = max;
-        while(start < end){
-            int mid =(start+end)/ 2;
-            //check whether mid is a possible candidate or not
-            if(isPossible(piles, mid, h)){
-                end = mid;//left
-            }else{
-                start = mid + 1;//rigth
-            }
+        int end=-1;
+        for(int i=0;i<piles.length;i++)
+        {
+           if(max<piles[i])
+           {
+            max=piles[i];
+           }
         }
-        return start;
+        for(int i=1;i<=max;i++)
+        {
+            if(isPossible(piles,i,h))
+            {
+                return i;
+            }
+        } 
+         
+        return max;
     }
     public boolean isPossible(int[] piles, int value, int h){
         int hours = 0;
@@ -2364,6 +2369,7 @@ class Solution {
         return hours <= h;
     }
 }
+
 ----------------------trust the process you will definitely win
 question 76
 leetcode 1283 
