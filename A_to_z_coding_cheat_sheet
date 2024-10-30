@@ -3696,3 +3696,25 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 118
+leetcode 19
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode slow=head;
+        ListNode fast=head;
+        ListNode prev=null;
+  
+       for(int i=1;i<=n;i++){
+        fast=fast.next;
+       }
+        if(fast==null) return head.next;
+        while(fast!=null){
+            prev=slow;
+            fast=fast.next;
+            slow=slow.next;
+        }
+        prev.next=slow.next;
+        return head;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
