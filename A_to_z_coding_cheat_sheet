@@ -3938,7 +3938,8 @@ public ListNode addTwoNumbers(ListNode number1, ListNode number2) {
         return dummy.next;
     }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 125	
+question 125
+dll
 class Solution {
     static Node deleteAllOccurOfX(Node head, int x) {
         // Write your code here
@@ -3965,6 +3966,27 @@ class Solution {
             }
         }
         return dummy.next;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 126
+dll
+class Solution{
+    Node removeDuplicates(Node head){
+        // Code Here.
+        if(head==null || head.next==null) return head;
+        Node p=head,n=head.next;
+        while(n!=null){
+            if(p.data!=n.data){
+                p.next=n;
+                n.prev=p;
+                p=p.next;
+            }
+            n=n.next;
+        }
+        if(p.next!=null) p.next=null;
+        return head;
+        
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
