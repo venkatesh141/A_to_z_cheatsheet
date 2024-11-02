@@ -3239,9 +3239,11 @@ class Solution {
 question 102
 geeksforgeeks
 Given a string of lowercase alphabets, count all possible substrings (not necessarily distinct) that have exactly k distinct characters. 
-class Solution {
-    
- 
+
+Input: aba, k = 2
+Output: 3
+Possible substrings are {“ab”, “ba”, “aba”}
+class Solution { 
     long countSubstring(String S, int K) {
         int n = S.length();
         int[] freq = new int[26];
