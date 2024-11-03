@@ -3990,4 +3990,42 @@ class Solution{
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-
+question 127
+dll
+class Solution {
+    public static ArrayList<ArrayList<Integer>> findPairsWithGivenSum(int target, Node head) {
+        // code here
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        Node left=head,right=findTail(head);
+        while(left!=null && right!=null && left.data<right.data)
+        {
+            if(left.data+right.data==target)
+            {
+               ArrayList<Integer> temp=new ArrayList<>();
+               temp.add(left.data);
+               temp.add(right.data);
+               ans.add(temp);
+               left=left.next;
+               right=right.prev;
+            }
+            else if(left.data+right.data<target)
+            {
+                left=left.next;
+            }
+            else
+            {
+                right=right.prev;
+            }
+        }
+        return ans;
+    }
+    public static Node findTail(Node head)
+    {
+        while(head!=null && head.next!=null)
+        {
+            head=head.next;
+        }
+        return head;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
