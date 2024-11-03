@@ -4031,7 +4031,6 @@ class Solution {
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 128
 leetcode 61 
-dll
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
         if(head==null||head.next==null||k==0)
