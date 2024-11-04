@@ -4134,12 +4134,12 @@ class Solution {
             if( r1.data > r2.data){
                 dummy.bottom = r2;
                 r2 = r2.bottom;
-                dummy = dummy.bottom;
             } else{
                 dummy.bottom = r1;
                 r1 = r1.bottom;
-                dummy = dummy.bottom;
+                
             }
+          dummy = dummy.bottom;
                 
         }
         
