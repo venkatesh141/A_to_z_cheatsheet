@@ -395,3 +395,53 @@ Maintaining Centralized Code: Any update to deposit or the basic withdraw logic
  in Account will propagate to all account types automatically, making maintenance easy.
 
 -----------trust the process you will win .
+1. JVM (Java Virtual Machine)
+What it is: The JVM is a virtual "engine" that runs Java applications.
+What it does: It converts Java bytecode (compiled Java code) into machine code that your computer’s hardware understands, 
+so it can actually run the program.
+Why it’s important: The JVM allows Java programs to be "write once, run anywhere" 
+because it handles converting Java code to run on any operating system, like Windows, Mac, or Linux.
+
+
+2. JRE (Java Runtime Environment)
+What it is: The JRE is a package that includes the JVM along with some additional libraries and tools needed to run Java applications.
+What it does: It provides the environment required to run Java programs, 
+but it doesn’t include any tools to develop Java applications.
+Why it’s important: The JRE is needed if you only want to run Java applications (not develop or compile them). For instance,
+ if you're downloading a Java app or game, you’d need the JRE installed on your computer.
+   
+   
+ 
+3. JDK (Java Development Kit)
+What it is: The JDK is a complete package that includes the JRE, JVM, and
+ additional tools for developing Java applications, like the compiler (javac), debuggers, and other tools.
+What it does: The JDK provides everything needed to write, compile, and run Java programs. 
+It’s required if you want to create Java applications.
+Why it’s important: If you’re a Java developer, you need the JDK because it allows you to write and compile Java code.
+
+
+
+In Summary:
+JVM: Runs the compiled Java code.
+JRE: Runs Java applications by including the JVM and essential libraries.
+JDK: Develops and runs Java applications by including the JRE, JVM, and development tools.
+If you want to just run Java apps, you need the JRE. If you want to develop Java apps, you need the JDK. And 
+the JVM is the engine that makes Java code runnable on any system.
+
+
+Compiler (javac): Converts .java (source code) to .class (bytecode).
+JVM: Executes .class files by converting bytecode to machine code, enabling the program to run on the system.
+-----------trust the process you will win .
+
+
+
+
+
+
+
+
+
+
+
+
+
