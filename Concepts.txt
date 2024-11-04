@@ -43,6 +43,8 @@ public class AbstractionExample {
         myCat.sleep(); // Outputs: This animal is sleeping.
     }
 }
+Abstract classes set up a common structure (like requiring makeSound() for all animals).
+They allow each subclass (like Dog or Cat) to have its own behavior while still following the same basic rules.
 -----------trust the process you will win .
 Interface
 
