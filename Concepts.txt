@@ -108,6 +108,16 @@ public class Main {
 }
 -----------trust the process you will win .
 Thread 
+
+Real Time Use of Stack
+ Web Browser
+When you open a webpage, a browser uses one thread to load the page text and another thread to load images and videos. 
+This way, the page doesn’t freeze while everything loads—each part loads at the same time.
+
+In a chat app like WhatsApp:
+One thread is used to display incoming messages in real-time.
+Another thread is used to send messages and deliver notifications
+
 Two methods to implement thread
 one is using thread
 public class Main extends Thread {
