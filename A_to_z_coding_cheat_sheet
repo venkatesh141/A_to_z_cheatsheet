@@ -4277,3 +4277,22 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 136
+generate all binary strings using recursion
+public static void generateBinaryStrings(int n) {
+        generateBinaryStringsHelper(n, "");
+    }
+
+    // Recursive helper method to generate binary strings
+    private static void generateBinaryStringsHelper(int n, String current) {
+        // Base case: If the length of the current string is n, add it to the result
+        if (current.length() == n) {
+            System.out.println(current)
+            return;
+        }
+        
+        // Recursively add '0' and '1' to the current string
+        generateBinaryStringsHelper(n, current + "0");
+        generateBinaryStringsHelper(n, current + "1");
+    }
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
