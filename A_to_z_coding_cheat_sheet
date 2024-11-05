@@ -4215,3 +4215,39 @@ Reverse stack using recursion
         s.push(top);
     }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 134
+sort a stack using recursion
+public Stack<Integer> sort(Stack<Integer> s) {
+        // Base case: if the stack is empty, return it
+        if (s.isEmpty()) {
+            return s;
+        }
+
+        // Step 1: Pop the top element
+        int top = s.pop();
+
+        // Step 2: Recursively sort the remaining stack
+        sort(s);
+
+        // Step 3: Insert the popped element back in sorted order
+        sortedInsert(s, top);
+
+        return s;
+    }
+
+    // Helper function to insert an element in a sorted stack
+    private void sortedInsert(Stack<Integer> s, int item) {
+        // Base case: if the stack is empty or the top element is less than or equal to item, push it
+        if (s.isEmpty() || item>=s.peek()) {
+            s.push(item);
+            return;
+        }
+
+        // Recursive case: pop the top element and hold it
+        int top = s.pop();
+        sortedInsert(s, item);
+
+        // Push the held element back onto the stack
+        s.push(top);
+    }
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
