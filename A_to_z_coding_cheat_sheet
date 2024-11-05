@@ -4181,3 +4181,37 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 133
+Reverse stack using recursion
+    static void reverse(Stack<Integer> s) {
+        // Base case: if the stack is empty, return
+        if (s.isEmpty()) {
+            return;
+        }
+
+        // Step 1: Pop the top element and store it
+        int top = s.pop();
+
+        // Step 2: Recursively reverse the remaining stack
+        reverse(s);
+
+        // Step 3: Insert the popped element at the bottom of the reversed stack
+        insertAtBottom(s, top);
+    }
+
+    // Helper method to insert an element at the bottom of a stack
+    static void insertAtBottom(Stack<Integer> s, int item) {
+        // Base case: if the stack is empty, push the item
+        if (s.isEmpty()) {
+            s.push(item);
+            return;
+        }
+
+        // Recursive case: pop the top element and hold it
+        int top = s.pop();
+        insertAtBottom(s, item);
+
+        // Push the held item back onto the stack
+        s.push(top);
+    }
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
