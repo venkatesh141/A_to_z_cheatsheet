@@ -4251,3 +4251,29 @@ public Stack<Integer> sort(Stack<Integer> s) {
         s.push(top);
     }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 135
+leetcode 1922
+class Solution {
+    public final int mod = 1000000007;
+
+    public int countGoodNumbers(long n) {
+        // Calculate the number of even and odd positions
+        long o = n / 2; // Odd positions
+        long e = n / 2 + n % 2;// Even positions (one more if n is odd)
+
+        // Calculate the result by raising 5 to the power of e and 4 to the power of o
+        long ans = (pow(5, e) * pow(4, o)) % mod;// 5 possible for even pos 4 possible for odd pos
+
+        return (int) ans;
+    }
+
+    public long pow(long x, long n) {
+        // Exponentiation by squaring to compute (x^n) % mod efficiently
+        if (n == 0) return 1;          // Base case: x^0 is 1
+        long tP = pow(x, n / 2);       // Recursively calculate x^(n/2)
+        tP = (tP * tP) % mod;          // Square it to get x^n
+        if (n % 2 != 0) tP = (tP * x) % mod; // If n is odd, multiply by x
+        return tP;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
