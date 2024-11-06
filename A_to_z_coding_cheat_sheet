@@ -4411,5 +4411,6 @@ public class SubsetSumCountRecursive {
         System.out.println("Count of subsets with sum " + sum + ": " + countSubsets(arr, n-1, sum));
     }
 }
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 
 
