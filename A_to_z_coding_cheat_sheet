@@ -4364,7 +4364,7 @@ class Solution {
         solve(ans, temp , ind + 1 , nums );
         temp.add(nums[ind]);
         solve(ans, temp , ind + 1 , nums );
-        temp.remove(temp.indexOf(nums[ind]));
+        temp.remove(temp.size()-1);
         return ;
     }
     
