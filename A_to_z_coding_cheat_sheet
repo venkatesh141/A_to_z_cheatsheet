@@ -4349,4 +4349,32 @@ public class SubsetGenerator {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 139
+leetcode 78
+class Solution {
+    
+    public void solve(List<List<Integer>> ans , List<Integer> temp , int ind , int[] nums ) {
+        int n = nums.length;
+        if( ind >= n ){
+            ans.add(new ArrayList<>(temp));
+            return;
+        }
+        
+//         do not add current element
+        solve(ans, temp , ind + 1 , nums );
+        temp.add(nums[ind]);
+        solve(ans, temp , ind + 1 , nums );
+        temp.remove(temp.indexOf(nums[ind]));
+        return ;
+    }
+    
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        solve(ans, new ArrayList<>() , 0 , nums );
+        return ans;
+        
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
 
