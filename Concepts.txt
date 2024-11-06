@@ -404,7 +404,19 @@ makes it easy to add new account types in the future.
 Maintaining Centralized Code: Any update to deposit or the basic withdraw logic
  in Account will propagate to all account types automatically, making maintenance easy.
 
------------trust the process you will win .
+
+Inheritannce real world applicatioin
+ 
+ 2. Banking System
+Scenario: A banking application often has various types of accounts with shared features but distinct behaviors.
+Inheritance Structure:
+Account (Superclass): Contains common attributes like accountNumber, balance, and methods like deposit() and withdraw().
+SavingsAccount (Subclass): Inherits Account and may add features like interestRate and calculateInterest().
+CheckingAccount (Subclass): Inherits Account and includes features like overdraftLimit.
+Benefit: Shared behaviors like deposit() and withdraw() are defined in Account, while each subclass implements 
+additional features specific to the account type, making the code organized and reusable.
+
+---------------------------------trust the process you will win .
 1. JVM (Java Virtual Machine)
 What it is: The JVM is a virtual "engine" that runs Java applications.
 What it does: It converts Java bytecode (compiled Java code) into machine code that your computer’s hardware understands, 
@@ -479,7 +491,94 @@ Recommendation Systems: In recommendation engines, graphs model relationships be
 Each of these structures is essential for different types of applications due to their unique ways of managing data and allowing efficient data access, manipulation, and traversal.
 
 -----------------------------------------------------------------------------------trust the process you will win .
+Polymorphism is a core concept in Java that allows methods or objects to take on multiple forms.
+It is a fundamental principle of object-oriented programming and provides flexibility in designing and using code.
+In Java, polymorphism is mainly implemented in two ways:
 
+Compile-time (or Static) Polymorphism: Achieved via method overloading.
+Runtime (or Dynamic) Polymorphism: Achieved via method overriding.
+Method Overloading (Compile-time Polymorphism)
+What it is: Multiple methods in the same class with the same name but different parameter lists (different number or types of parameters).
+Use: Allows a class to perform similar operations in different ways depending on the input parameters.
+Example:
+java
+Copy code
+public class MathOperations {
+    // Overloaded methods
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MathOperations math = new MathOperations();
+        System.out.println(math.add(5, 10));        // Calls int add(int, int)
+        System.out.println(math.add(5.5, 10.5));    // Calls double add(double, double)
+        System.out.println(math.add(5, 10, 15));    // Calls int add(int, int, int)
+    }
+}
+2. Method Overriding (Runtime Polymorphism)
+What it is: When a subclass provides a specific implementation for a method already defined in its superclass. 
+The overridden method in the subclass has the same name, return type, and parameters as in the superclass.
+Use: Allows a subclass to provide a specific implementation of a method that is already defined in its superclass, enabling polymorphic behavior.
+Example:
+java
+Copy code
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myAnimal = new Animal();
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+
+        myAnimal.sound();  // Outputs: Animal makes a sound
+        myDog.sound();     // Outputs: Dog barks
+        myCat.sound();     // Outputs: Cat meows
+    }
+}
+Advantages of Using Polymorphism
+Code Flexibility: You can handle different types of objects in a uniform way. For example,
+ if you have an array of Animal types, you can fill it with Dog, Cat, etc., and call sound() on each element without needing to know its specific subclass.
+Easier to Scale: If a new subclass is added (e.g., Bird), you don’t have to change the code that uses Animal references—just add the new subclass.
+Enhances Extensibility: Polymorphism enables you to add new functionality with minimal changes, making the code more extensible.
+
+Polymorphism in Real-World Applications
+
+Collections Framework: Java’s collection framework relies heavily on polymorphism.
+ For example, you can use a List interface reference to hold an ArrayList or LinkedList object and interact with them through the same set of List methods.
+
+-----------------------------------------------------------------------------------trust the process you will win .
+
+ 
+ 
 
 
 
