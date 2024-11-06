@@ -4318,3 +4318,35 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 138
+public class SubsetGenerator {
+    
+    public static void generateSubsets(int[] arr, int index, int[] subset, int subsetIndex) {
+        // Base case: If we've considered all elements
+        if (index == arr.length) {
+            // Print the current subset
+            System.out.print("{ ");
+            for (int i = 0; i < subsetIndex; i++) {
+                System.out.print(subset[i] + " ");
+            }
+            System.out.println("}");
+            return;
+        }
+
+        // Include the current element in the subset
+        subset[subsetIndex] = arr[index];
+        generateSubsets(arr, index + 1, subset, subsetIndex + 1);
+
+        // Exclude the current element from the subset
+        generateSubsets(arr, index + 1, subset, subsetIndex);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3};
+        int[] subset = new int[arr.length];  // Array to store current subset
+        System.out.println("All subsets of the array are:");
+        generateSubsets(arr, 0, subset, 0);
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
