@@ -4412,5 +4412,33 @@ public class SubsetSumCountRecursive {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 141
+public class Solution {
+//Check if there exists a subsequence with sum K
+    public static boolean isSubsetPresent(int n, int k,int []a) {
+        // Write your code here
+        return helper(a,n-1,k);
+    }
+    public static boolean helper(int[] A,int index,int targetSum)
+    {
+        if (targetSum == 0) {
+            return true;
+        }
+        // Base case: If we've gone through all elements or target is negative
+        if (index < 0 || targetSum < 0) {
+            return false;
+        }
 
+        // Exclude the current element and check
+        boolean exclude = helper(A, index - 1, targetSum);
 
+        // Include the current element and check
+        boolean include = helper(A, index - 1, targetSum - A[index]);
+
+        // Return true if either including or excluding leads to a solution
+        return include || exclude;
+    }
+
+}
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
