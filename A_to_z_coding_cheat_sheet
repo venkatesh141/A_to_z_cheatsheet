@@ -4253,6 +4253,9 @@ public Stack<Integer> sort(Stack<Integer> s) {
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 135
 leetcode 1922
+Input: n = 4
+Output: 400
+400 combinations
 class Solution {
     public final int mod = 1000000007;
 
