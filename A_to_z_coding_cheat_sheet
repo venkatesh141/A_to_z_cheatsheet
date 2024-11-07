@@ -4503,6 +4503,28 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 144
+class Solution{
+    ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
+        // code here
+        ArrayList<Integer> ans= new ArrayList<Integer>();
+        Solution s=new Solution();
+        s.subset(0,0,N,arr,ans);
+        Collections.sort(ans);
+        return ans;
+    }
+    public  void subset(int i,int sum,int n,ArrayList<Integer> arr,ArrayList<Integer> ans)
+    {
+        if(i==n)
+        {
+            ans.add(sum);
+            return;
+        }
+        subset(i+1,sum+arr.get(i),n,arr,ans);
+        subset(i+1,sum,n,arr,ans);
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
     
 
 
