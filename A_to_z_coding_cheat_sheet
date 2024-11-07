@@ -3917,9 +3917,9 @@ public ListNode addTwoNumbers(ListNode number1, ListNode number2) {
          // THERE HAVE TWO APPROTCH TO SOLVE THIS PROBLEM 
         ListNode dummy = new ListNode(0);
         ListNode current = dummy;
-        int count=0;
+        int carry=0;
         while(number1!=null||number2!=null){
-            int sum=count;
+            int sum=carry;
             if(number1!=null){ 
                 sum=sum+number1.val;
                 number1=number1.next;
@@ -3928,11 +3928,11 @@ public ListNode addTwoNumbers(ListNode number1, ListNode number2) {
                 sum=sum+number2.val;
                 number2=number2.next;
             }
-            count = (sum/10);
+            carry = (sum/10);
             current.next=new ListNode(sum%10);
             current=current.next;
         }
-        if(count==1)
+        if(carry==1)
         current.next=new ListNode(1);
 
         return dummy.next;
