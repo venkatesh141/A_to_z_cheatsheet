@@ -2717,6 +2717,18 @@ public static int findPages(int[] arr,int n,int m)
 ----------------------trust the process you will definitely win
 question 84
 leetcode 410. Split Array Largest Sum
+
+split subarray 
+
+arr[]=[10,20,30,40] k=2 split into k subarrays
+
+[10] [20,30,40] max sum subarrys is 90
+
+[10,20] [30,40] max sum subarrays is 70
+.
+.
+.
+find min among that
 class Solution {
     private boolean isPossible(int[] nums, int maxSum, int k) {
         int subarrays = 1, sum = 0;
