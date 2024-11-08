@@ -4568,6 +4568,32 @@ class Solution{
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 145
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        
+        Arrays.sort(nums);
+        List<List<Integer>> ans =new ArrayList<>();
+        bt(nums,0,new ArrayList<>(),ans);
+        return ans;
+    }
+    private void bt(int[] nums,int st,List<Integer> path,List<List<Integer>> ans)
+    {
+        
+        ans.add(new ArrayList<>(path));
+        for(int i=st;i<nums.length;i++)
+        {
+            if(i!=st && nums[i]==nums[i-1])
+            {
+                continue;
+            }
+            path.add(nums[i]);
+            bt(nums,i+1,path,ans);
+            path.remove(path.size()-1);
+        }
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
     
 
 
