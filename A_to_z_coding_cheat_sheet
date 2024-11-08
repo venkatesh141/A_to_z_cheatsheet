@@ -879,6 +879,23 @@ public int maxFrequency(int[] nums, int k) {
 
 ----------------------trust the process you will definitely win
 question 24 quick sort
+
+    Choose a Pivot: Typically, the rightmost element of the array (arr[high]) is selected as the pivot.
+
+    Partitioning:
+        The partition() function is used to arrange elements such that:
+            Elements smaller than or equal to the pivot are on the left.
+            Elements greater than the pivot are on the right.
+        The pivot element is placed in its correct sorted position, with smaller elements to its left and larger elements to its right.
+        It returns the index of the pivot element.
+
+    Recursive Sorting:
+        After partitioning, the array is divided into two sub-arrays:
+            Left sub-array (elements before the pivot)
+            Right sub-array (elements after the pivot)
+        The quickSort() function is then recursively called on both sub-arrays until each sub-array has fewer than two elements.
+
+
 public static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
             // Find the pivot element such that
