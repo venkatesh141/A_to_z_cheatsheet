@@ -4853,4 +4853,38 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-
+question 152
+Rat in a maze
+class Solution {
+    public ArrayList<String> findPath(int[][] mat) {
+        // Your code here
+        ArrayList<String> ans=new ArrayList<>();
+        int n=mat.length;
+        boolean[][] vis=new boolean[n][n];
+        helper(ans,0,0,mat,n,"",vis);
+        return ans;
+    }
+    public void helper(ArrayList<String> ans,int r,int c,int[][] mat,int n,String p,boolean[][] vis)
+    {
+        if(r==n-1 && c==n-1 && mat[r][c]!=0)
+        {
+            ans.add(p);
+            return;
+        }
+        if(r>=0 && r<n && c>=0 && c<n)
+        {
+           
+           if(vis[r][c] || mat[r][c]==0)
+             return;
+        vis[r][c]=true;
+        helper(ans,r+1,c,mat,n,p+'D',vis);
+        helper(ans,r-1,c,mat,n,p+'U',vis);
+        helper(ans,r,c+1,mat,n,p+'R',vis);
+        helper(ans,r,c-1,mat,n,p+'L',vis);
+        
+        vis[r][c]=false;
+        
+        }
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
