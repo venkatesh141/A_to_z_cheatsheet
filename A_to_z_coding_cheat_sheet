@@ -4949,3 +4949,51 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 154
+leetcode 36 valid sudoku
+class Solution {
+    // Main function to check if the entire board is valid
+    public boolean isValidSudoku(char[][] board) {
+        // Loop through each cell in the 9x9 board
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                // If the cell is not empty ('.'), we need to validate it
+                if (board[i][j] != '.') {
+                    char c = board[i][j];  // Save the current cell's value
+                    board[i][j] = '.';     // Temporarily empty the cell for validation
+
+                    // Check if placing 'c' at (i, j) is valid according to Sudoku rules
+                    if (!validCell(i, j, c, board))
+                        return false; // If invalid, return false immediately
+
+                    // Restore the cell's original value after validation
+                    board[i][j] = c;
+                }
+            }
+        }
+        // If all cells are valid, return true
+        return true;
+    }
+
+    // Helper function to validate a specific cell in the board
+    public boolean validCell(int row, int col, char cell, char[][] board) {
+        // Loop through the 9 positions in the row, column, and 3x3 subgrid
+        for (int i = 0; i < 9; i++) {
+            // Check if 'cell' exists in the current row, ignoring (row, col)
+            if (board[row][i] == cell) {
+                return false; // Invalid if found
+            }
+            // Check if 'cell' exists in the current column, ignoring (row, col)
+            if (board[i][col] == cell) {
+                return false; // Invalid if found
+            }
+            // Check if 'cell' exists in the 3x3 subgrid
+            if (board[3 * (row / 3) + (i / 3)][3 * (col / 3) + (i % 3)] == cell) {
+                return false; // Invalid if found
+            }
+        }
+        // If no conflicts are found, the cell placement is valid
+        return true;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
