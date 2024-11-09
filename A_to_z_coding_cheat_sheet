@@ -4888,3 +4888,64 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 153
+leetcode 37
+class Solution {
+    // This function initiates the recursive backtracking process to solve the Sudoku
+    public void solveSudoku(char[][] board) {
+        solve(board);   
+    }
+
+    // Recursive function to try to solve the board
+    public static boolean solve(char[][] board) {
+        int n1 = board.length; // number of rows
+        int n2 = board[0].length; // number of columns
+
+        // Iterate over each cell in the board
+        for (int i = 0; i < n1; i++) {
+            for (int j = 0; j < n2; j++) {
+                // If we find an empty cell ('.'), we need to try placing numbers in it
+                if (board[i][j] == '.') {
+                    // Try placing numbers 1 to 9 in the cell
+                    for (char c = '1'; c <= '9'; c++) {
+                        // Check if placing 'c' at board[i][j] is valid
+                        if (isvalid(board, i, j, c)) {
+                            board[i][j] = c; // Place the number temporarily
+
+                            // Recursively try to solve the rest of the board
+                            if (solve(board))
+                                return true; // If successful, return true
+
+                            // If not successful, backtrack and reset the cell
+                            board[i][j] = '.';
+                        }
+                    }
+                    // If no numbers 1-9 can be placed in this cell, return false to backtrack
+                    return false;
+                }
+            }
+        }
+        // If all cells are filled and valid, return true
+        return true;
+    }
+
+    // Function to check if placing character 'c' at board[row][col] is valid
+    public static boolean isvalid(char[][] board, int row, int col, char c) {
+        for (int i = 0; i < 9; i++) {
+            // Check the column for duplicates
+            if (board[i][col] == c) {
+                return false;
+            }
+            // Check the row for duplicates
+            if (board[row][i] == c) {
+                return false;
+            }
+            // Check the 3x3 subgrid for duplicates
+            if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == c) {
+                return false;
+            }
+        }
+        return true; // Safe to place the number
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
