@@ -5186,4 +5186,62 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 161
+Stack class implementing stack using a single queue
+import java.util.LinkedList;
+import java.util.Queue;
+public class Tuf {
+    public static void main(String[] args) {
+        Stack s = new Stack();
+        s.push(3);
+        s.push(2);
+        s.push(4);
+        s.push(1);
+        
+        System.out.println("Top of the stack: " + s.top());
+        System.out.println("Size of the stack before removing element: " + s.size());
+        System.out.println("The deleted element is: " + s.pop());
+        System.out.println("Top of the stack after removing element: " + s.top());
+        System.out.println("Size of the stack after removing element: " + s.size());
+    }
+}
+
+// Stack class implementing stack using a single queue
+class Stack {
+    // Queue to hold stack elements
+    Queue<Integer> q = new LinkedList<>();
+    
+    // Push an element to the stack
+    void push(int x) {
+        // Add the new element to the queue
+        q.add(x);
+        
+        // Rotate the queue to move the newly added element to the front
+        // This ensures the LIFO behavior as the last added element becomes the "top"
+        for (int i = 0; i < q.size() - 1; i++) {
+            // Remove and re-add each element except the last one added
+            q.add(q.remove());
+        }
+    }
+    
+    // Pop the top element from the stack
+    int pop() {
+        // Remove and return the front element of the queue, which is the "top" of the stack
+        return q.remove();
+    }
+    
+    // Get the top element of the stack without removing it
+    int top() {
+        // Peek at the front of the queue, representing the stack's top element
+        return q.peek();
+    }
+    
+    // Get the number of elements in the stack
+    int size() {
+        return q.size();
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
+
 
