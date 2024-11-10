@@ -5012,3 +5012,37 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 156
+leetcode 1360
+class Solution {
+    public int daysBetweenDates(String date1, String date2) {
+        int numberOfDays1=numberOfDays(date1);
+        int numberOfDays2=numberOfDays(date2);
+        return Math.abs(numberOfDays2-numberOfDays1);
+    }
+    public int numberOfDays(String date){
+        int year=Integer.parseInt(date.substring(0,4));
+        int month=Integer.parseInt(date.substring(5,7));
+        int day=Integer.parseInt(date.substring(8,10));
+
+        int totaldays=0;
+        for(int i=1971;i<year;i++){
+            if(i%400==0 || (i%4==0 && i%100!=0)){
+                totaldays+=366;
+            }
+            else{
+                totaldays+=365;
+            }
+        }
+
+        int[] months={31,28,31,30,31,30,31,31,30,31,30,31};
+        for(int i=0;i<month-1;i++){
+            totaldays+=months[i];
+            if(i==1 && (year%400==0 || (year%4==0 && year%100!=0))){
+                totaldays++;
+            }
+        }
+        return totaldays+day;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
