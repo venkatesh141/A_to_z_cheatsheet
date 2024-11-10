@@ -5074,4 +5074,65 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 158
+leetcode 282
+class Solution 
+{
+    public List<String> addOperators(String s, int k) 
+    {
+        // Initialize the list to store valid expressions
+        List<String> ans = new ArrayList<>();
+        
+        // Start the recursive backtracking function with initial values
+        // sum, prev, and current expression (x) are initially set to 0 or empty
+        find(ans, s, k, 0, 0, 0, "");
+        
+        return ans;
+    }
+    
+    // Recursive function to explore possible expressions
+    void find(List<String> ans, String s, int k, int i, long sum, long prev, String x)
+    {
+        // Base case: if we've reached the end of the string
+        if (i == s.length())
+        {
+            // Check if the current sum equals the target k
+            if (sum == k)
+                ans.add(x); // If so, add this expression to the answer list
+            return;
+        }
+        
+        // Try forming numbers starting at position i
+        for (int j = i; j < s.length(); j++)
+        {
+            // Avoid numbers with leading zeros
+            if (j > i && s.charAt(i) == '0')
+                break;
+            
+            // Convert the substring to a long integer for calculation
+            long t = Long.parseLong(s.substring(i, j + 1));
+            
+            // If we're at the beginning of the expression
+            if (i == 0)
+            {
+                // Start a new expression without any operator
+                find(ans, s, k, j + 1, t, t, x + t);
+            }
+            else
+            {
+                // Add '+' operator and explore
+                find(ans, s, k, j + 1, sum + t, t, x + "+" + t);
+                
+                // Add '-' operator and explore
+                find(ans, s, k, j + 1, sum - t, -t, x + "-" + t);
+                
+                // Add '*' operator and explore
+                // Update sum to account for the previous number's multiplication
+                find(ans, s, k, j + 1, sum - prev + prev * t, prev * t, x + "*" + t);
+            }
+        }
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
 
