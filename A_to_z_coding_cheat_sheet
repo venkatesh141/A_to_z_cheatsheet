@@ -5046,3 +5046,32 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 157
+leetcode 3
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        
+        int res = 0; // Holds the maximum length of substring without repeating characters
+        int i = 0; // Left boundary of the current substring (starting point)
+        int[] vocab = new int[128]; // Array to store the last seen position of each character (ASCII based)
+        
+        // Loop through the string with `j` as the right boundary of the current substring
+        for (int j = 0; j < s.length(); j++) {
+            char ch = s.charAt(j); // Get the current character
+            
+            // Move `i` to the right if the current character `ch` was seen in the current window
+            // `vocab[ch]` tells us the last position of `ch` + 1 (or 0 if `ch` has not been seen)
+            i = Math.max(vocab[ch], i);
+            
+            // Calculate the length of the current substring (from `i` to `j`) and update `res` if it's the longest
+            res = Math.max(res, j - i + 1);
+            
+            // Update the last seen position of `ch` (store `j + 1` to handle 0-based index correctly)
+            vocab[ch] = j + 1;
+        }
+        
+        return res; // Return the length of the longest substring without repeating characters
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
