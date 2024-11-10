@@ -5155,3 +5155,35 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 160
+class Solution {   
+    // Main function to check if the string can be segmented based on the word dictionary
+    public boolean wordBreak(String s, List<String> wordDict) {
+        // Start recursion from the beginning of the string (index 0)
+        return wordBreak(s, wordDict, 0);
+    }
+
+    // Recursive helper function that tries to segment the string from index si
+    public boolean wordBreak(String s, List<String> wordDict, int si) {
+        // Base case: if si has reached or surpassed the end of the string, return true
+        if (si >= s.length()) {
+            return true;
+        }
+
+        // Loop to explore every possible substring starting from index si
+        for (int i = si; i < s.length(); i++) {
+            // Check if the substring from si to i+1 exists in the word dictionary
+            if (wordDict.contains(s.substring(si, i + 1))) {
+                // If the current substring is in wordDict, recursively check the remaining string
+                if (wordBreak(s, wordDict, i + 1)) {
+                    return true; // If it can be segmented from here, return true
+                }
+            }
+        }
+        
+        // If no valid segmentation is found, return false
+        return false;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
