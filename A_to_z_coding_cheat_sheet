@@ -4649,45 +4649,56 @@ class Solution
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 148
-leetcode 79
+leetcode 79(printing path also added)
+import java.util.ArrayList;
+import java.util.List;
 class Solution {
-word search problem
     boolean visited[][];
+    List<int[]> path = new ArrayList<>(); // To store the path of indexes
+
     public boolean exist(char[][] board, String word) {   
         int r = board.length;
         int c = board[0].length; 
         visited = new boolean[r][c];
-        for(int i =0;i<r;i++)
-        {
-            for(int j =0;j<c;j++)
-            {
-                if(word.charAt(0)==board[i][j] && search(i,j,0,word,board))
-                {
-                return true;            
+        
+        for(int i = 0; i < r; i++) {
+            for(int j = 0; j < c; j++) {
+                if(word.charAt(0) == board[i][j] && search(i, j, 0, word, board)) {
+                    for (int[] p : path) {
+                        System.out.println("Index: (" + p[0] + ", " + p[1] + ")");
+                    }
+                    return true;            
                 }
             }
         }
         return false;
     }
-    public boolean search(int i,int j,int idx,String word,char[][]board)
-    {
-        if(idx == word.length())
-        {
+
+    public boolean search(int i, int j, int idx, String word, char[][] board) {
+        if (idx == word.length()) {
             return true;
         }
-        if( i<0 || i>=board.length || j<0 || j>=board[i].length || word.charAt(idx)!=board[i][j] || visited[i][j])
-        {
+        
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || 
+            word.charAt(idx) != board[i][j] || visited[i][j]) {
             return false;
         }
-        visited[i][j]=true;
-        if(     search(i + 1, j, idx + 1, word, board) ||
-                search(i - 1, j, idx + 1, word, board) ||
-                search(i, j + 1, idx + 1, word, board) ||
-                search(i, j - 1, idx + 1, word, board))
-          {
+        
+        visited[i][j] = true;
+        path.add(new int[] {i, j}); // Add the current cell to the path
+        
+        // Explore in all four directions
+        if (search(i + 1, j, idx + 1, word, board) ||
+            search(i - 1, j, idx + 1, word, board) ||
+            search(i, j + 1, idx + 1, word, board) ||
+            search(i, j - 1, idx + 1, word, board)) {
             return true;
-          }
-        visited[i][j]=false;
+        }
+        
+        // Backtrack
+        visited[i][j] = false;
+        path.remove(path.size() - 1); // Remove the last cell from the path if backtracking
+        
         return false;
     }
 }
