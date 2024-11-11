@@ -5135,27 +5135,6 @@ class Solution
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 159
-leetcode 139
-class Solution {   
-    public boolean wordBreak(String s, List<String> wordDict) {
-        return wordBreak(s,wordDict,0);
-    }
-    public boolean wordBreak(String s, List<String> wordDict, int si) {
-        if(si>=s.length()){
-            return true;
-        }
-        for(int i=si; i<s.length(); i++){
-            if(wordDict.contains(s.substring(si,i+1))){
-                if(wordBreak(s,wordDict,i+1)){
-                    return true;
-                } 
-            }
-        }
-        return false;
-    }
-}
------------------------trust the process you will win. brute force pannale optimize pannirlam
-question 160
 class Solution {   
     // Main function to check if the string can be segmented based on the word dictionary
     public boolean wordBreak(String s, List<String> wordDict) {
@@ -5186,7 +5165,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 161
+question 160
 Stack class implementing stack using a single queue
 import java.util.LinkedList;
 import java.util.Queue;
