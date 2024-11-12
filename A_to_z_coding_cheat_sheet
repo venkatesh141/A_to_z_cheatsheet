@@ -4794,7 +4794,7 @@ class Solution {
 
     // Converts the board from a 2D array to a list of strings for easy output
     static List<String> construct(char[][] board) {
-        List<String> res = new LinkedList<String>();
+        List<String> res = new LinkedList<String>(); you can also use arraylist here 
         for (int i = 0; i < board.length; i++) {
             String s = new String(board[i]); // Convert each row to a string
             res.add(s); // Add the string to the result
