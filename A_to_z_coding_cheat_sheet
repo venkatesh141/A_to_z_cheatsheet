@@ -5779,3 +5779,44 @@ return arr;
 
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 172
+leetcode 42  Rainwater Trapping
+class Solution {
+    public int trap(int[] height) {
+        int water = 0;  // This variable stores the total trapped water.
+        int lmax = 0, rmax = 0;  // lmax and rmax are the tallest bars we've seen so far from the left and right.
+        int left = 0, right = height.length - 1;  // Left and right pointers start at the ends of the array.
+        
+        // Loop until the left pointer meets the right pointer
+        while (left < right) {
+            // If the left bar is shorter than the right bar
+            if (height[left] < height[right]) {
+                // Check if the current left bar can trap water
+                if (lmax > height[left]) {
+                    // Water can be trapped, add the difference between lmax and the current left bar
+                    water += lmax - height[left];
+                } else {
+                    // Update lmax to the current left bar if it's the highest we've seen from the left
+                    lmax = height[left];
+                }
+                // Move the left pointer to the right
+                left++;
+            } else {
+                // If the right bar is shorter or equal, we check the right side
+                if (rmax > height[right]) {
+                    // Water can be trapped, add the difference between rmax and the current right bar
+                    water += rmax - height[right];
+                } else {
+                    // Update rmax to the current right bar if it's the highest we've seen from the right
+                    rmax = height[right];
+                }
+                // Move the right pointer to the left
+                right--;
+            }
+        }
+        
+        return water;  // Return the total trapped water
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
