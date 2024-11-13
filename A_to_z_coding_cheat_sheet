@@ -839,7 +839,7 @@ Output: [0, 2, 2, 0, 1]
         
     }
 ----------------------trust the process you will definitely win
-question 23 
+question 23    /hard
 public int maxFrequency(int[] nums, int k) {
     // Variable to store the maximum frequency of an element
     int max = 0;
@@ -1190,7 +1190,7 @@ class Solution {
     }
 }
 ----------------------trust the process you will definitely win
-question 38
+question 38    
 get length of longest subarray with given sum // for positives values only
  public static int getLongestSubarray(int []a, long k) {
         int n = a.length; // size of the array.
@@ -4123,7 +4123,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 129
+question 129 /hard
 leetcode 25
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
@@ -4182,7 +4182,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 131
+question 131  /hard
 class Solution {
     // Function to flatten a linked list
     Node flatten(Node root) {
@@ -5084,7 +5084,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 157
+question 157   /hard
 leetcode 3 Length of longest sub string without repeating letters.
 class Solution {
     public int lengthOfLongestSubstring(String s) {
@@ -5113,7 +5113,7 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 158
-leetcode 282
+leetcode 282   /hard
 class Solution 
 {
     public List<String> addOperators(String s, int k) 
