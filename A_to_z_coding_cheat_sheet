@@ -5855,4 +5855,38 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 174
+leetcode 63 unique paths 2
+
+class Solution {
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int n = obstacleGrid.length;  // Get the number of rows
+        int m = obstacleGrid[0].length;  // Get the number of columns
+
+        int[][] dp = new int[n][m];  // Create a dp array to store the number of ways to reach each cell
+        dp[0][0] = 1;  // Start by assuming 1 way to reach the starting point (top-left corner)
+
+        // Loop through each cell in the grid
+        for (int i = 0; i < n; i++) {  // Row loop
+            for (int j = 0; j < m; j++) {  // Column loop
+                if (obstacleGrid[i][j] == 1) {  // If there's an obstacle at (i, j), set dp[i][j] to 0
+                    dp[i][j] = 0;  // No path to this cell because it's blocked
+                } else {
+                    // If the current cell isn't blocked, check the cell above it (if i > 0)
+                    if (i > 0) {
+                        dp[i][j] += dp[i - 1][j];  // Add the number of ways from the cell above
+                    }
+                    // Check the cell to the left of it (if j > 0)
+                    if (j > 0) {
+                        dp[i][j] += dp[i][j - 1];  // Add the number of ways from the cell to the left
+                    }
+                }
+            }
+        }
+
+        // Return the value at the bottom-right corner, which holds the total number of unique paths
+        return dp[n - 1][m - 1];
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 
