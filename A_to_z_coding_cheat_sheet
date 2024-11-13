@@ -5819,4 +5819,40 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 173
+Input:  arr[]     = [3, 4, 2, 7, 5, 8, 10, 6]
+        queries = 2
+        indices[] = [0, 5]
+Output:  6, 1
+Explanation: The next greater elements to the right of 3(index 0) are 4,7,5,8,10,6. The next greater elements to the right of 8(index 5) is only 10.
+class Solution {
+    public List<Integer> countGreaterElements(int[] arr, int[] indices) {
+        int n = arr.length;
+        int[] greaterCounts = new int[n]; // Array to store the count of greater elements for each index
+        Stack<Integer> stack = new Stack<>(); // Stack to keep track of elements in decreasing order
+
+        // Traverse the array from right to left
+        for (int i = n - 1; i >= 0; i--) {
+            // Remove elements from the stack that are less than or equal to the current element
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                stack.pop();
+            }
+
+            // The remaining elements in the stack are all greater than arr[i]
+            greaterCounts[i] = stack.size();
+
+            // Push the current element onto the stack
+            stack.push(arr[i]);
+        }
+
+        // Prepare the result for the queried indices
+        List<Integer> result = new ArrayList<>();
+        for (int index : indices) {
+            result.add(greaterCounts[index]);
+        }
+
+        return result;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 
