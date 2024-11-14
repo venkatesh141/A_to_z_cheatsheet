@@ -5749,34 +5749,19 @@ public class Solution {
 
         int [] arr = new int[A.length];
 
-
-
         for(int i=0;i<A.length;i++){
-
             while(!st.isEmpty() && st.peek()>=A[i]){
-
                 st.pop();
-
             }
-
             if(!st.isEmpty()){
-
                 arr[i] = st.peek();
-
             }else{
-
                 arr[i]= -1;
-
             }
-
             st.push(A[i]);
-
-        }
-        
+        }    
 return arr;
-
     }
-
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 172
