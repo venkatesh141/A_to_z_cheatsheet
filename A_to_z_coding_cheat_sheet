@@ -5635,7 +5635,7 @@ class Solution {
         Stack<Integer> stack = new Stack();
         
         for(Integer num : nums2){
-            while(!stack.isEmpty() && stack.peek() < num){
+            while(!stack.isEmpty() && stack.peek() < num){ //decreasing order..
                 hs.put(stack.pop(), num);
             }
             stack.push(num);
