@@ -5750,7 +5750,7 @@ public class Solution {
         int [] arr = new int[A.length];
 
         for(int i=0;i<A.length;i++){
-            while(!st.isEmpty() && st.peek()>=A[i]){
+            while(!st.isEmpty() && st.peek()>=A[i]){   //stack is in increasing order..
                 st.pop();
             }
             if(!st.isEmpty()){
