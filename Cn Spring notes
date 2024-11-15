@@ -1,0 +1,272 @@
+Spring Annotations
+@Component
+When you add @Component to a class, Spring will:
+
+Create an object (or bean) of that class for you.
+Manage it, so you don't have to manually create or destroy the object.
+It simplifies your code by letting Spring handle object creation and management. 
+This is super useful in larger projects where managing objects yourself can become messy.
+------
+@Autowired
+
+In Spring Framework, @Autowired is an annotation that tells Spring:
+
+"Hey, find the required bean (object) and automatically inject it into this class where I need it."
+It helps you avoid manually creating or passing objects. Spring will connect or wire the dependent objects for you.
+------
+@Qualifier
+In Spring, @Qualifier works with @Autowired to solve a specific problem:
+
+What if there are multiple beans of the same type?
+@Qualifier tells Spring which specific bean to inject when there’s more than one option.
+
+   @Component
+public class PaidCourse implements Course {
+	String courseName;
+	@Autowired
+	@Qualifier("javaInstructor")
+	Instructor courseInstructor;
+	@Autowired
+	UserList userList;
+// additional methods
+}
+Confusion happens when:
+Multiple beans have the same type (directly or via a parent class/interface).
+Spring needs a way to know which bean to inject.
+Use @Qualifier to tell Spring the exact bean name
+
+------
+@Scope
+Singleton (Default):
+
+One object shared across the entire application.
+Example: A shared service used by all parts of the app.
+Prototype:
+
+Creates a new object every time the bean is requested.
+Example: When you need a separate instance for each user request.
+
+------
+@PostConstruct
+In Spring, @PostConstruct is an annotation used to mark a method that should run immediately after the bean is created and dependency injection is done. It's like saying:
+
+"After you set everything up for this bean, run this method."
+Why Use @PostConstruct?
+It’s typically used for:
+
+Initialization tasks (like setting up resources or validating configurations).
+Running code once after the bean is ready.
+
+------
+@Predestroy
+
+In Spring, @PreDestroy is an annotation used to mark a method that should run just before the bean is destroyed. It’s like saying:
+
+"Before this bean is removed, clean up resources or perform some final tasks."
+Why Use @PreDestroy?
+It’s typically used for:
+
+Releasing resources (e.g., closing database connections, stopping threads).
+Performing cleanup tasks before the bean is destroyed.
+
+
+------
+@SpringBootApplication
+
+------
+@Service
+------
+@Controller
+------
+@Repository
+------
+@Bean
+------
+@RequestMapping
+------
+Model View Controller
+DAO layer(repo) domain layer service layer weblayer jsp
+
+------------------------------------------------------------------------------------------
+MVC only
+
+package com.example.website.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller//it can handle http request and returns responses  typically html or jsp
+//defines this class as a Spring MVC controller.
+public class HomeController {
+ @RequestMapping("/home")
+ public String getHomePage() {
+     return "home";
+ }
+}
+
+
+@RequestMapping("/home"): This annotation maps the URL /home to the getHomePage method.
+ When a user visits http://yourdomain.com/home, this method will handle the request.
+public String getHomePage() { ... }: This method returns a String, which represents the name of the view to render.
+return "home";: This line returns the view name "home". Spring looks for a view file (like home.html or home.jsp) in the configured view folder, renders it, and sends it as the response.
+
+
+
+@RequestMapping("/signUp")
+public String getSignUpPage(Model uiModel) {  //Model holds data that can be passed to the view
+    User user = userService.getUser();
+    uiModel.addAttribute("user", user);
+    return "signup";
+}
+
+model
+In the context of Spring MVC (Model-View-Controller) applications, 
+the model is the part that holds the data and represents the business logic of the application.
+ It's a way to organize and store data that is shared between the controller and the view.
+ 
+When you add data to the model in a controller, 
+it becomes available to the view (like a JSP or Thymeleaf template), which then uses that data to render the final webpage.
+
+
+
+-----------------------------------------------
+@RequestMapping("/registerUser")
+public String createdUser(@ModelAttribute(value = "user") StudentUser studentUser) {
+    int userId = userService.signUp(studentUser.getName(), studentUser.getGender(), studentUser.getLocation(), studentUser.getCollege());
+    if(userId != -1) {
+        ModelAndView modelAndView = new ModelAndView("redirect:welcome?id=" + userId);
+        return modelAndView.getViewName();
+    }
+    return "signup";
+}
+
+
+
+When we use @ModelAttribute, we’re telling Spring to "connect" or "link" data from a form 
+(like the values someone enters on a webpage) to a Java object. This way, we don’t have to manually pick each value
+ from the form; Spring does it for us automatically.
+
+-----------------------------------------------
+ 
+ What is ModelAndView?
+Think of ModelAndView as a "package" that contains:
+
+The webpage you want to show.
+The data you want to send to that webpa
+Example:
+Imagine you are sending a birthday greeting:
+
+You need to tell your friend which greeting card to open (this is the "webpage").
+You also need to tell your friend what to write on the card (this is the "data").
+ModelAndView helps you do both things at the same time
+
+
+"redirect:welcome?id=" + userId:
+
+redirect:: This tells Spring to redirect the user to a new URL instead of just rendering a page. This is like telling the browser, "Go to this new page."
+"welcome?id=" + userId: After the redirect:, we define the new page to go to, which in this case is the "welcome" page.
+?id=" + userId: We are adding a query parameter id to the URL. This will pass the value of userId to the welcome page.
+For example, if userId = 123, the new URL will be /welcome?id=123.
+
+-----------------------------------------------
+
+What is ModelMap?
+ModelMap is a container used to hold data that you want to send from your controller 
+to the view (webpage). It allows you to add key-value pairs, where the key is the name of the data and the value is 
+the actual data itself. You can think of it as a box where you place data that will later be used in the view.
+ 
+ 
+ map.addAttribute("userId", userID);:
+
+This adds the userID to the ModelMap with the name "userId".
+This means the data (userID, like "123") will be available in the view and can be accessed by the name "userId".
+ 
+ 
+----------------------------------------------- 
+ What is @RequestParam?
+@RequestParam is an annotation used in Spring MVC to get data that is passed 
+from the URL or form to the controller method. It helps you retrieve query parameters from the URL or form input fields.
+
+Simple Example:
+Imagine you have a URL like this:
+
+http://example.com/welcome?id=123
+In this URL, id=123 is the query parameter. @RequestParam can help you get the value of this parameter (in this case, 123) in your controller method.
+
+Code Example:
+java
+Copy code
+@RequestMapping("/welcome")
+public String ShowWelcomePage(@RequestParam("id") String userID) {
+    // userID will be 123 from the URL http://example.com/welcome?id=123
+    return "welcome";
+}
+----------------------------------------------- 
+
+Difference between ModelAttribute and RequestParam
+
+Purpose
+@RequestParam:
+
+Used to retrieve individual query parameters or form data by name from the URL or request.
+Ideal for simple data types like strings, integers, etc.
+@ModelAttribute:
+
+Used to bind an entire model object with data from the form or request.
+Suitable for complex objects (like a User or Order object) where you have multiple fields (name, age, location, etc.).
+Automatically maps the request data to the fields of the object
+
+
+-----------------------------------------------
+
+ChatGPT
+In Spring MVC, request.getAttribute() is used to retrieve data stored in the request scope. When you use request.setAttribute("name", value), you’re adding data to the request so that you can pass information from one part of your code (e.g., a controller) to another (e.g., a view like JSP) for that specific request only.
+
+For example:
+
+Set attribute in a controller:
+
+java
+Copy code
+request.setAttribute("greeting", "Hello, Venkatesh!");
+This line stores the value "Hello, Venkatesh!" in the request with the name greeting.
+
+Get attribute in a view (e.g., JSP):
+
+java
+Copy code
+String message = (String) request.getAttribute("greeting");
+This retrieves the greeting attribute from the request, so message will hold "Hello, Venkatesh!".
+
+This is helpful when you want to share data for the duration of a single HTTP request, such as passing data from the controller to the view to be displayed to the user.
+
+ 
+-----------------------------------------------
+
+In Spring MVC, @PathVariable is used to extract values from the URL and pass them as parameters to a controller method.
+
+Imagine you have a URL like this:
+
+bash
+Copy code
+/user/123
+In this case, 123 could be an ID for a user. You can set up a controller method to capture that value directly from the URL using @PathVariable.
+
+Here's how it works:
+
+Define a URL pattern with a placeholder in your controller:
+
+java
+Copy code
+@GetMapping("/user/{id}")
+public String getUserById(@PathVariable("id") int userId) {
+    // Now, userId will have the value 123 when the URL is /user/123
+    // Do something with userId, like fetching user data from a database
+    return "userProfile";
+}
+In the URL /user/123, Spring will automatically match 123 to {id} and assign it to the userId parameter.
+
+In simple terms, @PathVariable lets you take part of the URL and use it directly in your method, making it easy to handle dynamic data in URLs.
+
+------------------------------------------------------------
+
