@@ -5632,8 +5632,8 @@ leetcode 496
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         HashMap<Integer,Integer> hs = new HashMap();
-        Stack<Integer> stack = new Stack();
-        
+        Stack<Integer> stack = new Stack();// inga namaku theva greater elements dhaan so  current element stack oda top vida perusa irundha 
+       // remove panni hasmap la current element kuda map pannu 
         for(Integer num : nums2){
             while(!stack.isEmpty() && stack.peek() < num){ //decreasing order..
                 hs.put(stack.pop(), num);
@@ -5739,7 +5739,7 @@ Previous smaller element
 NInput 1:
     A = [4, 5, 2, 10, 8]
 Output 1:
-    G = [-1, 4, -1, 2, 2]
+    G = [-1, 4, -1, 2, 2]   /// idhula namaku small elements dhaan so curr element ah vida top of stack persa irundha remove pannu util small pakkura varaikum
 
 public class Solution {
 
