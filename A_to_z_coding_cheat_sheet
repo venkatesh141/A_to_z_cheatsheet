@@ -5652,7 +5652,7 @@ question 169
 leetcode 503
 class Solution {//it is circular
     public int[] nextGreaterElements(int[] nums) {
-        
+        //inga namaku greater elements dhaan theva stack la full ah upload pantu curr element ah vida kammiya irundha pop pannu until it finds max one.
         Stack<Integer> stack=new Stack<>();
         for(int i=nums.length-1;i>=0;i--){
             stack.push(nums[i]);
