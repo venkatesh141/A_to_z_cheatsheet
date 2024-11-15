@@ -582,9 +582,53 @@ Collections Framework: Java’s collection framework relies heavily on polymorph
 
 -----------------------------------------------------------------------------------trust the process you will win .
 
- 
- 
+Usage of static 
 
+
+3. Singleton Pattern
+
+In the Singleton design pattern, a single instance of a class is used across the application. A static method is typically used to provide a global point of access to this instance.
+
+public class DatabaseConnection {
+    private static DatabaseConnection instance;
+
+    private DatabaseConnection() { }
+
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+        }
+        return instance;
+    }
+}
+
+// Usage
+DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+
+Here, getInstance() is a static method that provides a single instance of DatabaseConnection across the application. This is often used for classes like DatabaseConnection where only one instance should exist.
+
+ 
+ 1. Utility Classes (Helper Functions)
+
+Utility classes often use static methods since they perform general operations that don't rely on instance-specific data. For example, Math in Java is a utility class with static methods for common mathematical calculations.
+
+public class MathUtils {
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static double calculateCircleArea(double radius) {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Usage
+int sum = MathUtils.add(10, 5);
+double area = MathUtils.calculateCircleArea(3.5);
+
+Here, the add and calculateCircleArea methods are static because they do not depend on object-specific data. These can be called directly without creating an instance of MathUtils.
+
+-----------------------------------------------------------------------------------trust the process you will win .
 
 
 
