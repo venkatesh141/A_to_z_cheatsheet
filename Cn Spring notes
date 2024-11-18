@@ -115,21 +115,118 @@ Performing cleanup tasks before the bean is destroyed.
 
 
 ------
-@SpringBootApplication
+@SpringBootApplication  // need to learn about this later
+
+What is @SpringBootApplication?
+@SpringBootApplication is a key annotation in Spring Boot. It combines three annotations:
+
+@EnableAutoConfiguration: Enables Spring Boot’s auto-configuration mechanism.
+Enables auto-configuration (e.g., setting up an embedded server like Tomcat).
+@ComponentScan: Automatically scans the package for components, services, and configurations.
+@Configuration: Indicates that the class is a configuration class where beans can be defined.
+This annotation tells Spring Boot to start your application, configure everything automatically, and look for components in your code.
 
 ------
 @Service
+
+
+What is @Service in Spring?
+@Service is an annotation in Spring used to indicate that a class provides business logic (service layer functionality).
+It helps in organizing the application into logical layers like controllers, services, and repositories.
+
+Key Features:
+Specialized Component: It is a specialization of @Component. Spring detects it during component scanning and registers it as a bean.
+Business Logic: Typically used to write the core business logic of the application.
+Dependency Injection: Makes it easier to inject the service into other layers like controllers.
+
+Separates business logic from other layers like the controller or repository.
+Promotes cleaner and more maintainable code.
+
+So, @Service bridges the controller (user interaction) and repository (data handling) layers by processing the business logic in between.
 ------
 @Controller
+@Controller is a Spring annotation that is used to define a controller in a web application. It is part of the presentation layer and is responsible for handling incoming HTTP requests, processing them (with help from services), and returning a view (like HTML, JSP, or Thymeleaf) as a response.
+
+Key Features of @Controller:
+Handles Requests:
+
+Maps HTTP requests (like GET, POST) to specific methods using annotations like @GetMapping or @PostMapping.
+Returns a View:
+
+Used for applications where the response is a view (e.g., JSP, Thymeleaf).
+It returns the name of the view to be rendered.
+Part of MVC:
+
+Works as the Controller in the Model-View-Controller (MVC) architecture.
+
 ------
 @Repository
+
+What is @Repository in Spring?
+@Repository is an annotation in Spring used to indicate that a class is a Data Access Object (DAO). 
+These classes are responsible for interacting with the database to perform CRUD (Create, Read, Update, Delete) operations.
+
+It is part of the persistence layer in an application and is used in the Model-View-Controller (MVC) architecture.
+
+Key Features of @Repository:
+Database Interaction:
+Used to fetch, save, update, or delete data in the database.
+Specialized @Component:
+It is a specialization of @Component. Spring automatically detects it and registers it as a bean.
+Exception Translation:
+Converts database-specific exceptions into Spring's DataAccessException.
 ------
 @Bean
+
+What is @Bean in Spring?
+@Bean is an annotation in Spring used to define and manage Spring beans (objects). 
+It tells the Spring container to instantiate, configure, and manage a method's return value as a bean.
+
+It is usually used in a @Configuration class to create custom beans for the application.
 ------
 @RequestMapping
+
+What is @RequestMapping in Spring?
+@RequestMapping is an annotation in Spring used to map HTTP requests (like GET, POST, PUT, DELETE) to specific methods in a controller class. 
+It tells the controller which URL the user is trying to access and what method to execute.
+It can be applied at the class level (to map a base URL) or method level (to map specific endpoints).
+
 ------
 Model View Controller
-DAO layer(repo) domain layer service layer weblayer jsp
+What is MVC?
+MVC stands for Model-View-Controller, a design pattern used to organize code in a way that separates the logic, 
+user interface, and user input into three different components. This helps to keep the code clean and organized.
+
+MVC Breakdown:
+Model:
+
+What it does: Represents the data or business logic of your application.
+Example: A Product class that stores product details like name, price, and description.
+View:
+
+What it does: Handles the display or the UI (User Interface). It shows data to the user.
+Example: A webpage or a screen showing a list of products.
+Controller:
+
+What it does: Acts as a middleman between the Model and the View. It handles the user input (like button clicks or URL requests) and updates the Model or View accordingly.
+Example: A method that receives a request like "show all products," gets the product data from the Model, and sends it to the View to display.
+How MVC Works Together:
+User Interaction:
+
+The user makes a request (like clicking a button or entering a URL).
+Controller:
+
+The Controller handles that request and asks the Model for data.
+Model:
+
+The Model fetches the necessary data (like from a database) and returns it.
+View:
+
+The Controller sends the data to the View, and the View displays it to the user.
+----------------------------------------------
+JSP stands for JavaServer Pages. 
+It is a technology used to create dynamic web pages in Java. 
+JSP allows you to embed Java code directly into HTML pages to generate dynamic content based on user requests.
 
 ------------------------------------------------------------------------------------------
 MVC only
