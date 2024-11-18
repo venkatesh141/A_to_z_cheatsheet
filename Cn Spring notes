@@ -270,3 +270,24 @@ In simple terms, @PathVariable lets you take part of the URL and use it directly
 
 ------------------------------------------------------------
 
+
+What is an API?
+An API (Application Programming Interface) is like a menu in a restaurant:
+
+It tells you what dishes you can order (what a system can do).
+You don't need to know how the food is prepared (how the system works internally).
+You just order from the menu, and the restaurant (system) does the work for you.
+In the tech world, an API allows two systems to communicate with each other and exchange data.
+
+What is a REST API?
+REST API (Representational State Transfer API) is a specific type of API that
+follows some rules (principles) to allow communication between a client (e.g., your browser) and a server (e.g., a website's backend).
+
+It uses standard HTTP methods like:
+
+GET: To get (retrieve) data.
+POST: To create new data.
+PUT: To update existing data.
+DELETE: To delete data.
+
+--------------------------------------------------------------------------
