@@ -1,3 +1,47 @@
+
+Here's a simple comparison of Spring and Spring Boot:
+
+Spring Framework:
+Core Framework:
+
+It's a comprehensive framework for building Java applications.
+Provides tools for dependency injection, AOP, data access, transaction management, and more.
+Configuration:
+
+Requires a lot of manual configuration using XML or annotations.
+Developers need to set up application servers and libraries.
+Flexibility:
+
+Offers great flexibility but requires more effort to integrate tools like Hibernate, JMS, etc.
+No Embedded Server:
+
+Does not come with an embedded server; you need to deploy the application on servers like Tomcat or Jetty.
+Spring Boot:
+Built on Spring:
+
+It's a layer on top of the Spring framework, making it easier to use.
+Auto-Configuration:
+
+Provides auto-configuration to reduce manual setup.
+Helps developers skip boilerplate configuration.
+Embedded Server:
+
+Comes with an embedded Tomcat, Jetty, or Undertow server, allowing you to run applications without an external server.
+Opinionated Defaults:
+
+Provides sensible defaults for common configurations, but you can customize them if needed.
+Ready-to-Use Starter Dependencies:
+
+Offers "starter" packages like spring-boot-starter-web to include dependencies for web applications.
+Spring Boot CLI:
+
+Allows quick application creation with Groovy scripts.
+When to Use?
+Use Spring if you need more control and customization for complex applications.
+Use Spring Boot for rapid application development, especially for microservices or simple applications, as it simplifies and speeds up the development process.
+Let me know if you'd like examples or deeper explanations!
+
+-------------------------------------------------------------------
 Spring Annotations
 @Component
 When you add @Component to a class, Spring will:
