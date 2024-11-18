@@ -228,6 +228,15 @@ JSP stands for JavaServer Pages.
 It is a technology used to create dynamic web pages in Java. 
 JSP allows you to embed Java code directly into HTML pages to generate dynamic content based on user requests.
 
+Why Use JSP?
+Dynamic Content: Allows you to create web pages that can change based on user interaction or server-side data.
+Java Integration: Easy integration with Java classes and libraries for tasks like database access.
+Separation of Concerns: JSP allows you to separate the presentation (HTML) from the logic (Java), though this is usually improved further by frameworks like Spring MVC.
+
+JSP vs. HTML:
+HTML is static, meaning it cannot change based on user interaction or data without other tools (like JavaScript).
+JSP can generate dynamic content by mixing Java code with HTML, enabling you to display different content based on conditions or user input.
+
 ------------------------------------------------------------------------------------------
 MVC only
 
