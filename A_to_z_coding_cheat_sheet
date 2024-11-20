@@ -6226,3 +6226,36 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 182
+leetcode 901
+class StockSpanner {
+
+    Stack<int[]> st; // Stack to store pairs of (price, span).
+
+    // Constructor to initialize the stack.
+    public StockSpanner() {
+        st = new Stack<>();
+    }
+
+    // Method to calculate the span of the current stock price.
+    public int next(int price) {
+        
+        int span = 1; // Start with a span of 1 for the current day (at least the price itself).
+
+        // While the stack is not empty and the current price is greater than or equal to 
+        // the price at the top of the stack:
+        while(st.size() > 0 && price >= st.peek()[0]) {
+            // Add the span of the price at the top of the stack to the current span.
+            // This effectively merges the spans of all smaller or equal prices.
+            span += st.pop()[1];
+        }
+        
+        // Push the current price and its calculated span onto the stack.
+        st.push(new int[]{price, span});
+        
+        // Return the span of the current price.
+        return span;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
