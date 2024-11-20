@@ -5681,27 +5681,6 @@ class Solution {//it is circular
 question 170
 Infix to prefix
 public class InfixToPrefix {
-
-    // Method to check if a character is an operator
-    static boolean isOperator(char ch) {
-        return (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^');
-    }
-
-    // Method to get the precedence of operators
-    static int getPrecedence(char ch) {
-        switch (ch) {
-            case '+':
-            case '-':
-                return 1;
-            case '*':
-            case '/':
-                return 2;
-            case '^':
-                return 3;
-        }
-        return -1;
-    }
-
     // Method to reverse a string and swap parentheses
     static String reverseExpression(String expression) {
         StringBuilder result = new StringBuilder();
