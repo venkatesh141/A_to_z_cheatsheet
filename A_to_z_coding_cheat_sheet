@@ -6258,4 +6258,59 @@ class StockSpanner {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 183
+Bfs and dfs in tree
+
+    public void dfs(TreeNode node) {
+        if (node == null) return;
+
+        // Process the current node
+        System.out.println("Visited: " + node.value);
+
+        // Recur for the left and right children
+        dfs(node.left);
+        dfs(node.right);
+    }
+
+class TreeNode {
+    int value;
+    TreeNode left, right;
+
+    public TreeNode(int value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+public class TreeTraversal {
+
+    // Method to calculate the height of the tree
+    public int getHeight(TreeNode root) {
+        if (root == null) return 0;
+        int leftHeight = getHeight(root.left);
+        int rightHeight = getHeight(root.right);
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    // Print all nodes at a given level
+    public void printLevel(TreeNode root, int level) {
+        if (root == null) return;
+        if (level == 1) {
+            System.out.println("Visited: " + root.value);
+        } else if (level > 1) {
+            printLevel(root.left, level - 1);
+            printLevel(root.right, level - 1);
+        }
+    }
+
+    // BFS Traversal using recursion
+    public void bfs(TreeNode root) {
+        int height = getHeight(root);
+        for (int level = 1; level <= height; level++) {
+            printLevel(root, level);
+        }
+    }
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 
