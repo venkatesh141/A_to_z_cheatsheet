@@ -6188,3 +6188,41 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 181
+leetcode 239
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        // Edge case: If input array is null or window size is invalid, return an empty array.
+        if (nums == null || k <= 0) return new int[0];
+        
+        int n = nums.length; // Total number of elements in the input array.
+        int[] result = new int[n - k + 1]; // Array to store the maximums of each sliding window.
+        Deque<Integer> deque = new LinkedList<>(); // Double-ended queue to store indices of elements.
+
+        // Iterate through each element in the array.
+        for (int i = 0; i < n; i++) {
+            // Remove indices from the front of the deque that are outside the current window.
+            if (!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
+                deque.pollFirst(); // Remove the element that's out of range.
+            }
+            
+            // Remove indices from the back of the deque if the corresponding element is smaller 
+            // than the current element because they cannot be the maximum for this or future windows.
+            while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
+                deque.pollLast(); // Remove smaller elements.
+            }
+            
+            // Add the current index to the deque.
+            deque.offerLast(i);
+            
+            // Once the first window is fully formed (i >= k - 1), add the maximum of the window 
+            // (element at the front of the deque) to the result array.
+            if (i >= k - 1) {
+                result[i - k + 1] = nums[deque.peekFirst()]; // Maximum of the current window.
+            }
+        }
+        
+        return result; // Return the array of maximums for each sliding window.
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
