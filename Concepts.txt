@@ -630,6 +630,27 @@ Here, the add and calculateCircleArea methods are static because they do not dep
 
 -----------------------------------------------------------------------------------trust the process you will win .
 
+Real-Time Usage of Class and Object
+
+    Bank Account System:
+        Class: BankAccount
+        Attributes: accountNumber, balance
+        Methods: deposit(), withdraw()
+        Object: Each user's bank account is an object created from the BankAccount class.
+
+    Library Management:
+        Class: Book
+        Attributes: title, author, ISBN
+        Methods: borrowBook(), returnBook()
+        Object: Each book in the library is an object of the Book class.
+
+    E-Commerce System:
+        Class: Product
+        Attributes: name, price, quantity
+        Methods: addToCart(), applyDiscount()
+        Object: Each product in the store is an object.
+
+-----------------------------------------------------------------------------------trust the process you will win .
 
 
 
