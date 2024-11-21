@@ -6355,3 +6355,22 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 187
+leetcode 543
+class Solution {
+    private int maxDiameter =0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        depth(root);
+        return maxDiameter;
+    }
+    private int depth(TreeNode root){
+        if(root==null)
+            return -1;
+        int left = depth(root.left);
+        int right = depth(root.right);
+        maxDiameter = Math.max(maxDiameter,left+right+2);
+
+        return Math.max(left,right)+1;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
