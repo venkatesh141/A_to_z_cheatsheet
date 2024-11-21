@@ -6329,4 +6329,29 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-
+question 186
+leetcode 110
+class Solution {
+    private boolean flag;
+    
+    public boolean isBalanced(TreeNode root) {
+        flag = true;
+        height(root);
+        return flag;
+    }
+    
+    private int height(TreeNode n){
+        if(n == null) return 0;
+        
+        int num1 = height(n.left);
+        int num2 = height(n.right);
+        int res = num1 - num2;
+        
+        if(res > 1 || res < -1){
+            flag = false;
+        }
+        
+        return Math.max(num1,num2) + 1;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
