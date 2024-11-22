@@ -6463,4 +6463,84 @@ class Solution {
 
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 192
+class Solution {
+    // Function to return a list of nodes visible from the top view
+    // from left to right in a Binary Tree.
+    static class Pair {
+        int kdist; // Horizontal distance of the node from the root.
+        Node node; // The tree node.
+
+        // Constructor to initialize the pair with distance and node.
+        Pair(int dist, Node n) {
+            kdist = dist;
+            node = n;
+        }
+    }
+
+    static ArrayList<Integer> topView(Node root) {
+        // Queue to help perform level-order traversal (BFS).
+        Queue<Pair> q = new LinkedList<>();
+        // HashMap to store the first node seen at each horizontal distance (kdist).
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        // List to store the result (top view nodes).
+        ArrayList<Integer> al = new ArrayList<>();
+        
+        // If the tree is empty, return an empty list.
+        if (root == null) return al;
+
+        // Start with the root node at horizontal distance 0.
+        Pair np = new Pair(0, root);
+        q.add(np);
+
+        // Variables to track the range of horizontal distances (kdist).
+        int min = 0;
+        int max = 0;
+
+        // Perform BFS traversal.
+        while (q.size() > 0) {
+            int size = q.size(); // Current level size in the queue.
+            
+            // Process all nodes at the current level.
+            for (int i = 0; i < size; i++) {
+                // Remove the front element from the queue.
+                Pair rem = q.poll();
+
+                // Update the minimum and maximum horizontal distances.
+                min = Math.min(min, rem.kdist);
+                max = Math.max(max, rem.kdist);
+
+                // If this is the first node at this horizontal distance, add it to the HashMap.
+                if (!hm.containsKey(rem.kdist)) {
+                    int key = rem.kdist; // Horizontal distance.
+                    int value = rem.node.data; // Node value.
+                    hm.put(key, value);
+                }
+
+                // Add the left child to the queue if it exists (kdist decreases by 1).
+                if (rem.node.left != null) {
+                    Pair np1 = new Pair(rem.kdist - 1, rem.node.left);
+                    q.add(np1);
+                }
+
+                // Add the right child to the queue if it exists (kdist increases by 1).
+                if (rem.node.right != null) {
+                    Pair np2 = new Pair(rem.kdist + 1, rem.node.right);
+                    q.add(np2);
+                }
+            }
+        }
+
+        // Collect nodes in order of their horizontal distances from min to max.
+        for (int i = min; i <= max; i++) {
+            int val = hm.get(i); // Get the node value at this horizontal distance.
+            al.add(val); // Add it to the result list.
+        }
+
+        // Return the list of top view nodes.
+        return al;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
  
