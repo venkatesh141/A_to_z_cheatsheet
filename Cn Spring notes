@@ -145,7 +145,8 @@ Promotes cleaner and more maintainable code.
 So, @Service bridges the controller (user interaction) and repository (data handling) layers by processing the business logic in between.
 ------
 @Controller
-@Controller is a Spring annotation that is used to define a controller in a web application. It is part of the presentation layer and is responsible for handling incoming HTTP requests, processing them (with help from services), and returning a view (like HTML, JSP, or Thymeleaf) as a response.
+@Controller is a Spring annotation that is used to define a controller in a web application. It is part of the presentation layer 
+and is responsible for handling incoming HTTP requests, processing them (with help from services), and returning a view (like HTML, JSP, or Thymeleaf) as a response.
 
 Key Features of @Controller:
 Handles Requests:
@@ -258,7 +259,8 @@ public class HomeController {
 @RequestMapping("/home"): This annotation maps the URL /home to the getHomePage method.
  When a user visits http://yourdomain.com/home, this method will handle the request.
 public String getHomePage() { ... }: This method returns a String, which represents the name of the view to render.
-return "home";: This line returns the view name "home". Spring looks for a view file (like home.html or home.jsp) in the configured view folder, renders it, and sends it as the response.
+return "home";: This line returns the view name "home". Spring looks for a view file (like home.html or home.jsp) 
+in the configured view folder, renders it, and sends it as the response.
 
 
 
@@ -370,7 +372,8 @@ Automatically maps the request data to the fields of the object
 -----------------------------------------------
 
 ChatGPT
-In Spring MVC, request.getAttribute() is used to retrieve data stored in the request scope. When you use request.setAttribute("name", value), you’re adding data to the request so that you can pass information from one part of your code (e.g., a controller) to another (e.g., a view like JSP) for that specific request only.
+In Spring MVC, request.getAttribute() is used to retrieve data stored in the request scope. When you use request.setAttribute("name", value),
+you’re adding data to the request so that you can pass information from one part of your code (e.g., a controller) to another (e.g., a view like JSP) for that specific request only.
 
 For example:
 
