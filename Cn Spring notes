@@ -517,6 +517,7 @@ It is typically used when the client wants to send data (like a form or JSON) to
 Response: Returns a message after processing.
 Use @PostMapping whenever you need to send data to your server for operations like adding a record, submitting a form, or uploading something.
 
-
-
 -------------------------------------------------------------------------
+@DeleteMapping
+In Spring Boot, @DeleteMapping is an annotation used in RESTful APIs to
+handle HTTP DELETE requests. It is typically used to delete a resource (like a record in a database).
