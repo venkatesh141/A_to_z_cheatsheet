@@ -441,3 +441,79 @@ PUT: To update existing data.
 DELETE: To delete data.
 
 --------------------------------------------------------------------------
+-----------------------------------------------
+
+In Spring MVC, @PathVariable is used to extract values from the URL and pass them as parameters to a controller method.
+
+Imagine you have a URL like this:
+
+bash
+Copy code
+/user/123
+In this case, 123 could be an ID for a user. You can set up a controller method to capture that value directly from the URL using @PathVariable.
+
+Here's how it works:
+
+Define a URL pattern with a placeholder in your controller:
+
+java
+Copy code
+@GetMapping("/user/{id}")
+public String getUserById(@PathVariable("id") int userId) {
+    // Now, userId will have the value 123 when the URL is /user/123
+    // Do something with userId, like fetching user data from a database
+    return "userProfile";
+}
+In the URL /user/123, Spring will automatically match 123 to {id} and assign it to the userId parameter.
+
+In simple terms, @PathVariable lets you take part of the URL and use it directly in your method, making it easy to handle dynamic data in URLs.
+
+------------------------------------------------------------
+Class-Level Annotation
+@RestController
+
+    Purpose: Tells Spring Boot that this class handles HTTP requests and sends back responses (usually as text or JSON).
+    Effect: Every method in this class will return data as the response body, not a view (like in a website).
+RestController is used for making restful web services with the help of the @RestController annotation. This annotation is used at the class level and allows the class to handle the requests made by the client. 
+
+
+@RequestMapping("/project")
+
+    Purpose: Sets a base URL for all endpoints in this class.
+    Effect: All methods in this class will have URLs starting with /project.
+    
+Method-Level Annotations
+
+    @RequestMapping("/hello")
+        Purpose: Maps the URL /project/hello to this method.
+        Effect: When someone visits /project/hello, the method runs and returns "Hello Coding Ninjas !"
+        
+ @GetMapping("/hello-world")
+
+    Purpose: Maps the URL /project/hello-world to this method for HTTP GET requests only.
+    Effect: When a GET request is sent to /project/hello-world, the method runs and returns "Hello from Earth !".
+    Difference from @RequestMapping: @GetMapping is specific to GET requests, while @RequestMapping can handle multiple types (GET, POST, etc.).
+
+       
+        
+ --------------------------------------------------------------------------
+ What is @PathVariable?
+
+@PathVariable is an annotation in Spring Boot used to capture values from the URL and pass them into your method as variables.
+--------------------------------------------------------
+
+@PostMapping is an annotation in Spring Boot used to map HTTP POST requests to a specific method in your controller class.
+
+Simple Explanation:
+When a client (like a browser or app) sends a POST request to your server, @PostMapping helps the server handle that request.
+It is typically used when the client wants to send data (like a form or JSON) to the server, usually to create or save something.
+
+
+@PostMapping("/addUser"): Handles POST requests sent to the "/addUser" endpoint.
+@RequestBody User user: Captures the data sent by the client (e.g., JSON) and converts it into a User object.
+Response: Returns a message after processing.
+Use @PostMapping whenever you need to send data to your server for operations like adding a record, submitting a form, or uploading something.
+
+
+
+-------------------------------------------------------------------------
