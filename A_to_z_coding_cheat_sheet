@@ -6374,3 +6374,25 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 188
+leetcode 124
+class Solution {
+    private int maxSum;
+    public int maxPathSum(TreeNode root){
+        maxSum = Integer.MIN_VALUE;
+        maxPathSum1(root);
+        return maxSum;
+    }
+    public int maxPathSum1(TreeNode root) {
+        if(root == null) return 0;
+
+        int leftSum = Math.max(0,maxPathSum1(root.left));
+        int rightSum = Math.max(0,maxPathSum1(root.right));
+
+        int currentSum = root.val + leftSum+rightSum;
+
+        maxSum = Math.max(currentSum,maxSum);
+        return root.val+Math.max(leftSum,rightSum);
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
