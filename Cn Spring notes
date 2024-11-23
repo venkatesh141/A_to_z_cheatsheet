@@ -521,3 +521,12 @@ Use @PostMapping whenever you need to send data to your server for operations li
 @DeleteMapping
 In Spring Boot, @DeleteMapping is an annotation used in RESTful APIs to
 handle HTTP DELETE requests. It is typically used to delete a resource (like a record in a database).
+------------------------------------------------------------------------
+@PutMapping
+In Spring Boot, @PutMapping is an annotation used in a REST API to handle HTTP PUT requests. It is generally used to update an existing resource.
+
+Here’s a simple way to understand it:
+
+    PUT is like editing or updating something. For example, if you already have a profile with your name and you want to update it with a new name, a PUT request is sent.
+    @PutMapping maps this PUT request to a specific method in your controller so that it can handle the update logic.
+------------------------------------------------------------------------
