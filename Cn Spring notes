@@ -530,3 +530,13 @@ Here’s a simple way to understand it:
     PUT is like editing or updating something. For example, if you already have a profile with your name and you want to update it with a new name, a PUT request is sent.
     @PutMapping maps this PUT request to a specific method in your controller so that it can handle the update logic.
 ------------------------------------------------------------------------
+@ResponseStatus is an annotation in Spring Boot that is used to tell the application to return a specific HTTP status code when a method or exception is invoked.
+
+Simple Explanation:
+Imagine your application is responding to a user. Instead of just saying "Something went wrong", you want to send more specific information like:
+
+"Not Found" (404)
+"Bad Request" (400)
+"Internal Server Error" (500)
+The @ResponseStatus annotation helps you do this easily and clearly by linking a particular exception or method to a specific status code.
+----------------------------------------------------------------------------------
