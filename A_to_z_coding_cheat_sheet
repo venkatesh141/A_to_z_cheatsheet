@@ -6543,74 +6543,25 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 193
- class Solution {
-    // Helper class to store a tree node and its horizontal distance (level) from the root
-    static class pair {
-        Node node; // The current node in the tree
-        int level; // Horizontal distance (HD) of the node
+ leetcode 199
+public class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
 
-        // Constructor to initialize the node and its level
-        public pair(Node node, int level) {
-            this.node = node;
-            this.level = level;
-        }
+        rightView(root, ans, 0);
+
+        return ans;
     }
 
-    // Function to return a list containing the bottom view of the given tree.
-    public ArrayList<Integer> bottomView(Node root) {
-        // To store the leftmost horizontal distance encountered
-        int leftMost = 0;
+    private void rightView(TreeNode curr, List<Integer> ans, int currDepth) {
+        if (curr == null)
+            return;
 
-        // HashMap to store the bottommost node's value at each horizontal distance (HD)
-        // Key: Horizontal distance
-        // Value: Node's value at the bottommost level for that HD
-        HashMap<Integer, Integer> mp = new HashMap<>();
+        if (currDepth == ans.size())
+            ans.add(curr.val);
 
-        // Queue to perform level-order traversal (BFS). Each element is a `pair` of node and its HD.
-        Queue<pair> q = new LinkedList<>();
-
-        // Start BFS traversal with the root node at horizontal distance 0
-        q.offer(new pair(root, 0));
-
-        // Perform BFS until the queue is empty
-        while (!q.isEmpty()) {
-            // Remove the front element from the queue
-            pair p = q.poll();
-
-            // Get the current node and its horizontal distance
-            Node temp = p.node;
-            int lvl = p.level;
-
-            // Update the HashMap with the current node's value for its horizontal distance
-            // This ensures the latest (bottommost) node at this horizontal distance is stored
-            mp.put(lvl, temp.data);
-
-            // Update the leftmost horizontal distance if needed
-            leftMost = Math.min(leftMost, lvl);
-
-            // If the current node has a left child, enqueue it with HD (level - 1)
-            if (temp.left != null) {
-                q.offer(new pair(temp.left, lvl - 1));
-            }
-
-            // If the current node has a right child, enqueue it with HD (level + 1)
-            if (temp.right != null) {
-                q.offer(new pair(temp.right, lvl + 1));
-            }
-        }
-
-        // Create a list to store the bottom view result
-        ArrayList<Integer> ans = new ArrayList<>();
-
-        // Traverse the HashMap from the leftmost HD to the rightmost HD
-        // Add each value from the HashMap to the result list
-        while (mp.containsKey(leftMost)) {
-            ans.add(mp.get(leftMost));
-            leftMost++; // Move to the next horizontal distance
-        }
-
-        // Return the result list containing the bottom view of the tree
-        return ans;
+        rightView(curr.right, ans, currDepth + 1);
+        rightView(curr.left, ans, currDepth + 1);
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
