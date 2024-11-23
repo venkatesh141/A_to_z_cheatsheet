@@ -540,3 +540,8 @@ Imagine your application is responding to a user. Instead of just saying "Someth
 "Internal Server Error" (500)
 The @ResponseStatus annotation helps you do this easily and clearly by linking a particular exception or method to a specific status code.
 ----------------------------------------------------------------------------------
+ObjectUtils.isEmpty() is a utility method provided by Spring Framework to check whether an object is empty or null. 
+It is commonly used to avoid writing repetitive null and empty checks in your code.
+---------------------------------------------------------------------------------------
+
+
