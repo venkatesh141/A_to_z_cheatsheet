@@ -6702,6 +6702,45 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 197
+leetcode 662
+class Solution {
+    public int widthOfBinaryTree(TreeNode root) {
+        // Start the recursive helper function
+        // Initialize level as 0, order/index as 0, and empty lists for start and end
+        return helper(root, 0, 0, new ArrayList<>(), new ArrayList<>());
+    }
+
+    public int helper(TreeNode root, int level, int order, List<Integer> start, List<Integer> end) {
+        // If the current node is null, return 0 (no width can be calculated)
+        if (root == null) return 0;
+
+        // If this is the first node we're visiting at this level
+        if (start.size() == level) {
+            // Add this node's index (order) as the start and end for this level
+            start.add(order);
+            end.add(order);
+        } else {
+            // Otherwise, update the end index for this level with the current node's index
+            end.set(level, order);
+        }
+
+        // Calculate the width of the current level
+        // Formula: width = (last index - first index + 1)
+        int max = end.get(level) - start.get(level) + 1;
+
+        // Recursively calculate the maximum width in the left and right subtrees
+        // Left child has index 2 * order
+        int left = helper(root.left, level + 1, 2 * order, start, end);
+
+        // Right child has index 2 * order + 1
+        int right = helper(root.right, level + 1, 2 * order + 1, start, end);
+
+        // Return the maximum width among the current level, left subtree, and right subtree
+        return Math.max(max, Math.max(left, right));
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
     
                         
 
