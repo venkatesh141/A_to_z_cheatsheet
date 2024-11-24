@@ -6464,6 +6464,28 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 192
+// Pair class to store a node and its vertical position
+class Pair {
+    private Node key; // Node of the binary tree
+    private int value; // Vertical position of the node
+
+    // Constructor
+    public Pair(Node key, int value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    // Getters
+    public Node getKey() {
+        return key;
+    }
+
+    public int getValue() {
+        return value;
+    }
+}
+
+// Main Solution class
 public class Solution {
     // Function to return the
     // top view of the binary tree
@@ -6483,17 +6505,17 @@ public class Solution {
         // Queue for BFS traversal, each element
         // is a pair containing node 
         // and its vertical position
-        Queue<Pair<Node, Integer>> q = new LinkedList<>();
+        Queue<Pair> q = new LinkedList<>();
         
         // Push the root node with its vertical
         // position (0) into the queue
-        q.add(new Pair<>(root, 0));
+        q.add(new Pair(root, 0));
         
         // BFS traversal
         while (!q.isEmpty()) {
             // Retrieve the node and its vertical
             // position from the front of the queue
-            Pair<Node, Integer> pair = q.poll();
+            Pair pair = q.poll();
             Node node = pair.getKey();
             int line = pair.getValue();
             
@@ -6507,14 +6529,14 @@ public class Solution {
             if (node.left != null) {
                 // Push the left child with a decreased
                 // vertical position into the queue
-                q.add(new Pair<>(node.left, line - 1));
+                q.add(new Pair(node.left, line - 1));
             }
             
             // Process right child
             if (node.right != null) {
                 // Push the right child with an increased
                 // vertical position into the queue
-                q.add(new Pair<>(node.right, line + 1));
+                q.add(new Pair(node.right, line + 1));
             }
         }
         
@@ -6526,7 +6548,15 @@ public class Solution {
         
         return ans;
     }
+}
 
+A TreeMap in Java is a type of map (key-value pairs) where all the keys are sorted in natural order (e.g., ascending for numbers,
+alphabetical for strings). It uses a binary search tree internally to maintain this sorted order.
+
+Key Features:
+Stores Key-Value Pairs: Just like a HashMap, but keys are always sorted.
+Sorting: Keys are sorted automatically when you add them.
+No Duplicates: Keys must be unique (values can be duplicates).
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 193
  leetcode 199
