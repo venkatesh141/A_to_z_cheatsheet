@@ -561,6 +561,11 @@ These annotations work with Spring Boot's Bean Validation framework (Hibernate V
 
 When you annotate a method parameter or field with @Valid, Spring Boot checks if the constraints (like @Size, @Min, @Max) on the object or its fields are satisfied. If the validation fails, an error is thrown.
 --------------------------------------------------------------------------------------------
+BindingResult
+Validation is applied to the model object (e.g., using @Valid or @Validated).
+Any errors during validation are captured in the BindingResult object.
+You can check the BindingResult for validation errors and take appropriate actions, such as displaying error messages or returning specific responses.
+------------------------------------------------------------------------
 
 
 
