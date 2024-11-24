@@ -556,6 +556,10 @@ Example: @Min(18) → Input value must be at least 18.
 Example: @Max(100) → Input value must not exceed 100.
 
 These annotations work with Spring Boot's Bean Validation framework (Hibernate Validator by default). They are applied to class fields in DTOs or models.
+
+@Valid in Spring Boot is slightly different—it is used to trigger the validation process.
+
+When you annotate a method parameter or field with @Valid, Spring Boot checks if the constraints (like @Size, @Min, @Max) on the object or its fields are satisfied. If the validation fails, an error is thrown.
 --------------------------------------------------------------------------------------------
 
 
