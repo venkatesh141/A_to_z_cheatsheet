@@ -544,4 +544,24 @@ ObjectUtils.isEmpty() is a utility method provided by Spring Framework to check 
 It is commonly used to avoid writing repetitive null and empty checks in your code.
 ---------------------------------------------------------------------------------------
 
+In Spring Boot, @Size, @Min, and @Max are used for validation to ensure that input data meets certain criteria:
+
+@Size: Ensures the size (length) of a string, collection, or array is within a specified range.
+Example: @Size(min = 3, max = 10) → Input length must be between 3 and 10.
+
+@Min: Ensures a number is not smaller than the specified minimum value.
+Example: @Min(18) → Input value must be at least 18.
+
+@Max: Ensures a number is not larger than the specified maximum value.
+Example: @Max(100) → Input value must not exceed 100.
+
+These annotations work with Spring Boot's Bean Validation framework (Hibernate Validator by default). They are applied to class fields in DTOs or models.
+--------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
 
