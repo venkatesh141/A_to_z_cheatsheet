@@ -6581,4 +6581,82 @@ public class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 194
+bottom view of tree
+
+// Pair class to store a node and its vertical position
+class Pair {
+    private Node key; // Node of the binary tree
+    private int value; // Vertical position of the node
+
+    // Constructor
+    public Pair(Node key, int value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    // Getters
+    public Node getKey() {
+        return key;
+    }
+
+    public int getValue() {
+        return value;
+    }
+}
+
+public class Solution {
+    // Function to return the bottom view of the binary tree
+    public List<Integer> bottomView(Node root) {
+        // List to store the result
+        List<Integer> ans = new ArrayList<>();
+        
+        // Check if the tree is empty
+        if (root == null) {
+            return ans;
+        }
+        
+        // Map to store the bottom view nodes based on their vertical positions
+        Map<Integer, Integer> mpp = new TreeMap<>();
+        
+        // Queue for BFS traversal, each element is a pair containing a node
+        // and its vertical position
+        Queue<Pair> q = new LinkedList<>();
+        
+        // Push the root node with its vertical position (0) into the queue
+        q.add(new Pair(root, 0));
+        
+        // BFS traversal
+        while (!q.isEmpty()) {
+            // Retrieve the node and its vertical position from the front of the queue
+            Pair pair = q.poll();
+            Node node = pair.getKey();
+            int line = pair.getValue();
+            
+            // Update the map with the node's data for the current vertical position
+            mpp.put(line, node.data);
+            
+            // Process left child
+            if (node.left != null) {
+                // Push the left child with a decreased vertical position into the queue
+                q.add(new Pair(node.left, line - 1));
+            }
+            
+            // Process right child
+            if (node.right != null) {
+                // Push the right child with an increased vertical position into the queue
+                q.add(new Pair(node.right, line + 1));
+            }
+        }
+        
+        // Transfer values from the map to the result list
+        for (Map.Entry<Integer, Integer> entry : mpp.entrySet()) {
+            ans.add(entry.getValue());
+        }
+        
+        return ans;
+    }
+
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+   
 
