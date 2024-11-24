@@ -6688,7 +6688,19 @@ question 195
         return false;
     }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-
+question 196
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null || root.val==p.val || root.val==q.val)return root;
+        TreeNode left = lowestCommonAncestor(root.left,p,q);
+        TreeNode right = lowestCommonAncestor(root.right,p,q);
+        if(left==null)return right;
+        if(right==null)return left;
+        return root;
+        
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
     
                         
 
