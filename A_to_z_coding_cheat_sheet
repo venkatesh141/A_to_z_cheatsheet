@@ -6689,6 +6689,7 @@ question 195
     }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 196
+leetcode 236
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root==null || root.val==p.val || root.val==q.val)return root;
