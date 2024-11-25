@@ -6433,7 +6433,7 @@ leetcode 103
             res.add(new ArrayList<>());
         }
 
-        var curr = (ArrayList<Integer>) res.get(index);
+        ArrayList<Integer> curr = (ArrayList<Integer>) res.get(index);
         if (index % 2 == 0) {
             curr.add(root.val);
         } else {
@@ -6446,7 +6446,7 @@ leetcode 103
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 191
-leetcode 101
+leetcode 101  mirror itself
 class Solution {
     public boolean isSymmetric(TreeNode root) {
         return (root==null) || (isSymmetric(root.left,root.right)) ;
