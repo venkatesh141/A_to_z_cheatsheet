@@ -6741,7 +6741,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 198 
+question 198 bst
 Find min in bst
 class Solution {
     // Function to find the minimum element in the given BST.
@@ -6756,7 +6756,7 @@ class Solution {
     }
 }                     
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 199
+question 199 bst
 class Solution {
     // Function to find the ceiling of
     // a key in a Binary Search Tree (BST)
@@ -6790,7 +6790,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 200
+question 200 bst
 class Solution {
     // Function to find the floor of a key
     // in a Binary Search Tree (BST)
@@ -6827,7 +6827,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 201 leetcode 450
+question 201 leetcode 450 bst
 class Solution {
     public TreeNode deleteNode(TreeNode root, int key) {
         if(root == null) return null;
@@ -6862,7 +6862,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 202 leetcode 98
+question 202 leetcode 98 bst
 
 class Solution {
 
@@ -6879,7 +6879,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 203 leetcode 230
+question 203 leetcode 230 bst
 class Solution {
     private int count = 0;
     private int rootValue;
@@ -6895,7 +6895,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 204 leetcode 235
+question 204 leetcode 235  bst
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // Check if the values of p and q is on the left side or the right side of the Root
