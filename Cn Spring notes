@@ -574,6 +574,51 @@ Validation is applied to the model object (e.g., using @Valid or @Validated).
 Any errors during validation are captured in the BindingResult object.
 You can check the BindingResult for validation errors and take appropriate actions, such as displaying error messages or returning specific responses.
 ------------------------------------------------------------------------
+------------------------------------------------------------------------
+REST template
+
+In Spring, the RestTemplate is a class that makes it easy to communicate with other web services (like APIs). You can think of it as a helper that lets your Java program send HTTP requests and get responses. It is part of Spring's web module.
+
+What can it do?
+Send HTTP Requests: You can send GET, POST, PUT, DELETE, etc.
+Get Responses: It lets you fetch data from APIs or send data to them.
+Example:
+Imagine you're building an app, and you want to get weather data from a public API. RestTemplate helps you send the request to the API and handle the response.
+
+---------------------------------------------------------------------------------
+HTTP method
+An HTTP method is a way for your computer to tell a web server what kind of action it wants to perform.
+Think of it as a specific type of "request" when your app or browser talks to a website or API.
+
+Common HTTP Methods:
+GET:
+
+Purpose: To fetch (read) data from the server.
+Example: Viewing a website or reading data from an API.
+Analogy: Like asking for information (e.g., "Show me the weather details").
+POST:
+
+Purpose: To send (create) data to the server.
+Example: Submitting a form or adding a new user to a database.
+Analogy: Like filling out a form and submitting it (e.g., "Add this new user").
+PUT:
+
+Purpose: To update or replace existing data on the server.
+Example: Changing your profile picture.
+Analogy: Like replacing an old file with a new one (e.g., "Update this user’s information").
+DELETE:
+
+Purpose: To delete data from the server.
+Example: Removing your account.
+Analogy: Like throwing something away (e.g., "Delete this file").
+PATCH:
+
+Purpose: To partially update data (only a part of the data is changed).
+Example: Updating just your email in a user profile.
+Analogy: Like correcting a single word in a document without rewriting the whole thing.
+Summary:
+HTTP methods are instructions you give to a server:
+------------------------------------------------------------------------------
 
 
 
