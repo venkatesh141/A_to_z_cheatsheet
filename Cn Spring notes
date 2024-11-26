@@ -40,7 +40,15 @@ When to Use?
 Use Spring if you need more control and customization for complex applications.
 Use Spring Boot for rapid application development, especially for microservices or simple applications, as it simplifies and speeds up the development process.
 Let me know if you'd like examples or deeper explanations!
+-------------------------------------------------------------------------------
 
+In Spring Boot, the web dependency is a feature that helps you build web applications, such as websites or REST APIs.
+
+When you add the Spring Web dependency to your project, it provides you with tools to:
+
+Handle HTTP requests and responses: For example, you can create a REST API that responds to GET, POST, PUT, or DELETE requests.
+Use MVC architecture: It helps you organize your code into controllers (to handle requests), services (to process logic), and models (to represent data).
+Embed a web server: Spring Boot includes an embedded server (like Tomcat) so your application can run immediately without needing extra setup.
 -------------------------------------------------------------------
 Spring Annotations
 @Component
