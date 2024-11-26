@@ -6879,3 +6879,19 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 203 leetcode 230
+class Solution {
+    private int count = 0;
+    private int rootValue;
+    public int kthSmallest(TreeNode root, int k) {
+        if(root == null) return 0;
+        
+        kthSmallest(root.left, k);
+        this.count += 1;
+        if(this.count == k)
+            this.rootValue = root.val;
+        kthSmallest(root.right, k);
+        return this.rootValue;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
