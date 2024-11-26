@@ -6895,3 +6895,21 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 204 leetcode 235
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        // Check if the values of p and q is on the left side or the right side of the Root
+        
+        // left side
+        if(p.val < root.val && q.val < root.val){
+           return lowestCommonAncestor(root.left, p, q);
+        }
+        // right side
+        else if(p.val > root.val && q.val > root.val){
+            return lowestCommonAncestor(root.right, p, q);
+        }
+        // The above conditions will be false only when the values of p and q are in the left and right nodes, and when that happens we just return the value of the root node 
+        return root;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
