@@ -6913,3 +6913,57 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 205 
+implementation of graph using adjacency matrix
+import java.util.Scanner;
+
+public class GraphAdjacencyMatrix {
+    private int[][] adjacencyMatrix;
+    private int numVertices;
+
+    // Constructor to initialize the graph
+    public GraphAdjacencyMatrix(int numVertices) {
+        this.numVertices = numVertices;
+        adjacencyMatrix = new int[numVertices][numVertices];
+    }
+
+    // Method to add an edge
+    public void addEdge(int source, int destination) {
+        adjacencyMatrix[source][destination] = 1;
+        adjacencyMatrix[destination][source] = 1; // For undirected graph
+       //for directed graph just ajacencyMatrix[source][dest]=1;
+    }
+
+    // Method to display the adjacency matrix
+    public void display() {
+        System.out.println("Adjacency Matrix:");
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
+                System.out.print(adjacencyMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of vertices: ");
+        int vertices = scanner.nextInt();
+        GraphAdjacencyMatrix graph = new GraphAdjacencyMatrix(vertices);
+
+        System.out.print("Enter the number of edges: ");
+        int edges = scanner.nextInt();
+
+        System.out.println("Enter the edges (source and destination):");
+        for (int i = 0; i < edges; i++) {
+            int source = scanner.nextInt();
+            int destination = scanner.nextInt();
+            graph.addEdge(source, destination);
+        }
+
+        graph.display();
+        scanner.close();
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
+
