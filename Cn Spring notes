@@ -620,7 +620,80 @@ Summary:
 HTTP methods are instructions you give to a server:
 ------------------------------------------------------------------------------
 
+In simple terms, private final RestTemplate restTemplate is creating an object of the RestTemplate class,
+which is commonly used in Spring Boot applications to make HTTP requests to external APIs or web services.
+Imagine your application needs to get data from another website or API. The RestTemplate helps you do that with just a few lines of code:
 
+restTemplateBuilder:
+This is an instance of the RestTemplateBuilder class, which is provided by Spring Boot. It is a helper class that makes it easy to configure and create a RestTemplate object.
+For example, you can use RestTemplateBuilder to add default configurations like timeouts, authentication details, interceptors, etc.
+
+.build():
+This method of RestTemplateBuilder actually creates a fully configured RestTemplate object. It takes into account any custom settings or configurations added to the builder.
+
+URL Construction
+
+String url = "http://localhost:8080/rating/id";
+
+    This is the base URL where the server is running (on localhost at port 8080).
+    "http://localhost:8080/rating/id" is the API endpoint, but it’s incomplete because you need to add the specific id you want to fetch the rating for.
+
+For example:
+If id = "123", the final URL will be:
+http://localhost:8080/rating/id123
+
+
+This code defines a method getRating(String id) that fetches a rating from a server (API) using the RestTemplate and returns it. Let’s break it into simple steps:
+1. Method Signature
+
+public long getRating(String id)
+
+    This is a method that takes a String called id as input (e.g., a user ID or product ID).
+    It returns a long value, which represents the rating.
+
+2. URL Construction
+
+String url = "http://localhost:8080/rating/id";
+
+    This is the base URL where the server is running (on localhost at port 8080).
+    "http://localhost:8080/rating/id" is the API endpoint, but it’s incomplete because you need to add the specific id you want to fetch the rating for.
+
+For example:
+If id = "123", the final URL will be:
+http://localhost:8080/rating/id123
+3. Making the API Call
+
+ResponseEntity<Long> response = restTemplate.getForEntity(url + id, Long.class);
+
+    restTemplate.getForEntity() is making an HTTP GET request to the server.
+    url + id: Combines the base URL and the id to form the full URL (e.g., http://localhost:8080/rating/id123).
+    Long.class: This tells the method to expect the server's response to be a number (of type Long).
+
+The response from the server is stored in a ResponseEntity<Long> object.
+ResponseEntity is like a wrapper that contains:
+
+    The actual data (in this case, the rating as a Long).
+    Metadata (like HTTP status code).
+
+4. Extracting the Data
+
+return response.getBody();
+
+    response.getBody() extracts the actual rating value from the ResponseEntity.
+    This value is then returned as the output of the method.
+
+------------------------------------------------
+
+@Autowired
+public RatingServiceCommunicator(RestTemplateBuilder restTemplateBuilder) {
+    this.restTemplate = restTemplateBuilder.build();
+}
+
+
+The @Autowired annotation ensures that the RestTemplateBuilder (managed by Spring) is automatically injected into the constructor.
+This injected builder is then used to create a RestTemplate object, which can be used for making HTTP requests.
+
+Would you like an example of how to pre-configure the RestTemplateBuilder in a Spring application? 😊
 
 
 
