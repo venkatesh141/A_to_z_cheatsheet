@@ -731,6 +731,35 @@ ratingMap: This is the actual data you want to send in the POST request. It’s 
 Object.class: This tells the method what type of response to expect from the server. In this case, it expects any generic Object.
 
 -----------------------------------------------------------------------------
+HttpEntity requestEntity = new HttpEntity(ratingMap);
+restTemplate.exchange(url, HttpMethod.POST, requestEntity, Object.class);
+
+Explanation:
+HttpEntity requestEntity = new HttpEntity(ratingMap);:
+
+HttpEntity: This is a container that holds:
+The body of your request (in this case, ratingMap).
+Optional headers (like content type, authentication, etc.).
+Here, you are wrapping the ratingMap (your data) inside an HttpEntity to prepare it for sending as part of the request.
+restTemplate.exchange(...):
+
+This is a flexible method to send any type of HTTP request (GET, POST, PUT, DELETE, etc.) and handle the response.
+Parameters:
+
+url: The endpoint (API or web service) where you are sending the request.
+HttpMethod.POST: Specifies the HTTP method as POST. You’re sending data to the server.
+requestEntity: The HttpEntity you created earlier, which contains the data (ratingMap) and optionally headers.
+Object.class: Indicates the type of response you expect back from the server. Here, it’s a generic Object.
+What it does:
+
+It sends the ratingMap as the body of a POST request to the specified url.
+It receives the server’s response, which is converted to an Object (or whatever type you specify instead of Object.class).
+Example in simple steps:
+Think of it like preparing a package (your ratingMap data) for delivery.
+You pack the data into a box (HttpEntity).
+Then, you send it to the destination (url) using the POST method (HttpMethod.POST).
+Once delivered, you wait for the response (e.g., "Package received!"), which you handle as a generic object (Object.class).
+----------------------------------------------------------------------------
 
 
 
