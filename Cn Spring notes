@@ -723,6 +723,14 @@ The server responds with a number (e.g., 100), which is automatically converted 
 This number is then stored in the variable ratingResponse.
 
 ----------------------------------------------------------------------------------
+restTemplate.postForObject(url, ratingMap, Object.class);
+
+
+url: This is the endpoint (API or web service) where the data will be sent.
+ratingMap: This is the actual data you want to send in the POST request. It’s usually a Map or an object with the information you want to send.
+Object.class: This tells the method what type of response to expect from the server. In this case, it expects any generic Object.
+
+-----------------------------------------------------------------------------
 
 
 
