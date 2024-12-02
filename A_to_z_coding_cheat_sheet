@@ -7048,7 +7048,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 210
+question 210 leetcode 168
 class Solution {   // 1->A , 28->AB
     public String convertToTitle(int c) {
         String s="";
