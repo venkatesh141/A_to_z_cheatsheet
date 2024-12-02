@@ -7048,3 +7048,25 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 210
+class Solution {   // 1->A , 28->AB
+    public String convertToTitle(int c) {
+        String s="";
+        while(c>0){
+            int r=c%26;
+            System.out.println("c is "+c);
+            System.out.println("r is "+r);
+            if(r==0) {
+                s='Z'+s;
+                c=c/26-1;
+            }
+            else{
+                s=(char)((r-1)+'A')+s;
+                c/=26;
+            }
+            
+        }
+        return s;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
