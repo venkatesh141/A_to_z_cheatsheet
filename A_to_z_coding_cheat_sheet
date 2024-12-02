@@ -7054,8 +7054,6 @@ class Solution {   // 1->A , 28->AB
         String s="";
         while(c>0){
             int r=c%26;
-            System.out.println("c is "+c);
-            System.out.println("r is "+r);
             if(r==0) {
                 s='Z'+s;
                 c=c/26-1;
