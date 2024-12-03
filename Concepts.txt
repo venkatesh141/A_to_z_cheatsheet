@@ -46,7 +46,8 @@ public class AbstractionExample {
 Abstract classes set up a common structure (like requiring makeSound() for all animals).
 They allow each subclass (like Dog or Cat) to have its own behavior while still following the same basic rules.
 
-Payment System: In a payment processing system, you may have an abstract class Payment with an abstract method processPayment(). Different payment types like CreditCardPayment, PaypalPayment, and UPIPayment would extend the Payment class and provide their own implementations of processPayment().
+Payment System: In a payment processing system, you may have an abstract class Payment with an abstract method processPayment(). 
+Different payment types like CreditCardPayment, PaypalPayment, and UPIPayment would extend the Payment class and provide their own implementations of processPayment().
 
 -----------trust the process you will win .
 Interface
