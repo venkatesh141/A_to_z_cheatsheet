@@ -651,7 +651,171 @@ Real-Time Usage of Class and Object
         Object: Each product in the store is an object.
 
 -----------------------------------------------------------------------------------trust the process you will win .
+Synchronization 
+Synchronization in Java ensures that only one thread can access a critical section (shared resource) at a time. 
+It helps prevent thread interference and ensures data consistency when multiple threads are working on shared data.
 
+In Java, you can use the synchronized keyword to achieve this.
+
+Key Points:
+
+    Why use synchronization?
+        To avoid multiple threads modifying the same object or variable simultaneously, which can lead to incorrect results.
+
+    How does synchronization work?
+        When a thread enters a synchronized block or method, it locks the object. Other threads must wait until the current thread releases the lock.
+        
+Without Synchronization Example:
+
+class BankAccount {
+    private int balance = 0;
+
+    // Regular method (NOT synchronized)
+    public void deposit(int amount) {
+        balance += amount; // Update balance
+        System.out.println("Deposited " + amount + ", New Balance: " + balance);
+    }
+
+    public int getBalance() {
+        return balance; // Get balance
+    }
+}
+
+public class WithoutSynchronizationExample {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+
+        // Thread 1
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                account.deposit(100); // Deposit 100
+            }
+        });
+
+        // Thread 2
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                account.deposit(200); // Deposit 200
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        // Wait for threads to finish
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Final Balance: " + account.getBalance());
+    }
+}
+
+
+balance will be 1200 insteaad of 1500
+
+
+
+Explanation of ()-> Syntax (Lambda Expression):
+
+The syntax ()-> is a lambda expression, introduced in Java 8, which allows writing shorter code for anonymous classes,
+ typically for functional interfaces (interfaces with only one abstract method).
+
+In the example:
+
+Thread t1 = new Thread(() -> {
+    for (int i = 0; i < 5; i++) {
+        account.deposit(100);
+    }
+});
+
+What it means:
+
+    ()-> replaces the need for writing a full class or method for a task.
+    The part inside { } is the code that will run.
+
+If written without the lambda, it would look like this:
+
+Thread t1 = new Thread(new Runnable() {
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            account.deposit(100);
+        }
+    }
+});
+
+
+with synchronization
+
+class BankAccount {
+    private int balance = 0;
+
+    // Synchronized method to deposit money
+    public synchronized void deposit(int amount) {
+        balance += amount; // Update balance
+        System.out.println("Deposited " + amount + ", New Balance: " + balance);
+    }
+
+    public int getBalance() {
+        return balance; // Get balance
+    }
+}
+
+public class SynchronizationExample {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+
+        // Thread 1
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                account.deposit(100); // Deposit 100
+            }
+        });
+
+        // Thread 2
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                account.deposit(200); // Deposit 200
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        // Wait for threads to finish
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Final Balance: " + account.getBalance());
+    }
+}
+
+
+op will be 1500 correct op
+2. Online Ticket Booking Systems
+
+Scenario:
+
+    Multiple users try to book the same seat for a movie or a train.
+
+Example:
+
+    Without synchronization: Two users might book the same seat simultaneously, leading to errors.
+    With synchronization: Only one thread can check and book a seat at a time, ensuring no duplicate bookings.	
+
+-----------------------------------------------------------------------------------trust the process you will win .
+
+        
+      
+  
 
 
 
