@@ -7107,5 +7107,29 @@ public static void main(String args[]) {
 }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
+question 212
+leetcode 198
+class Solution {
+    public int rob(int[] nums) {
+        
+        int prev_prev=nums[0];
+
+        if(nums.length == 1)
+        {
+            return prev_prev;
+        }
+
+        int prev = Math.max(nums[0],nums[1]);
+
+        for(int i=2;i<nums.length;i++)
+        {
+          int curr = Math.max(prev,prev_prev+ nums[i]);
+          prev_prev=prev;
+          prev=curr;
+        }
+        return prev;
+    }
+}
+-----------------------trust the process you will win. brute force pannale optimize pannirlam
 
 
