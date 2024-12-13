@@ -760,6 +760,21 @@ You pack the data into a box (HttpEntity).
 Then, you send it to the destination (url) using the POST method (HttpMethod.POST).
 Once delivered, you wait for the response (e.g., "Package received!"), which you handle as a generic object (Object.class).
 ----------------------------------------------------------------------------
+Message Convertors
+
+In Spring, message converters are used to convert data between objects and various formats 
+(like JSON, XML, or plain text) so that your application can send and receive data in a way that other systems understand.
+
+Key Points in Simple Terms:
+Why use message converters?
+
+When you send or receive data in a Spring application, it’s usually in formats like JSON or XML. 
+A message converter converts these formats into Java objects or vice versa.
+
+MappingJackson2HttpMessageConverter: Converts between Java objects and JSON.
+Jaxb2RootElementHttpMessageConverter: Converts between Java objects and XML.
+StringHttpMessageConverter: Converts plain text to/from Java objects.
+------------------------------------------------------------------
 
 
 
