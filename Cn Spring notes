@@ -955,4 +955,42 @@ In some cases, you may want to use Hibernate-specific features, like save() or u
 To access these features, you need to "unwrap" the EntityManager into a Hibernate Session.
 
 ---------------------------------------------------------------
+In application.yml file
+
+Breaking It Down:
+spring.datasource.url:
+This specifies the database location (where the MySQL database is running).
+jdbc:mysql://localhost:3306/sk_company:
+localhost means the database is on your own computer.
+3306 is the default port number MySQL uses to listen for connections.
+sk_company is the name of the database you're connecting to.
+spring.datasource.username:
+This is the username required to connect to the database.
+In this case, the username is root (default for MySQL).
+spring.datasource.password:
+This is the password for the database.
+Here, the password is mysql@123.
+spring.jpa.properties.hibernate-dialect:
+This tells Hibernate which SQL dialect to use.
+org.hibernate.dialect.MySQLDialect:
+Hibernate needs to know how to generate SQL queries specific to MySQL.
+The "dialect" is like a translator that helps Hibernate speak the "language" of MySQL.
+spring.jpa.hibernate.ddl-auto:
+This controls how Hibernate manages the database schema (e.g., creating or updating tables).
+update:
+Hibernate will update the database schema automatically when the application runs.
+For example, if you add a new field to an entity, Hibernate will update the corresponding database table to include that new column.
+
+
+
+What is a Hibernate Dialect?
+A dialect is like a translator that Hibernate uses to generate database-specific SQL queries.
+Every database (e.g., MySQL, Oracle, PostgreSQL) has its own rules and syntax for SQL queries.
+The Hibernate Dialect tells Hibernate how to write SQL in the "language" that a specific database understands.
+---------------------------------------------------------------------------
+
+
+
+
+
 
