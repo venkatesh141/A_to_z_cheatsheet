@@ -888,6 +888,32 @@ CREATE TABLE hibernate_sequence (
 );
 
 --------------------------------------------------------------------
+What is a Transaction?
+Transaction in Hibernate or Spring refers to a set of operations that are executed as a single unit of work.
+Think of it like this: If you are transferring money from one account to another, the entire process (debit from one account and credit to another) 
+should either complete fully or not happen at all. This ensures data consistency.
+Example of a transaction:
+Begin Transaction: Start the money transfer.
+Perform Operations: Deduct money from Account A and add it to Account B.
+Commit Transaction: Save these changes permanently.
+Rollback Transaction: If something goes wrong (e.g., system crash), undo all changes.
+In Hibernate or Spring:
+
+Transactions ensure that database operations (like save, update, or delete) are consistent and reliable.
+It uses ACID properties (Atomicity, Consistency, Isolation, Durability) to maintain integrity.
+What is a Session?
+A Session is like a connection between your application and the database in Hibernate.
+Imagine it as a workspace where you can perform operations like adding, reading, or modifying data before saving changes to the database.
+Key Points:
+A Session is short-lived and represents a single unit of work with the database.
+It acts as a bridge between the application and the database for interacting with data.
+How They Work Together:
+A Session is opened to interact with the database.
+Within the Session, you start a Transaction to perform one or more database operations (like saving or deleting objects).
+You commit or rollback the Transaction depending on whether the operations were successful or not.
+Finally, the Session is closed.
+
+---------------------------------------------------------------------------------------
 
 
 
