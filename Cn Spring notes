@@ -798,7 +798,23 @@ How does it work?
 Configuration: You tell Hibernate how your Java class corresponds to the database table using an XML file or annotations in the code.
 Session: Hibernate uses a Session to connect to the database and perform operations like save, update, delete, etc.
 ------------------------------------------------------------------------
+@Entity
+In Spring Boot, the @Entity annotation is used to map a Java class to a database table. This annotation comes from JPA (Java Persistence API),
+which is a part of the Hibernate framework (used for ORM - Object Relational Mapping).
+Key Points:
 
+    What does @Entity do?
+        It tells Hibernate (or JPA) that this class is a database entity, meaning it will correspond to a table in the database.
+
+    Requirements:
+        The class must have a no-argument constructor (default constructor).
+        The class must have a primary key, annotated with @Id.
+        The fields of the class will be mapped to the columns of the table.
+
+    Database Table Name:
+        By default, the table name will be the same as the class name. You can customize it using the @Table annotation.
+
+------------------------------------------------------------------------
 
 
 
