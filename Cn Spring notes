@@ -816,6 +816,31 @@ Key Points:
 
 ------------------------------------------------------------------------
 
+@Table(name = "student")
+This tells Hibernate, "This Java class is mapped to a database table called student."
+Example: If your class is called Student, Hibernate knows it corresponds to the student table in the database.
+
+ @Column
+This tells Hibernate, "This field in the Java class should be treated as a column in the database table."
+If you don’t specify anything inside @Column, Hibernate will use the field name (e.g., name, age) as the column name.
+Example:
+java
+Copy code
+@Column
+private String name; 
+Hibernate maps the name field in your Java class to a column named name in the database.
+
+
+@Id
+This marks a field as the primary key of the table.
+Hibernate uses this field to uniquely identify each row in the database.
+4. @GeneratedValue(strategy = GenerationType.AUTO)
+This tells Hibernate, "Automatically generate values for the primary key."
+The strategy = GenerationType.AUTO means:
+Hibernate will decide how to generate the primary key values (e.g., using a sequence, an auto-increment field, etc.), depending on the database you’re using.
+Example: If you insert a new row, Hibernate will automatically assign an ID like 1, 2, 3, and so on.
+
+----------------------------------------------------------
 
 
 
