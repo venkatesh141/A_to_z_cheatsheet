@@ -914,8 +914,45 @@ You commit or rollback the Transaction depending on whether the operations were 
 Finally, the Session is closed.
 
 ---------------------------------------------------------------------------------------
+What does @Transactional do?
 
+When you annotate a method or class with @Transactional, Spring:
 
+    Begins a transaction when the method starts.
+    Commits the transaction if the method completes successfully.
+    Rolls back the transaction if an exception occurs.
 
+This helps prevent partial updates in the database.
 
+---------------------------------------------------------------------------------------
+public void save(Student student) {
+    // TODO Auto-generated method stub
+    Session session = entityManager.unwrap(Session.class);
+    session.save(student);
+}
+Explanation:
+Method Purpose:
+This method is used to save a Student object into the database.
+When you call this method and pass a Student object, it will insert the details of the student into the database table.
+Session session = entityManager.unwrap(Session.class);:
+The entityManager is a JPA EntityManager object used to manage database operations in Java Persistence API (JPA).
+unwrap(Session.class) is a way to convert the EntityManager into a Hibernate Session.
+Hibernate's Session provides more advanced database operations, like saving, updating, or deleting data, which are not always directly available in JPA.
+This step essentially gives you access to Hibernate's Session, which is required to work directly with Hibernate methods like save().
+session.save(student);:
+The save() method is a Hibernate-specific method that:
+Takes the Student object (an instance of a Java class).
+Converts it into a database record (a row in the Student table).
+Inserts the data into the database.
+For example, if your Student object contains name="John" and age=20, Hibernate will generate an INSERT SQL query to store this data in the Student table.
+How it Works:
+You call this save() method with a Student object.
+The EntityManager is converted to a Hibernate Session.
+Hibernate uses its save() method to generate and execute an INSERT SQL query.
+The Student data gets stored in the database.
+Why is EntityManager.unwrap(Session.class) Used?
+In some cases, you may want to use Hibernate-specific features, like save() or update(), which are not part of JPA.
+To access these features, you need to "unwrap" the EntityManager into a Hibernate Session.
+
+---------------------------------------------------------------
 
