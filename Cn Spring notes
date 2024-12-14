@@ -841,6 +841,53 @@ Hibernate will decide how to generate the primary key values (e.g., using a sequ
 Example: If you insert a new row, Hibernate will automatically assign an ID like 1, 2, 3, and so on.
 
 ----------------------------------------------------------
+1. AUTO
+What it does: Hibernate decides the best generation strategy based on the database being used.
+How it works:
+It could use IDENTITY, SEQUENCE, or TABLE depending on the database.
+Example: For MySQL, it might use IDENTITY; for Oracle, it might use SEQUENCE.
+2. IDENTITY
+What it does: The database handles ID generation by automatically incrementing the primary key.
+How it works:
+For each new row, the database automatically generates a unique ID (e.g., 1, 2, 3).
+When to use: When your database supports auto-increment columns (e.g., MySQL, SQL Server).
+Example:
+sql
+Copy code
+CREATE TABLE student (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50)
+);
+3. SEQUENCE
+What it does: Uses a database sequence to generate IDs.
+How it works:
+A sequence is a special database object that generates unique values.
+Hibernate uses the sequence to get the next value for the ID.
+When to use: When your database supports sequences (e.g., Oracle, PostgreSQL).
+Example:
+sql
+Copy code
+CREATE SEQUENCE student_seq START WITH 1 INCREMENT BY 1;
+CREATE TABLE student (
+    id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+Hibernate will fetch the next value from student_seq for each new row.
+4. TABLE
+What it does: Creates a separate table to store and manage the IDs.
+How it works:
+A special table is created (e.g., hibernate_sequence) where Hibernate keeps track of the next ID value.
+For every new row, Hibernate updates this table to get and increment the ID.
+When to use: When your database doesn't support auto-increment or sequences.
+Example:
+sql
+Copy code
+CREATE TABLE hibernate_sequence (
+    sequence_name VARCHAR(50) PRIMARY KEY,
+    next_val INT
+);
+
+--------------------------------------------------------------------
 
 
 
