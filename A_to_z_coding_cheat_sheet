@@ -1873,6 +1873,27 @@ reverse pairs
 ----------------------trust the process you will definitely win
 
 question 62 (needs to be completed by some other problem)
+public class SlidingWindow {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int k = 3; // Window size
+
+        printSlidingWindows(arr, k);
+    }
+
+    public static void printSlidingWindows(int[] arr, int k) {
+        int n = arr.length;
+
+        // Loop through each window start position
+        for (int i = 0; i <= n - k; i++) {
+            for (int j = i; j < i + k; j++) {
+                System.out.print(arr[j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
 ----------------------trust the process you will definitely win
 question 63 coding ninjas
 binary search based problem so array should be sorted
