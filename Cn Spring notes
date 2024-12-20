@@ -988,7 +988,22 @@ A dialect is like a translator that Hibernate uses to generate database-specific
 Every database (e.g., MySQL, Oracle, PostgreSQL) has its own rules and syntax for SQL queries.
 The Hibernate Dialect tells Hibernate how to write SQL in the "language" that a specific database understands.
 ---------------------------------------------------------------------------
+Query Method
 
+In Hibernate, the createQuery method is used to write HQL (Hibernate Query Language) or JPQL (Java Persistence Query Language) queries. 
+It allows us to retrieve or manipulate data in the database.
+
+Here’s a step-by-step explanation with an example:
+
+Step 1: What is createQuery?
+createQuery is used to create a query object to execute HQL, 
+which is similar to SQL but operates on entity objects instead of database tables.
+
+Step 2: How does it work?
+Write the HQL query: HQL is written based on the entity class and its fields, not on database table names or columns.
+Execute the query: Once the query is created, you execute it to get the result.
+
+---------------------------------------------------------------------------
 
 
 
