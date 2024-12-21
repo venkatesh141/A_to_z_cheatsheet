@@ -1006,6 +1006,35 @@ Execute the query: Once the query is created, you execute it to get the result.
 ---------------------------------------------------------------------------
 
 
+Session session = entityManager.unwrap(Session.class);
+List<Event> allEvents = session.createQuery("select v from Event v ", Event.class).getResultList();
+return allEvents;
+
+entityManager.unwrap(Session.class)
+The entityManager is a JPA (Java Persistence API) object used to interact with the database.
+JPA doesn't directly expose all methods of the Hibernate Session (which is more powerful).
+The unwrap(Session.class) method converts the entityManager into a Hibernate Session, so you can use Hibernate-specific features like createQuery.
+2. session.createQuery("select v from Event v", Event.class)
+This creates a query to fetch data from the Event table in the database.
+"select v from Event v":
+This is JPQL (Java Persistence Query Language), which is similar to SQL but works with entities (Java objects) instead of database tables.
+It says: "Select all rows from the Event table and map them to the Event class."
+v: This is an alias (temporary name) for each row in the query result.
+3. .getResultList()
+This method executes the query and retrieves the results as a list of Event objects.
+Each row in the database is converted into an instance of the Event class.
+4. return allEvents
+Finally, the method returns the list of all events fetched from the database.
+Full Explanation in Simple Words
+You are taking the entityManager and converting it into a Hibernate Session to use its advanced query features.
+You write a query to fetch all rows from the Event table.
+Each row is converted into an Event object and stored in a list.
+The list of Event objects is returned to the caller.
+
+
+---------------------------------------------------------------------------
+
+
 
 
 
