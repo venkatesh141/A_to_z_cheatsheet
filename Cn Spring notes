@@ -118,17 +118,46 @@ In Spring, @Qualifier works with @Autowired to solve a specific problem:
 
 What if there are multiple beans of the same type?
 @Qualifier tells Spring which specific bean to inject when there’s more than one option.
+How It Works in Code
 
-   @Component
-public class PaidCourse implements Course {
-	String courseName;
-	@Autowired
-	@Qualifier("javaInstructor")
-	Instructor courseInstructor;
-	@Autowired
-	UserList userList;
-// additional methods
+Example Without @Qualifier:
+java
+
+public interface cake {}
+Copy code
+@Component
+public class ChocolateCake implements Cake {}
+
+@Component
+public class VanillaCake implements Cake {}
+
+@Service
+public class CakeService {
+    @Autowired
+    private Cake cake; // ERROR: Spring doesn't know which cake to inject!
 }
+
+
+Example With @Qualifier:
+java
+Copy code
+@Component("chocolateCake")
+public class ChocolateCake {}
+
+@Component("vanillaCake")
+public class VanillaCake {}
+
+@Service
+public class CakeService {
+    @Autowired
+    @Qualifier("chocolateCake") // Specify which bean to inject.
+    private Cake cake;
+}
+
+
+Here, Spring knows to inject the ChocolateCake bean into CakeService.
+
+
 Confusion happens when:
 Multiple beans have the same type (directly or via a parent class/interface).
 Spring needs a way to know which bean to inject.
