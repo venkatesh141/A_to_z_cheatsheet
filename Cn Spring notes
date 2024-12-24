@@ -1109,6 +1109,28 @@ The list of Event objects is returned to the caller.
 
 
 ---------------------------------------------------------------------------
+One to One realtionship in hibernate
+
+
+class Item
+{
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private ItemDetails itemDetails;
+}
+
+@OneToOne:
+
+This annotation indicates a one-to-one relationship between the current class and the ItemDetails class.
+It means each instance of this class is linked to exactly one instance of the ItemDetails class, and vice versa.
+cascade = CascadeType.ALL:
+
+The cascade option means any operation (like save, delete, or update) performed on this entity will also be applied to the related ItemDetails object.
+For example, if you save or delete this entity, its itemDetails will also be saved or deleted automatically.
+
+
+---------------------------------------------------------------------------
+
 
 
 
