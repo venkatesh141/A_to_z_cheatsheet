@@ -1128,6 +1128,20 @@ cascade = CascadeType.ALL:
 The cascade option means any operation (like save, delete, or update) performed on this entity will also be applied to the related ItemDetails object.
 For example, if you save or delete this entity, its itemDetails will also be saved or deleted automatically.
 
+ 
+
+@OneToOne(mappedBy ="itemDetails",cascade = CascadeType.ALL)
+	private Item item;
+
+@OneToOne(mappedBy = "itemDetails"):
+
+This means that this relationship is mapped by the itemDetails field in the Item class.
+The Item class is the owner of the relationship, and this side (the current class) is the inverse/child side.
+In simple terms, the Item class "controls" how the relationship works, and this field is just referencing it.
+cascade = CascadeType.ALL:
+
+Any operation (save, update, delete, etc.) performed on this class will also cascade to the linked Item object.
+
 
 ---------------------------------------------------------------------------
 
