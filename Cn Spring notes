@@ -1144,7 +1144,19 @@ Any operation (save, update, delete, etc.) performed on this class will also cas
 
 
 ---------------------------------------------------------------------------
+@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	private PaymentDetails paymentDetails;
 
+
+In simple terms, fetch = FetchType.EAGER means that whenever you retrieve an object
+ of the parent class (for example, the object containing PaymentDetails), the associated PaymentDetails 
+ object will also be fetched from the database immediately and loaded into memory.
+
+Eager fetching: The related object (PaymentDetails in this case) is fetched right away when the parent object is retrieved.
+Example:
+Suppose you retrieve a User object that has a PaymentDetails field.
+With FetchType.EAGER, the PaymentDetails object is automatically loaded at the same time as the User object, even if you don’t explicitly access paymentDetails.
+--------------------------------------------------------------------
 
 
 
