@@ -1156,8 +1156,50 @@ Eager fetching: The related object (PaymentDetails in this case) is fetched righ
 Example:
 Suppose you retrieve a User object that has a PaymentDetails field.
 With FetchType.EAGER, the PaymentDetails object is automatically loaded at the same time as the User object, even if you don’t explicitly access paymentDetails.
---------------------------------------------------------------------
 
+--------------------------------------------------------------------
+@OneToMany(mappedBy= "item",cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<ItemReview> itemReview;
+	
+	
+
+
+	@ManyToOne
+	@JoinColumn(name="item_id")
+	@JsonBackReference
+	private Item item;
+	
+
+2. Breaking down the annotations:
+For @OneToMany in Item:
+@OneToMany(mappedBy= "item"):
+
+It means one Item is related to many ItemReviews.
+The mappedBy = "item" tells that the item field in the ItemReview class manages this relationship.
+cascade = CascadeType.ALL:
+
+Any changes (save, delete, update) made to Item will cascade to its related ItemReviews.
+@JsonManagedReference:
+
+Helps avoid infinite recursion when converting objects to JSON (used in APIs). This annotation marks the parent side (Item is the parent here).
+private List<ItemReview> itemReview;:
+
+A list of all reviews related to this Item.
+For @ManyToOne in ItemReview:
+@ManyToOne:
+
+Many ItemReviews are related to one Item.
+@JoinColumn(name="item_id"):
+
+Specifies that the foreign key column in the ItemReview table is called item_id, linking it to the Item.
+@JsonBackReference:
+
+Helps avoid infinite recursion when converting objects to JSON. This marks the child side (ItemReview is the child here).
+private Item item;:
+
+Links each ItemReview to a specific Item.
+-------------------------------------------------------------------------------
 
 
 
