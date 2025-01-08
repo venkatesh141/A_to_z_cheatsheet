@@ -1330,6 +1330,30 @@ When Is It Used?
 
 
 -----------------------------------------------------------------------
+Status codes in a REST API are numbers that tell you whether a request was successful or if there was an issue. Here’s a simple breakdown:
+
+1xx: Informational
+Rarely used. It means the request is being processed (e.g., 100 Continue).
+2xx: Success
+The request was successful.
+200 OK: Everything worked as expected.
+201 Created: A new resource was created (e.g., after a POST request).
+204 No Content: Request succeeded, but there’s nothing to return.
+3xx: Redirection
+You’re being redirected to a different URL.
+301 Moved Permanently: The resource is at a new URL forever.
+302 Found: Temporary redirection.
+4xx: Client Errors
+There’s something wrong with the request.
+400 Bad Request: The request is invalid (e.g., missing data).
+401 Unauthorized: You need to log in first.
+403 Forbidden: You don’t have permission to access.
+404 Not Found: The resource doesn’t exist.
+5xx: Server Errors
+Something is wrong on the server’s side.
+500 Internal Server Error: General error on the server.
+503 Service Unavailable: The server is down or overloaded.
+---------------------------------------------------------------------------------------------
 
 
 
