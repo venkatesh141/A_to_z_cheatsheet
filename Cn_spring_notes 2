@@ -1,0 +1,7 @@
+Cn Spring boot notes part 2
+
+
+Persistence Explained in Simple Terms
+Persistence means storing data permanently so that it remains available even after the application or system stops running. In programming,
+it ensures that data created or modified by an application is saved in a persistent storage medium like a database, file system, or disk.
+-----------------------------------------------------------------
