@@ -5,3 +5,13 @@ Persistence Explained in Simple Terms
 Persistence means storing data permanently so that it remains available even after the application or system stops running. In programming,
 it ensures that data created or modified by an application is saved in a persistent storage medium like a database, file system, or disk.
 -----------------------------------------------------------------
+In Spring Boot, derived queries refer to methods in Spring Data JPA repositories that automatically generate SQL queries based on the method name. 
+This feature is a part of the Spring Data JPA framework, which allows developers to write database query methods without explicitly writing SQL code.
+
+Derived queries are named methods in repository interfaces that follow a specific naming convention. Spring Data JPA interprets these method names and generates the required query dynamically.
+
+Key Features of Derived Queries:
+Method Naming Convention: The method name defines the query operation (e.g., findBy, readBy, countBy, etc.) and the fields used in the query.
+No Need for Manual SQL: You don't have to write the actual SQL or JPQL query; Spring automatically generates it based on the method name.
+Easy to Use: It simplifies the process of writing basic CRUD and simple conditional queries.
+-------------------------------------------------------------------------------
