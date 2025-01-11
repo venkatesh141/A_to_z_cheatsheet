@@ -14,4 +14,8 @@ Key Features of Derived Queries:
 Method Naming Convention: The method name defines the query operation (e.g., findBy, readBy, countBy, etc.) and the fields used in the query.
 No Need for Manual SQL: You don't have to write the actual SQL or JPQL query; Spring automatically generates it based on the method name.
 Easy to Use: It simplifies the process of writing basic CRUD and simple conditional queries.
--------------------------------------------------------------------------------
+-----------------------------------------------------------------
+Spring Data JPA is a part of the Spring Data project that simplifies the implementation of JPA (Java Persistence API)-based repositories. 
+It provides a consistent way to interact with databases and helps developers focus on business logic 
+by eliminating much of the boilerplate code associated with data access layers.
+--------------------------------------------------------------------------
