@@ -37,6 +37,44 @@ This code is saying:
 "I want to create a way to easily save, update, retrieve, and delete Todo items from the database,
  and I don't need to write the code for these operations manually because Spring will handle it for me."
 -------------------------------------------------------------------------------------------------------------
+1. What is JpaRepository?
+
+    JpaRepository is an interface provided by Spring Data JPA that helps you interact with the database without writing SQL queries.
+    It provides built-in methods like s
+
+    ave(), findById(), findAll(), delete(), etc., to perform basic CRUD operations (Create, Read, Update, Delete).
+    It works with JPA (Java Persistence API), which is a standard for managing database tables as Java objects (called entities).
+
+When you extend JpaRepository, you automatically get all these database-related methods for free.
+2. What does this line mean?
+
+public interface ItemDetailsRepository extends JpaRepository<ItemDetails, Integer>
+
+    ItemDetailsRepository: This is your custom repository interface.
+    extends JpaRepository<ItemDetails, Integer>:
+        ItemDetails: This is the entity class that represents a table in your database.
+        Integer: This is the data type of the primary key in your ItemDetails table (e.g., ID column is of type Integer).
+
+So, this repository interface is linked to your ItemDetails table, and it will let you perform all database operations on this table.
+3. What is a derived query?
+
+Derived queries are methods in Spring Data JPA where you don’t write SQL. Instead, you create a method name that follows certain rules, and Spring automatically generates the query for you.
+Example:
+
+List<ItemDetails> findByPriceGreaterThan(double price);
+
+    Method Name: findByPriceGreaterThan
+        findBy: Means you want to retrieve data.
+        Price: Refers to the column name in your ItemDetails table.
+        GreaterThan: Means you want to find rows where the price is greater than the provided value.
+
+What does it do?
+
+This method will:
+
+    Find all rows in the ItemDetails table where the value of the price column is greater than the value you pass as a parameter.
+    It will return a list of ItemDetails objects.
+------------------------------------------------------------------------
 
 
 
