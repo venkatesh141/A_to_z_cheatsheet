@@ -19,3 +19,27 @@ Spring Data JPA is a part of the Spring Data project that simplifies the impleme
 It provides a consistent way to interact with databases and helps developers focus on business logic 
 by eliminating much of the boilerplate code associated with data access layers.
 --------------------------------------------------------------------------
+	public interface ToDoRepository: This declares an interface named ToDoRepository. It's a way to define how your application will interact with the database to manage Todo objects.
+
+extends CrudRepository<Todo, Long>: This means that ToDoRepository is using the CrudRepository interface provided by Spring Data.
+
+Todo: This is the type of object the repository will manage. It's usually a class representing a table in your database.
+Long: This is the type of the ID field in the Todo class (the primary key).
+Purpose:
+By extending CrudRepository, your ToDoRepository automatically gets basic methods like:
+
+save(Todo entity): Save a Todo object to the database.
+findById(Long id): Find a Todo by its ID.
+findAll(): Get all Todo objects.
+deleteById(Long id): Delete a Todo by its ID.
+In simple terms:
+This code is saying:
+"I want to create a way to easily save, update, retrieve, and delete Todo items from the database,
+ and I don't need to write the code for these operations manually because Spring will handle it for me."
+-------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
