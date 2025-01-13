@@ -75,9 +75,50 @@ This method will:
     Find all rows in the ItemDetails table where the value of the price column is greater than the value you pass as a parameter.
     It will return a list of ItemDetails objects.
 ------------------------------------------------------------------------
+Let me explain these three types of queries in a simple way:
+1. Derived Query
 
+    Derived queries are built automatically by Spring Data JPA based on the method name.
+    You don’t need to write SQL or JPQL; just follow the naming conventions, and Spring will do the rest.
+    Example:
 
+    public interface UserRepository extends JpaRepository<User, Long> {
+        List<User> findByFirstName(String firstName); // Automatically generates a query like: SELECT * FROM users WHERE first_name = ?
+    }
 
+    Key point: No custom query is needed, just method names like findBy, countBy, etc.
+
+2. JPQL (Java Persistence Query Language)
+
+    JPQL is object-oriented. Instead of working with database tables, you write queries using entity names and their fields.
+    Example:
+
+    @Query("SELECT u FROM User u WHERE u.firstName = :firstName")
+    List<User> findUsersByFirstName(@Param("firstName") String firstName);
+
+        Here, User is the entity class, and firstName is the field in the class.
+        JPQL is database-independent, making it portable.
+
+3. Native Query
+
+    Native queries are raw SQL queries written exactly as the database understands them.
+    These queries are specific to the database you are using.
+    Example:
+
+    @Query(value = "SELECT * FROM users WHERE first_name = :firstName", nativeQuery = true)
+    List<User> findUsersByFirstNameNative(@Param("firstName") String firstName);
+
+        You are directly working with table names (users) and column names (first_name).
+
+Key Differences:
+Type	What it uses	When to use
+Derived Query	Method names	When queries are simple and follow common patterns.
+JPQL	Entity and field names	When you want a query that is portable and uses object-oriented concepts.
+Native Query	Raw SQL and table/columns	When you need complex queries or database-specific features not supported by JPQL.
+
+Let me know if you'd like to see more examples!
+
+---------------------------------------------------------------------------------
 
 
 
