@@ -121,4 +121,52 @@ Let me know if you'd like to see more examples!
 ---------------------------------------------------------------------------------
 
 
+	@Query("SELECT c.name FROM Course c where: student MEMBER OF c.students")
+	List<String> getCoursesByStudentId(@Param("student") Student student);
+
+
+This is a Spring Data JPA query used to retrieve a list of course names for a specific student. Let me explain it step by step:
+
+Purpose:
+The query fetches the names of courses that a given student is enrolled in.
+
+Query Explanation:
+
+SELECT c.name FROM Course c:
+This selects the name of all courses (Course is the table or entity name).
+where :student MEMBER OF c.students:
+This checks if the given student (:student) is a member of the students list in a course.
+(The c.students represents the list of students enrolled in that course.)
+Method Explanation:
+
+@Query(...):
+Defines a custom JPQL (Java Persistence Query Language) query.
+@Param("student"):
+Maps the student parameter in the method to the :student placeholder in the query.
+How it works:
+
+You call this method and pass a Student object as input.
+It checks which courses the student belongs to and retrieves their names as a list of strings.
+Example in Action:
+If the database contains:
+
+Course A with students [John, Alice]
+Course B with students [Alice]
+Course C with students [John]
+And you pass a Student object representing "John," the query will return:
+["Course A", "Course C"].
+
+Simplified Analogy:
+Think of Course as a classroom, and students as the people in it.
+This query finds all classrooms where the given student is present and returns their names.
+
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
 
