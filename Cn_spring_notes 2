@@ -201,6 +201,28 @@ List<Item>: The method returns a list of Item objects (mapped to the item table 
 
 
 --------------------------------------------------------------------------------------
+What is JPA?
+JPA (Java Persistence API) is a Java specification that provides a standard way to interact with relational databases in Java applications. It defines a set of rules and interfaces to manage data between Java objects (entities) and a database.
+
+Key Features of JPA:
+Object-Relational Mapping (ORM):
+
+JPA maps Java classes (objects) to database tables.
+Each Java object corresponds to a row in the table, and the fields in the class map to the columns in the table.
+Abstraction:
+
+JPA abstracts away most of the complex SQL operations. Developers can work with objects instead of writing raw SQL for basic CRUD operations.
+Annotations for Configuration:
+
+JPA uses annotations like @Entity, @Table, @Id, and @Column to configure mappings between Java objects and database tables.
+Querying with JPQL:
+
+JPA provides a query language called JPQL (Java Persistence Query Language), which is similar to SQL but operates on Java objects instead of database tables.
+Transaction Management:
+
+JPA integrates with Java's transaction management to handle operations like commit and rollback.
+
+-----------------------------------------------------------------------------------------
 
 
 
