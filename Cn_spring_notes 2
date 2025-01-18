@@ -163,6 +163,46 @@ This query finds all classrooms where the given student is present and returns t
 -------------------------------------------------------------------------------------------------
 
 
+	@Query(value="SELECT * FROM item WHERE description LIKE CONCAT(?1,'%') LIMIT 4",nativeQuery=true)
+	List<Item> getItemByDesc(@Param("desc") String desc);
+
+What does this code do?
+The @Query annotation is used to define a custom SQL query that retrieves a list of items from a database table named item, 
+where the description column starts with a specified value (desc). It limits the result to a maximum of 4 rows.
+
+Breaking it down:
+Annotation:
+
+java
+Copy
+Edit
+@Query
+This annotation is used to write a custom SQL query in a Spring Data JPA repository.
+The nativeQuery=true part means this is a native SQL query (not JPQL).
+SQL Query:
+
+sql
+Copy
+Edit
+SELECT * FROM item WHERE description LIKE CONCAT(?1, '%') LIMIT 4
+SELECT * FROM item: Retrieves all columns of rows from the item table.
+WHERE description LIKE CONCAT(?1, '%'): Filters the rows to include only those where the description starts with the value provided by the first parameter (?1).
+?1: Refers to the first method argument (desc).
+CONCAT(?1, '%'): Combines the input string with the % wildcard, so it matches any value that starts with desc.
+LIMIT 4: Restricts the number of results to a maximum of 4 rows.
+Method Signature:
+
+java
+Copy
+Edit
+List<Item> getItemByDesc(@Param("desc") String desc);
+List<Item>: The method returns a list of Item objects (mapped to the item table in the database).
+@Param("desc"): This binds the method parameter desc to the query's placeholder (?1).
+
+
+--------------------------------------------------------------------------------------
+
+
 
 
 
