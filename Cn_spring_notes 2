@@ -233,6 +233,68 @@ Integration: JPA integrates seamlessly with Spring Framework, making it a prefer
 ---------------------------------------------------------------------------------------------
 
 
+Let’s simplify this!
+
+In Hibernate, @NamedQuery and @NamedNativeQuery are like predefined queries that you can reuse in your code.
+
+1. @NamedQuery
+Think of it as a query written in HQL (Hibernate Query Language), which works with Java objects (entities).
+You don’t write SQL here; instead, you refer to the entity and its fields.
+Example:
+java
+Copy
+Edit
+@NamedQuery(
+    name = "findEmployeeByName",
+    query = "FROM Employee WHERE name = :name"
+)
+This says: "Find all employees whose name matches the given value."
+How to use it:
+
+java
+Copy
+Edit
+TypedQuery<Employee> query = session.createNamedQuery("findEmployeeByName", Employee.class);
+query.setParameter("name", "Venkatesh");
+List<Employee> employees = query.getResultList();
+2. @NamedNativeQuery
+This is for raw SQL queries. You work directly with tables and columns in the database.
+Use this when HQL can’t do what you need, or if the database-specific SQL is required.
+Example:
+java
+Copy
+Edit
+@NamedNativeQuery(
+    name = "findEmployeeByDept",
+    query = "SELECT * FROM employee WHERE department = :dept",
+    resultClass = Employee.class
+)
+This says: "Find all employees from a specific department (e.g., IT)."
+How to use it:
+
+java
+Copy
+Edit
+Query query = session.createNamedQuery("findEmployeeByDept");
+query.setParameter("dept", "IT");
+List<Employee> employees = query.getResultList();
+Difference in Simple Words:
+@NamedQuery:
+
+Works with objects (entities).
+You use field names from your Java class.
+Example: Employee.name
+@NamedNativeQuery:
+
+Works with database tables.
+You use column names from your database.
+Example: employee.name
+If you want to search using objects, use @NamedQuery.
+If you need to run a pure SQL query, use @NamedNativeQuery.
+
+
+-----------------------------------------------------------------------------
+
 
 
 
