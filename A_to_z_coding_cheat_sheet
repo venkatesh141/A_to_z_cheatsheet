@@ -5023,36 +5023,40 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 157   /hard
+question 157   
 leetcode 3 Length of longest sub string without repeating letters.
-public class LongestSubstringBruteForce {
-    // Function to check if all characters in a substring are unique
-    private static boolean allUnique(String s, int start, int end) {
-        boolean[] charSet = new boolean[128]; // Assuming ASCII characters
-        for (int i = start; i <= end; i++) {
-            if (charSet[s.charAt(i)]) {
-                return false; // Duplicate character found
-            }
-            charSet[s.charAt(i)] = true;
-        }
-        return true; // All characters are unique
-    }
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
 
-    public static int lengthOfLongestSubstring(String s) {
-        int maxLength = 0;
-
-        // Try every possible substring
+    int[] lastIndex = new int[128];
+        // Initialize all elements to -1, indicating no occurrence yet
         for (int i = 0; i < s.length(); i++) {
-            for (int j = i; j < s.length(); j++) {
-                // Check if the substring s[i..j] is unique
-                if (allUnique(s, i, j)) {
-                    maxLength = Math.max(maxLength, j - i + 1);
-                }
+            lastIndex[s.charAt(i)] = -1;
+        }
+
+        int maxLength = 0; // To keep track of the maximum length found
+        int start = 0;     // Start index of the current substring window
+
+        // Iterate over each character in the string
+        for (int end = 0; end < s.length(); end++) {
+            char currentChar = s.charAt(end); // Current character
+
+            // If the character was seen and is within the current window
+            if (lastIndex[currentChar] >= start) {
+                // Move the start to the right of the previous occurrence
+                start = lastIndex[currentChar] + 1;
             }
+
+            // Update the last seen index of the current character
+            lastIndex[currentChar] = end;
+
+            // Calculate the length of the current substring and update maxLength
+            maxLength = Math.max(maxLength, end - start + 1);
         }
 
         return maxLength;
     }
+}
 
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
