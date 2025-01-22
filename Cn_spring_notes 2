@@ -294,8 +294,38 @@ If you need to run a pure SQL query, use @NamedNativeQuery.
 
 
 -----------------------------------------------------------------------------
+Spring Security is a framework in Spring that helps secure your application by managing authentication 
+(who you are) and authorization (what you're allowed to do). Here’s a simple explanation:
 
+1. What Spring Security Does:
+Authentication: Confirms the identity of the user (e.g., username and password check).
+Authorization: Decides what actions the authenticated user can perform (e.g., viewing pages or accessing APIs).
+Protects your application from common security risks like:
+Cross-Site Scripting (XSS)
+Cross-Site Request Forgery (CSRF)
+Session Hijacking
+2. How It Works:
+Filters: Spring Security uses a chain of filters to intercept requests. For example:
+Checks if the user is logged in.
+Confirms if the user has permission to access the resource.
+User Details: It verifies user credentials against stored data (e.g., a database).
+Roles and Permissions: You can assign roles like ADMIN or USER and allow access based on these roles.
+3. Basic Features:
+Login and Logout: Adds default login and logout pages.
+Password Management: Handles secure storage and validation of passwords.
+URL Protection: Allows you to restrict certain URLs (e.g., /admin is only for admins).
+Custom Security Rules: Lets you define custom rules like "Users can only access their own data."
+4. Simple Example:
+Imagine you’re building a banking website:
 
+Authentication: Users must log in with a valid username and password.
+Authorization: Only users with the "Manager" role can view all accounts. Regular users can only see their own account.
+5. Key Terms to Know:
+@EnableWebSecurity: Activates Spring Security in your application.
+WebSecurityConfigurerAdapter: A class where you define your security rules.
+CSRF Protection: Prevents attackers from making unauthorized actions on behalf of a logged-in user.
+
+------------------------------------------------------------------------------
 
 
 
