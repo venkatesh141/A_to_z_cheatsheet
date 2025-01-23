@@ -354,6 +354,28 @@ Session Invalidity:
 
 If the user logs out or the session expires, Spring Security invalidates the session to ensure the user is logged out.
 ------------------------------------------------------------------------------------------
+Remember ME
+The "Remember Me" feature in Spring Security allows users to stay logged in even after they close their browser or their session expires. Here's a simple explanation:
+
+How It Works:
+Without "Remember Me":
+
+When the session ends (like when you close the browser), the user has to log in again.
+With "Remember Me":
+
+When the user selects "Remember Me" (usually a checkbox), Spring Security stores their login details securely. Even if the session ends or the browser is closed, the user will stay logged in.
+Key Steps:
+Token Generation:
+
+When the user logs in and selects "Remember Me," Spring Security generates a unique token tied to their account.
+Token Storage:
+
+The token is stored in a cookie on the user's browser.
+Token Validation:
+
+When the user revisits the site, Spring Security checks the cookie. If the token is valid, it automatically logs the user in.
+
+-----------------------------------------------------------------------------------
 
 
 
