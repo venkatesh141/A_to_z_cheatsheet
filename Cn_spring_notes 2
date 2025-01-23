@@ -451,20 +451,34 @@ Why it’s important:
 
 Easier for users (fewer passwords to remember).
 Safer for apps (they don’t store your passwords).
-3. OpenID Connect (OIDC)
-What it is:
-It’s like OAuth but with more focus on verifying your identity (who you are).
+3.What is OpenID Connect?
+OpenID Connect is a way to confirm who you are when logging into an application.
+It's built on top of OAuth 2.0 but focuses on identity verification.
+Imagine This Scenario:
+You want to log in to an online shopping site (like Amazon). Instead of creating a new account, you click "Log in with Google." Here's what happens:
 
-OAuth is about granting access to resources (like files or data).
-OpenID Connect extends OAuth to also verify your identity (authentication).
-Example (Login with Google):
+Redirect to Google:
 
-When you log in with Google, OpenID Connect helps the app confirm you are who you claim to be.
-It sends a token (called an ID token) that contains your details (like your name, email, and profile picture).
-The app uses this token to trust your identity.
-Why it’s important:
+The shopping site redirects you to Google’s login page.
+You enter your Google username and password.
+Google Confirms Your Identity:
 
-Adds a layer of identity verification while using OAuth.
+After you log in, Google generates an ID token that includes details like:
+Your name.
+Your email address.
+A unique user ID.
+Send Back to the Shopping Site:
+
+Google sends the ID token back to the shopping site.
+The shopping site verifies the token to ensure it came from Google and confirms you are who you claim to be.
+Logged In:
+
+You’re logged into the shopping site without creating a separate account.
+Key Terms in OpenID Connect:
+ID Token: A digital “proof” from the identity provider (e.g., Google) that says, “This is John Doe.”
+Identity Provider: The trusted service (e.g., Google, Facebook) that verifies your identity.
+Relying Party: The app or website (e.g., Amazon) that uses OpenID Connect to log you in.
+
 4. Integrate with Other Frameworks
 What it means:
 You can combine Spring Security with other frameworks like React, Angular, or any backend system to secure the whole application.
