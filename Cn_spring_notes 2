@@ -376,6 +376,35 @@ Token Validation:
 When the user revisits the site, Spring Security checks the cookie. If the token is valid, it automatically logs the user in.
 
 -----------------------------------------------------------------------------------
+CSRF protection in Spring Security ensures that malicious websites can't trick a logged-in user into performing unwanted actions on your web application. Here's a simple explanation:
+
+What is CSRF?
+CSRF (Cross-Site Request Forgery) is an attack where an attacker tricks a user into performing actions (like transferring money or changing a password) on a website where they're logged in.
+For example:
+You're logged into your bank's website in one browser tab.
+An attacker tricks you into clicking a malicious link in another tab or email.
+That link secretly sends a request to your bank to transfer money, using your login session.
+How CSRF Protection Works:
+CSRF Token:
+
+Spring Security generates a random, unique CSRF token for each user session.
+This token is included in every form or request sent by the user to the server.
+Token Verification:
+
+When the server receives a request, it checks if the CSRF token in the request matches the one stored for the user session.
+If the token is missing or incorrect, the server rejects the request.
+Steps in Spring Security:
+Token Generation:
+
+When a user loads a page with a form, Spring Security adds a hidden CSRF token to the form.
+Token Submission:
+
+When the user submits the form, the token is sent along with the request.
+Token Validation:
+
+The server validates the token. If it's valid, the request is processed. If not, it's rejected.
+
+--------------------------------------------------------------------------------------------------------
 
 
 
