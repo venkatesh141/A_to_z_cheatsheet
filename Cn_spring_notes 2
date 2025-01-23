@@ -378,6 +378,21 @@ When the user revisits the site, Spring Security checks the cookie. If the token
 -----------------------------------------------------------------------------------
 CSRF protection in Spring Security ensures that malicious websites can't trick a logged-in user into performing unwanted actions on your web application. Here's a simple explanation:
 
+Without CSRF Protection:
+You are logged into your Amazon account in one browser tab.
+An attacker tricks you into clicking a fake link or opening a malicious website.
+Example: The malicious link might look like this:
+
+If Amazon doesn’t have CSRF protection, this fake link could place an order on your behalf without your consent (because you're already logged in).
+With CSRF Protection:
+When you log in to Amazon, the server gives your browser a CSRF token (a secret code).
+This token is unique to your session.
+When you add items to your cart or place an order, Amazon includes this token in every request.
+If a fake website or link tries to make a request (like placing an order), it won’t have the CSRF token.
+Amazon checks for the token, sees it’s missing or invalid, and blocks the request.
+
+
+
 What is CSRF?
 CSRF (Cross-Site Request Forgery) is an attack where an attacker tricks a user into performing actions (like transferring money or changing a password) on a website where they're logged in.
 For example:
