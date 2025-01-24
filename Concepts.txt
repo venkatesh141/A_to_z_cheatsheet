@@ -858,9 +858,23 @@ You don’t need to delete things yourself. Garbage Collector does the cleanup.
 You only focus on writing the code. Java handles most memory tasks automatically.
 
 ------------------------------------------------------------------
-        
+Server
+
+server
+In technical terms:
+
+A server stores and manages data, files, or resources.
+It listens for requests from clients (like a browser or app) and responds with what they need, like a webpage, a file, or some data.
       
-  
+  server
+In technical terms:
+
+A server is like a powerful computer that provides services or information to other computers, called clients, over a network (like the internet).
+
+
+A server stores and manages data, files, or resources.
+It listens for requests from clients (like a browser or app) and responds with what they need, like a webpage, a file, or some data.
+---------------------------------------------------------------------
 
 
 
