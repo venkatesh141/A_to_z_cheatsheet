@@ -492,9 +492,16 @@ The user can now access secure features like their profile or order history.
 Why it’s important:
 You can secure modern, multi-layered applications while allowing smooth integration between frontend and backend.
 
-
-
 ------------------------------------------------------------------------------------
+In Spring Boot, @Param is used to pass values into queries when you are writing custom database queries in a repository.
+
+Think of it like this:
+If you have a query that needs extra information (like filtering by a name or ID), @Param allows you to pass that information to the query.
+---------------------------------------------------------------------------------------
+
+
+
+
 
 
 
