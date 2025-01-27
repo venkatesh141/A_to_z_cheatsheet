@@ -46,6 +46,14 @@ Does this help? Let me know if you need more details! 😊
 
 
 --------------------------------------------------------------
+
+The @Bean annotation in Spring is used to tell the Spring framework that a
+method will return an object (a bean) that should be registered in the Spring ApplicationContext.
+
+This allows Spring to manage the lifecycle of the object, such as instantiating it, injecting dependencies, and sharing it across the application.
+
+
+--------------------------------------------------------------
 Here's a simple comparison of Spring and Spring Boot:
 
 Spring Framework:
