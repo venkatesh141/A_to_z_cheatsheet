@@ -528,6 +528,44 @@ You send this badge every time you make a request. The server checks your badge 
 🛑 Risk: If someone steals your badge, they can use it until it expires.
 
 
+1. OAuth (Open Authorization)
+Imagine you want to play a game on your phone, but instead of creating a new account, the game gives you an option to "Login with Google" or "Login with Facebook."
+
+What happens:
+You click "Login with Google."
+Google asks you, "Do you allow this game to use your account?"
+If you say yes, Google tells the game, "This is Venkatesh, and he is logged in."
+The game never gets your Google password, only permission to access your account.
+Simple idea: OAuth lets you use another account (like Google) to log in safely without sharing your password.
+
+2. OpenID Connect (OIDC)
+OpenID Connect is just like OAuth but with extra details.
+
+Imagine you log in with Google again, but now the app also needs to know:
+
+Your name
+Your email address
+Maybe even your profile picture
+OpenID Connect adds this extra information to the process, so the app knows more about you.
+
+Simple idea: OpenID Connect is OAuth with extra personal information like your name or email.
+
+3. LDAP (Lightweight Directory Access Protocol)
+Imagine you work in a big company. The company gives you one login (username and password) that works for:
+
+Your email
+Your office computer
+Company apps (like HR systems)
+How does this work?
+
+The company has a big directory (like a phonebook) where it stores all employee usernames and passwords.
+Whenever you log in to any system, it checks this central directory to confirm who you are.
+Simple idea: LDAP is like a company phonebook that manages logins for all employees in one place.
+
+
+----------------------------------------------------------------------------------------------
+
+
 
 
 
