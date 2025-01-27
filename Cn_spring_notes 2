@@ -498,6 +498,45 @@ In Spring Boot, @Param is used to pass values into queries when you are writing 
 Think of it like this:
 If you have a query that needs extra information (like filtering by a name or ID), @Param allows you to pass that information to the query.
 ---------------------------------------------------------------------------------------
+1. HTTP Basic Authentication
+Imagine you go to a secure office. Every time you want to enter, you must tell the guard your name and password.
+The guard checks the information and lets you in if it's correct.
+
+How it works:
+Your name and password (like a username and password in coding) are sent every single time you make a request to the server.
+🛑 Risk: If someone sees your name and password, they can pretend to be you.
+2. Form-Based Authentication
+Now, let’s say you go to the same secure office, but this time you fill out a login form at the entrance.
+Once you are logged in, the office gives you a pass (like a session ID or cookie).
+Now, instead of telling your name and password again, you just show the pass every time you want to enter.
+
+How it works:
+You fill out a login form (username and password), and the server gives you a pass (session ID).
+For future requests, you don’t send your username and password again. You just show your pass.
+🛑 Risk: If someone steals your pass, they can enter the office.
+3. JWT Authentication (JSON Web Token)
+This is like getting a badge from the secure office after you log in.
+The badge not only proves who you are but also contains some extra information about you (e.g., your role: employee, manager, etc.).
+You show this badge every time you want to enter. The guard checks the badge to ensure it’s real and valid.
+
+How it works:
+After logging in, the server gives you a special badge (JWT). This badge has:
+Your identity (e.g., username).
+Some other details (e.g., your role or permissions).
+An expiry date.
+You send this badge every time you make a request. The server checks your badge to allow or deny access.
+🛑 Risk: If someone steals your badge, they can use it until it expires.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
