@@ -1479,6 +1479,106 @@ Let me know if you want examples or need help setting it up!
 
 
 
+You said:
+@Bean
+	public UserDetailsService users()
+	{
+		UserDetails user1 = User.builder()
+				.username("tony")
+				.password(passwordEncoder().encode("password"))
+				.roles("NORMAL")
+				.build();
+		
+		UserDetails user2 = User.builder()
+				.username("steve")
+				.password(passwordEncoder().encode("nopassword"))
+				.roles("NORMAL")
+				.build();
+		
+		return new InMemoryUserDetailsManager(user1,user2);
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder()
+	{
+		return new BCryptPasswordEncoder();
+	}
+
+
+explain me in a simple form these two functions one by one 
+ChatGPT said:
+ChatGPT
+
+Let me explain these two functions step by step and in simple words:
+1. users() Method
+
+    This function is responsible for creating user details and storing them in memory for authentication purposes.
+    It acts as your user database, but instead of a real database (like MySQL), the users are stored in memory.
+
+Key Points:
+
+    UserDetails:
+        UserDetails represents a user's data (username, password, and roles).
+        It is used by Spring Security to authenticate the user.
+
+    User.builder():
+        It's a helper class to create a user object easily.
+        username(): Sets the user's name (e.g., "tony", "steve").
+        password(): Sets the user's password (the password is encoded for security).
+        roles(): Sets the user's role (e.g., "NORMAL").
+
+    InMemoryUserDetailsManager:
+        This is like a fake "database" that stores the users temporarily in memory.
+        It holds the user1 and user2 created above.
+
+What Happens:
+
+    You're creating two users:
+        tony with password "password" and role "NORMAL".
+        steve with password "nopassword" and role "NORMAL".
+    These users are stored in memory so Spring Security can authenticate them.
+
+2. passwordEncoder() Method
+
+    This function provides a password encoder to encode passwords securely.
+    It ensures that passwords are not stored as plain text (which would be a big security risk).
+
+Key Points:
+
+    BCryptPasswordEncoder:
+        It is a strong and widely used encryption algorithm to encode passwords.
+        It automatically adds random "salt" to passwords, making them very hard to crack.
+
+    Why Encoding is Needed:
+        When a user logs in, their raw password (e.g., "password") is encoded, and then Spring compares it to the encoded password stored for that user.
+        This ensures that even if someone gets access to your stored passwords, they won't see the actual passwords.
+
+What Happens:
+
+    Whenever you set a password for a user (passwordEncoder().encode()), it gets encrypted using BCrypt.
+    During login, Spring Security will use this encoder to check if the entered password matches the stored one.
+
+How These Two Functions Work Together:
+
+    users() creates users:
+        Example:
+            Username: tony, Password: encoded version of "password", Role: "NORMAL".
+    passwordEncoder() secures passwords:
+        The raw password is encoded before being saved.
+        During authentication, the entered password is encoded again and matched with the saved encoded password.
+    Authentication Flow:
+        When someone logs in as tony with password "password", Spring Security:
+            Encodes "password".
+            Matches the encoded version with the one stored in memory.
+            If they match, the user is authenticated.
+
+
+
+
+-----------------------------------------------------------------------------------------------------------
+
+
+
 
 
 
