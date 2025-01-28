@@ -914,6 +914,12 @@ anyRequest().authenticated(): Protects all pages. You can modify it to allow pub
 
 -----------------------------------------------------------------------------------------------------------------
 
+The @ResponseStatus(HttpStatus.OK) is like telling Spring Boot, "Always send back the HTTP 200 OK status when this API is called."
+
+What is HTTP 200 OK?
+It's a code that means "Everything is fine, your request worked!"
+-----------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
