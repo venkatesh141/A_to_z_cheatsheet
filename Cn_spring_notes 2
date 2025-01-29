@@ -921,6 +921,55 @@ It's a code that means "Everything is fine, your request worked!"
 -----------------------------------------------------------------------------------------------------------------------------------
 
 
+Basic authentication and ant matchers
+Basic authentication is a way to secure your application where the user must provide a username and password to access certain resources.
+
+    When a user tries to access a secured page, the browser asks for a username and password.
+    The credentials are sent in encoded format (Base64) in the request header.
+    The server checks if the credentials are valid.
+        If valid → access is granted.
+        If invalid → access is denied.
+        
+        
+Ant Matchers (Simple Explanation)
+
+Ant matchers are URL patterns used in Spring Security to define which URLs are protected and which are public.
+Examples:
+
+    Allow Public Access to Some URLs
+
+http
+    .authorizeHttpRequests(auth -> auth
+        .requestMatchers("/public/**").permitAll() // Anyone can access URLs starting with /public/
+        .anyRequest().authenticated() // Other requests need authentication
+    )
+    .httpBasic();
+
+    "/public/**" → Any URL starting with /public/ is accessible without login.
+    anyRequest().authenticated() → All other URLs require authentication.
+
+Restrict Access to Admin Users
+
+    http
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/admin/**").hasRole("ADMIN") // Only users with ADMIN role can access
+            .anyRequest().authenticated()
+        )
+        .httpBasic();
+
+        "/admin/**" → Only users with the ADMIN role can access URLs starting with /admin/.
+
+Key Takeaways
+
+✅ Basic Authentication → Users need a username & password to access secured resources.
+✅ Ant
+
+Matchers → Used to define which URLs are protected and who can access them.
+
+Would you like a real-world scenario or code example based on your needs? 😊
+
+--------------------------------------------------------------------------------------------------
+
 
 
 
