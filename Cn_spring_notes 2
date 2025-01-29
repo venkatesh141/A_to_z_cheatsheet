@@ -969,6 +969,74 @@ Matchers → Used to define which URLs are protected and who can access them.
 Would you like a real-world scenario or code example based on your needs? 😊
 
 --------------------------------------------------------------------------------------------------
+1️⃣ @Bean Annotation
+
+@Bean
+
+    This tells Spring that the method returns a Spring-managed object (bean).
+    In this case, it returns a SecurityFilterChain, which defines security rules.
+
+2️⃣ Creating the Security Filter Chain
+
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception 
+
+    This method sets up security rules using HttpSecurity.
+    It controls access to different parts of the application.
+
+3️⃣ Disabling CSRF
+
+http.csrf().disable()
+
+    CSRF (Cross-Site Request Forgery) is a security feature.
+    It is disabled here, meaning the app won’t check for CSRF attacks.
+    This is needed for APIs (like REST APIs) but should be enabled for web apps with forms.
+
+4️⃣ Defining Access Rules
+
+.authorizeHttpRequests()
+
+    This means, "Decide who can access which URLs."
+
+4.1 Restricting Access to "/hotel/"**
+
+.antMatchers("/hotel/**").hasRole("ADMIN")
+
+    Any URL starting with /hotel/ can only be accessed by users with the "ADMIN" role.
+    Example:
+        ✅ /hotel/rooms → Only ADMIN can access.
+        ✅ /hotel/bookings → Only ADMIN can access.
+        ❌ /home → This is not affected by this rule.
+
+4.2 Restricting All Other URLs
+
+.anyRequest().authenticated()
+
+    All other URLs require login.
+    Example:
+        ✅ /dashboard → Allowed if the user is logged in.
+        ✅ /profile → Allowed if the user is logged in.
+
+5️⃣ Enabling Basic Authentication
+
+.and().httpBasic();
+
+    This enables Basic Authentication, which means:
+        When a user tries to access a protected page, a popup appears asking for username and password.
+        Credentials are sent in the request as Base64-encoded text.
+
+6️⃣ Returning the Security Configuration
+
+return http.build();
+
+    This applies the security settings and makes them active in the application.
+
+Final Summary
+
+✔ CSRF disabled (useful for APIs).
+✔ "/hotel/" can only be accessed by users with the "ADMIN" role**.
+✔ All other URLs require login.
+✔ Basic authentication is used (browser asks for username & password).
+
 
 
 
