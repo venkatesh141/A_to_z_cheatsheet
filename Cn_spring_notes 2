@@ -1036,7 +1036,110 @@ Final Summary
 ✔ "/hotel/" can only be accessed by users with the "ADMIN" role**.
 ✔ All other URLs require login.
 ✔ Basic authentication is used (browser asks for username & password).
+--------------------------------------------------------------------------------------------
+Here's your Spring Security configuration in a simple and well-formatted way:
 
+@Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http.csrf().disable() // Disable CSRF (useful for APIs)
+        .authorizeHttpRequests() // Define access rules
+        .antMatchers("/hotel/**").hasRole("ADMIN") // Only ADMIN can access /hotel/** URLs
+        .anyRequest().authenticated() // All other URLs require login
+        .and()
+        .httpBasic(); // Enable Basic Authentication (browser popup for username/password)
+
+    return http.build(); // Apply and return security configuration
+}
+
+This code:
+✅ Disables CSRF (useful for REST APIs).
+✅ Restricts "/hotel/" to ADMIN users only**.
+✅ Requires authentication for all other URLs.
+✅ Uses Basic Authentication (username & password popup).
+
+Would you like a test case to check this security in action? 🚀
+
+explain me in a simple form 
+ChatGPT said:
+ChatGPT
+Simple Explanation of the Code 😊
+
+This code is a security setup for a Spring Boot application. It decides who can access which URLs.
+Step-by-Step Breakdown:
+
+1️⃣ Disables CSRF:
+
+http.csrf().disable()
+
+    CSRF protection is turned off (useful for APIs).
+
+2️⃣ Defines Access Rules:
+
+.authorizeHttpRequests()
+
+    This means "Set rules for different URLs."
+
+3️⃣ Restricts Access to "/hotel/" URLs:**
+
+.antMatchers("/hotel/**").hasRole("ADMIN")
+
+    Only users with the "ADMIN" role can access URLs starting with /hotel/.
+        ✅ /hotel/rooms → Only ADMIN can access.
+        ✅ /hotel/bookings → Only ADMIN can access.
+        ❌ /home → This rule does not affect it.
+
+4️⃣ Requires Login for All Other URLs:
+
+.anyRequest().authenticated()
+
+    All other pages require login (any user can log in).
+        ✅ /dashboard → Allowed if the user is logged in.
+        ✅ /profile → Allowed if the user is logged in.
+
+5️⃣ Enables Basic Authentication:
+
+.and().httpBasic();
+
+    When a user tries to access a protected page, a popup appears asking for a username & password.
+
+6️⃣ Applies the Security Configuration:
+
+return http.build();
+
+    This makes the security settings active.
+
+Simple Summary:
+
+✔ "/hotel/" → Only ADMIN users can access.
+✔ Other URLs → Any logged-in user can access.
+✔ Uses Basic Authentication (browser popup asks for username & password).
+✔ CSRF is disabled (useful for APIs).
+
+------------------------------------------------------------------------------------------------
+@EnableGlobalMethodSecurity(prePostEnabled = true) is an annotation in Spring Security that allows you to use method-level security with @PreAuthorize and @PostAuthorize annotations.
+Simple Explanation:
+
+    Security at the Method Level
+        Instead of securing an entire application, you can secure individual methods.
+        Example: Allow only admins to call a method.
+
+    What does prePostEnabled = true do?
+        It enables @PreAuthorize (check before method runs) and @PostAuthorize (check after method runs).
+
+    Example Usage:
+
+    @PreAuthorize("hasRole('ADMIN')")
+    public void deleteUser() {
+        System.out.println("User deleted");
+    }
+
+        Only users with the ADMIN role can call deleteUser().
+
+    Why use it?
+        It helps control access to methods based on roles/permissions.
+
+Let me know if you need a simpler breakdown! 😊
+-------------------------------------------------------------------------------------------
 
 
 
