@@ -1578,6 +1578,109 @@ How These Two Functions Work Together:
 -----------------------------------------------------------------------------------------------------------
 
 
+1. @Qualifier
+When multiple beans of the same type exist, Spring doesn't know which one to use.
+@Qualifier helps select the correct bean.
+
+🔹 Example:
+Imagine you have two teachers: MathTeacher and ScienceTeacher, but you need only the MathTeacher.
+
+java
+Copy
+Edit
+@Component("mathTeacher")
+class MathTeacher implements Teacher {
+    public void teach() { System.out.println("Teaching Math"); }
+}
+
+@Component("scienceTeacher")
+class ScienceTeacher implements Teacher {
+    public void teach() { System.out.println("Teaching Science"); }
+}
+
+@Component
+class School {
+    private Teacher teacher;
+
+    @Autowired
+    public School(@Qualifier("mathTeacher") Teacher teacher) { // Selecting MathTeacher
+        this.teacher = teacher;
+    }
+
+    public void startClass() {
+        teacher.teach();
+    }
+}
+🔹 Key Point: @Qualifier("beanName") tells which bean to use.
+
+2. @Scope
+Defines how long a bean should exist.
+
+🔹 Common scopes:
+
+singleton → (default) only one instance in the entire application.
+prototype → a new instance every time it's requested.
+🔹 Example:
+
+java
+Copy
+Edit
+@Component
+@Scope("prototype") // A new object is created every time
+class Student {
+    public Student() { System.out.println("New Student Created"); }
+}
+🔹 Key Point: @Scope("prototype") ensures that each time you request a bean, a new instance is created.
+
+3. @PostConstruct
+Runs after the object is created.
+
+🔹 Example:
+
+java
+Copy
+Edit
+@Component
+class Library {
+    @PostConstruct
+    public void setup() {
+        System.out.println("Library is ready to use");
+    }
+}
+📌 When the Library object is created, "Library is ready to use" is printed.
+
+🔹 Key Point: Useful for initial setup (e.g., opening a database connection).
+
+4. @PreDestroy
+Runs before the object is destroyed.
+
+🔹 Example:
+
+java
+Copy
+Edit
+@Component
+class Library {
+    @PreDestroy
+    public void cleanup() {
+        System.out.println("Library is closing");
+    }
+}
+📌 Before Library is destroyed, "Library is closing" is printed.
+
+🔹 Key Point: Useful for cleanup tasks (e.g., closing database connections).
+
+Summary:
+Annotation	Purpose
+@Qualifier	Chooses which bean to use when multiple exist.
+@Scope	Defines how long a bean exists (singleton, prototype, etc.).
+@PostConstruct	Runs after object creation (for setup tasks).
+@PreDestroy	Runs before object is destroyed (for cleanup tasks)
+
+
+---------------------------------------------------------------------------------------------------
+
+
 
 
 
