@@ -1216,6 +1216,43 @@ Set expiration times for tokens to prevent unauthorized access.
 
 -----------------------------------------------------------------------------------------------------------------
 
+In Spring Boot, @Data is a Lombok annotation that automatically generates boilerplate code for Java classes. It is commonly used in entity classes, DTOs, and model classes to reduce manual coding.
+
+What does @Data do?
+When you add @Data to a class, Lombok automatically generates:
+✅ Getters for all fields
+✅ Setters for all fields
+✅ toString() method
+✅ equals() and hashCode() methods
+✅ A no-argument constructor (if no other constructor is present)
+
+
+
+Let's break down RequestEntity<Employee> and RequestEntity<List<Employee>> in simple terms:
+
+What is RequestEntity?
+RequestEntity is a class in Spring used to represent HTTP requests with both the body and the headers. It’s used when you want to send a complete HTTP request (including the body, headers, and method type like GET, POST, etc.) to an API.
+
+RequestEntity<Employee>
+When you use RequestEntity<Employee>, you're creating a request where:
+
+Employee is the type of object in the body of the request. It could be a single employee object (like Employee class) that you want to send to the server.
+RequestEntity<Employee> indicates that the request body will contain a single Employee object.
+
+
+
+Method: POST
+URL: /addEmployee
+Headers: {
+    "Content-Type": "application/json"
+}
+Body: {
+    "name": "John Doe",
+    "age": 30,
+    "position": "Developer"
+}
+---------------------------------------------------------------------------------------------
+
 
 
 
