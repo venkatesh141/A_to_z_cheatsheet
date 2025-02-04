@@ -1187,7 +1187,34 @@ If the token expires, the user needs to log in again.
 -------------------------------------------------------------------------------------------------------------------
 
 
+Persistence of Credentials (Simple Explanation)
+🔹 What does it mean?
+Persistence of credentials means storing a user's login details so they don’t have to enter them every time they use the app.
 
+🔹 Where can credentials be stored?
+
+Database → Stores hashed passwords for long-term login.
+Session Storage → Temporary storage; lost when the browser is closed.
+Local Storage → Stored in the browser; remains even after closing the browser.
+Cookies → Stored in the browser and sent with requests to keep the user logged in.
+🔹 How does it work?
+
+User logs in and enters credentials (email & password).
+The server verifies and creates a session token or JWT token.
+The token is stored (in cookies, local storage, or a database).
+When the user visits again, the app automatically logs them in using the stored token.
+🔹 Why is it needed?
+
+So users don’t have to log in every time.
+Improves user experience.
+Helps in remember me features.
+🔹 Security Considerations
+
+Always hash passwords before storing them in a database.
+Use HTTP-only cookies for storing JWT tokens securely.
+Set expiration times for tokens to prevent unauthorized access.
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 
