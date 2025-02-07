@@ -897,7 +897,27 @@ Let's break it down in a simple way:
 
 
 -------------------------------------------------------------------------------------------------
+In Java, String is immutable, which means once you create a String object, you cannot change its value. If you try to modify it, Java creates a new String object instead of changing the original one.
 
+Simple Reasons Why String is Immutable:
+Security:
+
+String is often used in security-sensitive areas like passwords, file paths, and URLs.
+If String was mutable, someone could change your password or file path in memory, which is a security risk.
+String Pool Optimization:
+
+Java stores String objects in a special area called the String Pool to save memory.
+If String was mutable, changing one reference would change all references, leading to unexpected bugs.
+Thread Safety:
+
+Since String is immutable, multiple threads can use the same String object without any synchronization issues.
+This makes Java programs more efficient in multi-threading.
+Hashcode Caching:
+
+String objects are used as keys in HashMap.
+Since they don’t change, their hashcode remains constant, improving performance in data structures.
+
+--------------------------------------------------------------------------------------------------------------
 
 
 
