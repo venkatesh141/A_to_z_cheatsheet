@@ -1252,7 +1252,65 @@ Body: {
     "position": "Developer"
 }
 ---------------------------------------------------------------------------------------------
+@EnableGlobalMethodSecurity(prePostEnabled = true) is an annotation in Spring Security that allows you to use method-level security.
 
+Breaking it down simply:
+@EnableGlobalMethodSecurity → This enables security at the method level.
+prePostEnabled = true → This allows you to use @PreAuthorize and @PostAuthorize annotations on methods.
+What does it do?
+With this enabled, you can control access to methods based on user roles or conditions.
+
+Example:
+java
+Copy
+Edit
+@PreAuthorize("hasRole('ADMIN')")
+public void deleteUser() {
+    System.out.println("User deleted!");
+}
+This method will only execute if the user has the ADMIN role.
+If a non-admin user tries to call deleteUser(), Spring Security will block access.
+In short:
+It activates method-level security, so you can restrict access to methods using @PreAuthorize and @PostAuthorize.
+
+
+
+
+
+
+
+
+You said:
+@PostAuthorize meaning
+ChatGPT said:
+@PostAuthorize in Simple Terms
+@PostAuthorize is used after a method has executed. It checks the return value of the method and decides whether to allow or deny access.
+
+How It Works:
+The method executes first.
+The return value is checked to see if the user has the required permissions.
+If the condition is not met, access is denied (even though the method already ran).
+Example:
+java
+Copy
+Edit
+@PostAuthorize("returnObject.owner == authentication.name")
+public Order getOrder(int orderId) {
+    return orderService.findById(orderId);
+}
+Explanation:
+The method getOrder() runs and returns an Order object.
+After execution, Spring Security checks if the logged-in user (authentication.name) is the owner of the order (returnObject.owner).
+If the user is not the owner, access is denied.
+When to Use @PostAuthorize?
+When you need to check access based on the return value.
+Example: A user can only see their own data, not others'.
+🔹 Key difference from @PreAuthorize:
+
+@PreAuthorize → Checks before method execution.
+@PostAuthorize → Checks after method execution.
+
+-----------------------------------------------------------------------------------------------------
 
 
 
