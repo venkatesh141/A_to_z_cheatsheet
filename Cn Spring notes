@@ -1425,7 +1425,8 @@ Custom Queries	Varies based on the module (e.g., MongoDB query syntax).	Uses JPQ
 --------------------------------------------------------------------------------------
 
 Understanding Repositories in Spring Data
-In Spring Data, repositories are interfaces that let you perform database operations (like save, update, delete, and fetch) without writing SQL queries. Different repository types add different levels of functionality. Let's break them down:
+In Spring Data, repositories are interfaces that let you perform database operations 
+(like save, update, delete, and fetch) without writing SQL queries. Different repository types add different levels of functionality. Let's break them down:
 
 1. Repository
 Base Interface:
