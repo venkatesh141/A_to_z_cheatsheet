@@ -1559,6 +1559,59 @@ How These Two Functions Work Together:
 
 
 
+1. Security Configuration (HotelSecurityConfig)
+
+This class configures security settings for your application.
+
+    Disables CSRF: .csrf().disable() (This is usually done for simplicity in APIs)
+    Allows User Registration Without Login: .antMatchers("/user/register").permitAll()
+    Requires Authentication for Other Requests: .anyRequest().authenticated()
+    Uses Basic Authentication: .httpBasic()
+    Defines Password Encoding: Uses BCryptPasswordEncoder to securely store passwords.
+    Provides AuthenticationManager: This is needed for authentication.
+
+2. User Model (User.java)
+
+This represents the users table in the database.
+
+    Has Fields: id, username, password
+    Defines Many-to-Many Relationship with Roles (Each user can have multiple roles)
+    Implements UserDetails Interface:
+        getAuthorities(): Returns user roles.
+        Other methods like isAccountNonExpired() always return true (indicating the account is active).
+
+3. User Repository (UserRepository.java)
+
+    This is a database interface to interact with the users table.
+    It provides a method:
+        findByUsername(String username): Finds a user by their username.
+
+4. Custom UserDetailsService (CustomUserDetailsService.java)
+
+    Loads User Details for Authentication
+    If a username is found in the database, it returns the User object.
+    If not, it throws an error: "User Not Found"
+
+5. User Service (UserService.java)
+
+This handles user-related operations like registration.
+
+    Registers a User (createUser())
+        Encrypts the password using BCryptPasswordEncoder
+        Saves the user in the database.
+    Fetches All Users (getAllUsers())
+        Retrieves all users from the database.
+
+How it Works Together
+
+    User tries to register → UserService.createUser() saves them in the database.
+    User tries to log in → CustomUserDetailsService fetches their details.
+    Spring Security checks password using BCryptPasswordEncoder.
+    If authentication succeeds → User can access protected resources.
+---------------------------------------------------------------------------------------------
+
+
+
 
 
 
