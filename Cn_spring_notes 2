@@ -1615,6 +1615,43 @@ Remember Me 1
 https://chatgpt.com/c/67a8a33b-53c8-8001-889b-782b93fec7b9
 
 
+----------------------------------------------------------------------------------------------
+JSON Web Token (JWT) Explained Simply
+A JSON Web Token (JWT) is like a digital ID card that helps verify someone's identity when they access a website or service.
+
+🛠 How It Works
+Login – You enter your username and password.
+Token Creation – The server checks your details and gives you a JWT token (a long string of characters).
+Use the Token – Every time you send a request (like fetching data), you attach this token.
+Verification – The server checks the token to confirm it's really you.
+Access Granted – If valid, the server allows you to proceed.
+🔑 Why Use JWT?
+✅ Secure – No need to send passwords repeatedly.
+✅ Fast – No need to check the database every time.
+✅ Widely Used – Works for websites, mobile apps, and APIs.
+
+🏗 What Does a JWT Look Like?
+A JWT has three parts separated by dots (.):
+
+nginx
+Copy
+Edit
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+.
+eyJ1c2VySWQiOjEyMywidXNlcm5hbWUiOiJqb2huZG9lIn0
+.
+dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+Header – Contains token type and encryption method.
+Payload – Holds user data (like ID and role).
+Signature – Ensures the token is not tampered with.
+🚀 Example Usage
+Logging into a website (e.g., Amazon, Facebook).
+Securely accessing APIs.
+Authentication in mobile apps.
+
+-------------------------------------------------------------------------------------------------------------
+
+
 
 
 
