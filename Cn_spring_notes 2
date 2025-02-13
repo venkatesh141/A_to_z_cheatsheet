@@ -2006,6 +2006,81 @@ getClaimsFromToken(token): Extracts payload (claims) from the token.
 
 --------------------------------------------------------------------------------------------
 
+@Builder Annotation (Simple Explanation)
+What is @Builder?
+@Builder is a Lombok annotation that makes it easy to create objects step by step.
+It is used to avoid writing long constructors and setter methods.
+It follows the Builder Pattern to create objects in a clean and readable way.
+Without @Builder (Normal Object Creation)
+Normally, when we create an object, we use a constructor or setter methods:
+
+java
+Copy
+Edit
+public class User {
+    private String name;
+    private int age;
+    private String email;
+
+    public User(String name, int age, String email) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+}
+
+// Creating an object
+User user = new User("Venkatesh", 25, "venkat@gmail.com");
+Problems:
+
+Difficult to read (parameters in constructor).
+Order matters (you must remember the order of parameters).
+Too many constructors needed if there are optional fields.
+With @Builder (Easier & Cleaner)
+Using @Builder, we can create objects in a simple and readable way.
+
+java
+Copy
+Edit
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class User {
+    private String name;
+    private int age;
+    private String email;
+}
+
+// Creating an object using Builder
+User user = User.builder()
+                .name("Venkatesh")
+                .age(25)
+                .email("venkat@gmail.com")
+                .build();
+Advantages of @Builder
+✅ No need for constructors
+✅ Easy to read and understand
+✅ No need to remember parameter order
+✅ Handles optional fields easily
+
+Example with an optional field:
+
+java
+Copy
+Edit
+User user = User.builder()
+                .name("Venkatesh")
+                .email("venkat@gmail.com") // Age is not set (optional)
+                .build();
+Here, we didn’t set age, but it still works! 🎉
+Where is @Builder Useful?
+When an object has many fields.
+When some fields are optional.
+When we want clean and readable object creation.
+
+---------------------------------------------------------------------------
 
 
 
