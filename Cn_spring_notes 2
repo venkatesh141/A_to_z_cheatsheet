@@ -1777,6 +1777,45 @@ Let me know if you need further simplifications! 😊
 
 
 ------------------------------------------------------------------------------
+Auth controller
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+@RestController: Marks this class as a REST API controller, meaning it handles HTTP requests and returns responses in JSON format.
+@RequestMapping("/auth"): Sets the base URL for all endpoints in this controller. Every API inside this controller will start with /auth.
+Dependency Injection
+java
+Copy
+Edit
+@Autowired
+AuthService authService;
+@Autowired: Injects an instance of AuthService (a service class that handles authentication).
+This allows us to call authService methods without creating an object manually.
+Login API Endpoint
+java
+Copy
+Edit
+@PostMapping("/login")
+public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest jwtRequest)
+{
+	return new ResponseEntity<>(authService.login(jwtRequest), HttpStatus.OK);
+}
+@PostMapping("/login"): This method will handle POST requests sent to /auth/login.
+@RequestBody JwtRequest jwtRequest: This tells Spring Boot to convert the request body (JSON data) into a JwtRequest object.
+ResponseEntity<JwtResponse>: Defines the response type, which is a JwtResponse wrapped in an HTTP response.
+authService.login(jwtRequest): Calls the login() method from AuthService, which handles user authentication.
+new ResponseEntity<>(..., HttpStatus.OK): Returns an HTTP response with:
+The JwtResponse object (which may contain the JWT token).
+HttpStatus.OK (status code 200, meaning success).
+Summary
+This controller handles user login requests.
+When a POST request is sent to /auth/login with a username and password (inside JwtRequest), it:
+Calls authService.login() to process the authentication.
+Returns a JwtResponse (which likely contains a JWT token) with a 200 OK response.
+Let me know if you need more simplifications! 😊
+
+
+-------------------------------------------------------------------------------------------------
 
 
 
