@@ -1905,6 +1905,106 @@ It loads the user details from the database.
 If the token is not expired, the user is authenticated.
 The request continues as an authenticated user.
 -----------------------------------------------------------------------------------------------------------
+JWT authentication helper
+
+Class Declaration
+java
+Copy
+Edit
+@Component
+public class JwtAuthenticationHelper {
+@Component: Marks this class as a Spring-managed bean (so it can be automatically used elsewhere).
+This class helps in:
+Generating JWT tokens.
+Extracting information from JWT tokens.
+Validating JWT tokens.
+Secret Key & Token Validity
+java
+Copy
+Edit
+private String secret = "thisisacodingninjasdemonstrationforsecretkeyinspringsecurityjsonwebtokenauthentication";
+private static final long JWT_TOKEN_VALIDITY = 60 * 60;
+secret: A private key used for encrypting and verifying JWT tokens.
+JWT_TOKEN_VALIDITY: Defines the token validity in seconds (60 minutes).
+Method 1: Extract Username from Token
+java
+Copy
+Edit
+public String getUsernameFromToken(String token) {
+    Claims claims = getClaimsFromToken(token);
+    return claims.getSubject();
+}
+Purpose: Extracts the username (subject) from the given JWT token.
+How it Works:
+Calls getClaimsFromToken(token) to decode the JWT token.
+Retrieves the username (claims.getSubject()) from the token.
+Method 2: Extract Claims (Token Data)
+java
+Copy
+Edit
+public Claims getClaimsFromToken(String token) {
+    Claims claims = Jwts.parserBuilder()
+                        .setSigningKey(secret.getBytes()) // Use secret key for decoding
+                        .build()
+                        .parseClaimsJws(token) // Parse the token
+                        .getBody(); // Get the claims (payload)
+
+    return claims;
+}
+Purpose: Extracts the claims (data) from a JWT token.
+How it Works:
+Uses Jwts.parserBuilder() to create a JWT parser.
+Sets the secret key (setSigningKey(secret.getBytes())).
+Parses the JWT token (parseClaimsJws(token)).
+Extracts the payload data (claims) (getBody()).
+Method 3: Check if Token is Expired
+java
+Copy
+Edit
+public Boolean isTokenExpired(String token) {
+    Claims claims = getClaimsFromToken(token);
+    Date expDate = claims.getExpiration();
+    return expDate.before(new Date());
+}
+Purpose: Checks if the JWT token has expired.
+How it Works:
+Extracts the expiration date from the token (claims.getExpiration()).
+Compares it with the current date (new Date()).
+Returns true if the token has expired.
+Method 4: Generate a JWT Token
+java
+Copy
+Edit
+public String generateToken(UserDetails userDetails) {
+    Map<String, Object> claims = new HashMap<>();
+    
+    return Jwts.builder()
+        .setClaims(claims) // Add extra data (currently empty)
+        .setSubject(userDetails.getUsername()) // Store username
+        .setIssuedAt(new Date(System.currentTimeMillis())) // Token creation time
+        .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000)) // Expiry time
+        .signWith(new SecretKeySpec(secret.getBytes(), SignatureAlgorithm.HS512.getJcaName()), SignatureAlgorithm.HS512) // Sign the token
+        .compact(); // Generate JWT token string
+}
+Purpose: Creates a JWT token for a user.
+How it Works:
+Initializes a claims map (new HashMap<>()), which is currently empty.
+Uses Jwts.builder() to create a JWT.
+Stores:
+Username (setSubject(userDetails.getUsername())).
+Creation time (setIssuedAt(new Date(System.currentTimeMillis()))).
+Expiration time (setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))).
+Signs the token using HMAC-SHA512 (HS512).
+Converts it into a string (compact()).
+Summary
+This class generates, validates, and extracts data from JWT tokens.
+Key methods:
+generateToken(userDetails): Creates a JWT token.
+getUsernameFromToken(token): Extracts username from the token.
+isTokenExpired(token): Checks if the token has expired.
+getClaimsFromToken(token): Extracts payload (claims) from the token.
+
+--------------------------------------------------------------------------------------------
 
 
 
