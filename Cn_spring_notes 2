@@ -2118,6 +2118,27 @@ The client verifies the ID Token to authenticate the user.
 --------------------------------------------------------------------------------------------------------------------
 
 
+Who is the Client in OAuth 2.0 and OIDC?
+The Client is the application that wants to access the user's data on their behalf.
+
+💡 Example:
+
+If you use "Login with Google" on a fitness app, then:
+The fitness app is the Client.
+Google is the Authorization Server.
+You (the user) are the Resource Owner.
+Client in OAuth 2.0 (Authorization)
+The Client requests an access token to fetch user data (e.g., Google Drive files).
+It does not store the user’s password, only the token.
+Client in OIDC (Authentication)
+The Client also receives an ID token (JWT) to verify the user’s identity.
+It ensures that the user is real and logged in.
+Client Types
+Confidential Clients → Secure apps (e.g., backend servers) that can store secrets.
+Public Clients → Mobile/web apps (e.g., React, Android) that cannot store secrets securely.
+------------------------------------------------------------------------------------
+
+
 
 
 
