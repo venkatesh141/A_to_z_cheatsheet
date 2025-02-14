@@ -2082,6 +2082,41 @@ When we want clean and readable object creation.
 
 ---------------------------------------------------------------------------
 
+OAuth 2.0 and OIDC – Technical Explanation in Simple Terms
+1. OAuth 2.0 (Authorization) → "Granting Access"
+OAuth 2.0 is a protocol that allows a third-party app to access a user’s resources without sharing the password. Instead, it issues access tokens.
+
+✅ Key Components:
+
+Resource Owner → The user (e.g., you)
+Client → The third-party app (e.g., a fitness app)
+Authorization Server → The system that grants tokens (e.g., Google, Facebook)
+Resource Server → The API that stores data (e.g., Google Drive API)
+✅ Flow:
+
+User logs in and grants permission.
+The client requests an authorization code from the Authorization Server.
+The Authorization Server issues an access token.
+The client uses the access token to access the user’s data from the Resource Server.
+💡 OAuth 2.0 is used for authorization (What can the app do on behalf of the user?).
+
+2. OpenID Connect (OIDC) → "User Authentication"
+OIDC is an extension of OAuth 2.0 that adds authentication. Along with the access token, it also provides an ID token that confirms the user's identity.
+
+✅ OIDC Adds:
+
+ID Token (JWT format) → Contains user info (name, email, etc.).
+UserInfo Endpoint → Lets apps fetch user details securely.
+✅ Flow:
+
+The user logs in using OAuth 2.0.
+The Authorization Server also returns an ID Token (JWT) along with the access token.
+The client verifies the ID Token to authenticate the user.
+💡 OIDC is used for authentication (Who is the user?).
+
+
+--------------------------------------------------------------------------------------------------------------------
+
 
 
 
