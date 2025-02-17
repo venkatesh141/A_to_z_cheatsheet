@@ -661,7 +661,8 @@ You can check the BindingResult for validation errors and take appropriate actio
 ------------------------------------------------------------------------
 REST template
 
-In Spring, the RestTemplate is a class that makes it easy to communicate with other web services (like APIs). You can think of it as a helper that lets your Java program send HTTP requests and get responses. It is part of Spring's web module.
+In Spring, the RestTemplate is a class that makes it easy to communicate with other web services (like APIs). 
+You can think of it as a helper that lets your Java program send HTTP requests and get responses. It is part of Spring's web module.
 
 What can it do?
 Send HTTP Requests: You can send GET, POST, PUT, DELETE, etc.
