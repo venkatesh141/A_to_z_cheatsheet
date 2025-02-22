@@ -330,3 +330,52 @@ Imagine a restaurant system:
 ---------------------------------------------------------------------------------------
 
 
+Spring Data JPA Queries in Simple Terms
+Spring Data JPA helps you communicate with a database using Java without writing long SQL queries.
+
+1. Basic Queries (Auto-Generated)
+Spring Data JPA automatically creates basic queries based on method names.
+
+Example: Find users by name
+java
+Copy
+Edit
+public interface UserRepository extends JpaRepository<User, Long> {
+    List<User> findByName(String name);  
+}
+✅ No need to write SQL! Just call findByName("John"), and it runs:
+
+sql
+Copy
+Edit
+SELECT * FROM users WHERE name = 'John';
+2. Custom Queries (Using @Query)
+If you need custom queries, use @Query.
+
+Example: Find users older than a certain age
+java
+Copy
+Edit
+@Query("SELECT u FROM User u WHERE u.age > :age")
+List<User> findUsersOlderThan(@Param("age") int age);
+✅ This allows more control over queries.
+
+3. Native SQL Queries (If Needed)
+If you want to write raw SQL, use nativeQuery = true.
+
+Example: Using SQL directly
+java
+Copy
+Edit
+@Query(value = "SELECT * FROM users WHERE email = ?1", nativeQuery = true)
+User findByEmail(String email);
+✅ Use this when working with complex queries or database-specific features.
+
+Summary
+Auto-generated queries → No SQL needed (e.g., findByName(String name))
+Custom JPQL queries → More control with @Query("SELECT u FROM User u WHERE ...")
+Native SQL queries → Direct SQL with nativeQuery = true
+
+-----------------------------------------------------------------------------------
+
+
