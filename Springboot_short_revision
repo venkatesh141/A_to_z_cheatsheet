@@ -98,4 +98,69 @@ OAuth = Allows access to data (Authorization)
 OIDC = Confirms who you are before granting access (Authentication + Authorization)
 -------------------------------------------------------------------------------------
 
+User Persistence & JWT Explained Simply
+
+Imagine you log into a website, and even after refreshing the page, you stay logged in. That’s because of user persistence and JWT (JSON Web Token).
+🔹 What is User Persistence?
+
+👉 User persistence means keeping a user logged in even after a page refresh or app restart.
+
+🔹 Example:
+
+    You log into a website.
+    The site remembers you, so you don’t have to log in again.
+    This happens using cookies, sessions, or tokens (JWT).
+
+🔹 How does it work?
+
+    When you log in, the server stores your session in a database or sends a token (JWT).
+    Every time you open the site, it checks your session/token to keep you logged in.
+
+🔹 What is JWT (JSON Web Token)?
+
+👉 JWT is a secure token that proves your identity.
+
+🔹 Example:
+
+    You log in, and the server gives you a JWT (like a digital ID card).
+    Every time you visit a page, your browser sends this token.
+    The server checks the token to confirm who you are and allows access.
+
+🔹 How JWT Works?
+
+JWT looks like this:
+
+xxxxx.yyyyy.zzzzz
+
+It has 3 parts:
+
+    Header – Type of token & algorithm used.
+    Payload – Your user info (e.g., user ID).
+    Signature – Security key to prevent tampering.
+
+🔹 Example Workflow:
+
+    You log in with your username & password.
+    The server creates a JWT and sends it to you.
+    Your browser stores the JWT (usually in local storage).
+    When you visit a new page, the JWT is sent to the server.
+    The server verifies the JWT and grants access.
+
+🔹 JWT vs. Sessions
+Feature	JWT	Session
+Stored in	Browser (local storage)	Server
+Speed	Faster	Slower
+Scalability	Better for large apps	Works well for small apps
+🔹 When to Use JWT?
+
+✔ Best for APIs and microservices
+✔ When you need a stateless authentication system
+✔ Useful for mobile & web apps
+Final Example in Real Life
+
+    Without JWT: Every time you enter a building, you show your ID to security.
+    With JWT: You get a special access card (JWT), and security just scans it instead of checking your details every time.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
 
