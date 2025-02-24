@@ -1,0 +1,49 @@
+Password Encoding Algorithm (Simple Explanation)
+A password encoding algorithm is a way to convert a password into a secure format so that it cannot be easily read or hacked. This process is known as hashing or encryption.
+
+🔹 Why Encode Passwords?
+Storing plain text passwords is risky.
+If a hacker gets access to the database, they can see all passwords.
+Encoding makes it impossible (or very hard) to get the original password back.
+🔹 How Does It Work?
+User enters a password → Example: "MySecret123"
+Algorithm converts it into a coded format → Example output:
+"sdf3$@1klj!90d83f" (This is unreadable and cannot be reversed)
+This encoded password is stored in the database instead of the original password.
+When the user logs in, their entered password is encoded again and compared with the stored encoded password.
+If both match, access is granted.
+🔹 Common Password Encoding Algorithms
+BCrypt → Secure and slow (prevents fast hacking attacks)
+PBKDF2 → Uses multiple iterations to increase security
+Argon2 → Modern and highly secure (recommended)
+SHA-256 → Fast but less secure (use with salting for better security)
+🔹 Example in Java (Spring Security - BCrypt)
+java
+Copy
+Edit
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+public class PasswordEncodingExample {
+    public static void main(String[] args) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String rawPassword = "MySecret123";
+        String encodedPassword = encoder.encode(rawPassword);
+
+        System.out.println("Encoded Password: " + encodedPassword);
+    }
+}
+✅ Each time you run it, the encoded password will be different (because of salting, which adds random data for security).
+
+🔹 Key Points
+Hashing is one-way → You cannot decode it back to the original password.
+Salting adds random data to prevent attacks.
+Use strong algorithms like BCrypt, PBKDF2, or Argon2 for security.
+Let me know if you need a more detailed explanation! 🚀
+
+
+
+
+
+
+
+
