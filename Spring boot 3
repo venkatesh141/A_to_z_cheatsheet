@@ -91,6 +91,21 @@ Would you like a simple Java example for SSL/TLS? 🚀
 ----------------------------------------------------------------------------------------
 
 
+1️⃣ CSRF (Cross-Site Request Forgery) – Tricking You to Perform an Action
+A CSRF attack happens when a hacker tricks you into performing an unintended action on a website where you are already logged in.
+
+Example:
+You are logged into your bank account (www.bank.com).
+A hacker sends you a malicious link (via email or website).
+When you click the link, it makes a hidden request to www.bank.com/transfer?amount=5000&to=hacker_account.
+Since you are already logged in, the bank thinks you made the request and transfers the money to the hacker.
+✅ Prevention:
+✔ Use CSRF Tokens to verify real user actions.
+✔ Ask for re-authentication (e.g., OTP or password confirmation) for sensitive actions.
+
+---------------------------------------------------------------------------------------------------
+
+
 
 
 
