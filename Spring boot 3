@@ -66,6 +66,35 @@ Common MFA Factors:
 🚫 Prevents unauthorized access
 📱 Used in banking, emails, and social media
 ------------------------------------------------------------------
+1️⃣ Account Lock-Up Policy (Prevents Multiple Wrong Login Attempts)
+This policy locks your account if you enter the wrong password too many times.
+Example: If you enter the wrong password 5 times in a row, your account gets temporarily locked for security reasons.
+Why? To stop hackers from guessing your password repeatedly (Brute Force Attack).
+2️⃣ Password Recovery Policy (Helps You Reset Forgotten Passwords)
+Defines how users can recover or reset their password if they forget it.
+Example:
+Security Questions: "What is your pet's name?"
+OTP Verification: Send a one-time password (OTP) to your email or phone.
+Reset Link: Send a password reset link via email.
+Why? Ensures secure and easy password recovery without exposing accounts to hackers.
+3️⃣ SSL & TLS Encryption (Protects Data During Transmission)
+SSL (Secure Sockets Layer) and TLS (Transport Layer Security) are security protocols 
+that encrypt data when it travels between a user’s browser and a website/server.
+Example:
+Without SSL/TLS: A hacker can see your password when you log in.
+With SSL/TLS: Your password is encrypted (scrambled), making it unreadable for hackers.
+Why? Protects sensitive information like passwords, credit card details, and personal data from hackers.
+✅ Websites with SSL/TLS use 🔒 HTTPS instead of HTTP (e.g., https://www.bank.com).
+
+Would you like a simple Java example for SSL/TLS? 🚀
+
+----------------------------------------------------------------------------------------
+
+
+
+
+
+
 
 
 
