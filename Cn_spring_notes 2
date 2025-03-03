@@ -2204,6 +2204,29 @@ The app allows access based on the tokens.
 --------------------------------------------------------------------------------------------------------
 
 
+Spring DevTools (Development Tools)
+Spring DevTools is a set of tools that help developers speed up their development process. It provides features like:
+
+Automatic Restart – When you make changes to your code and save them, Spring Boot restarts the application automatically so you don't have to stop and start it manually.
+Live Reload – If you change HTML, CSS, or JavaScript files, the browser reloads the page automatically.
+Disable Caching – It turns off caching in development mode so that changes appear instantly.
+Remote Debugging – You can use it to make updates on a remote server and see the changes without restarting.
+👉 Why use it? It makes development faster by reducing the need to restart the application manually.
+
+Spring Boot Actuator
+Spring Boot Actuator is a tool that helps monitor and manage your Spring Boot application. It provides built-in endpoints to check the health and performance of the app.
+
+Key Features:
+Health Check (/actuator/health) – Tells if the app is running fine or has issues.
+Metrics (/actuator/metrics) – Shows details like CPU usage, memory, and requests per second.
+Beans (/actuator/beans) – Lists all the beans (components) in your application.
+Env (/actuator/env) – Shows environment properties like database URLs, port numbers, etc.
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
 
 
 
