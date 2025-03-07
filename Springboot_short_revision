@@ -1,6 +1,7 @@
 What is a Microservice? (Simple Explanation)
 
-A Microservice is like a small, independent part of a bigger application. Instead of building one big system (monolithic architecture), we break it into small, separate services that can work on their own but communicate with each other.
+A Microservice is like a small, independent part of a bigger application. 
+Instead of building one big system (monolithic architecture), we break it into small, separate services that can work on their own but communicate with each other.
 
 Each microservice:
 ✅ Handles only one specific task (like handling users, orders, or payments).
@@ -16,7 +17,8 @@ Imagine an e-commerce website like Amazon. Instead of one large system, we break
 4️⃣ Payment Service – Handles payments and transactions.
 5️⃣ Notification Service – Sends emails and SMS notifications.
 
-Each service has its own database and runs independently. If the payment service fails, customers can still browse products because the product service works separately.
+Each service has its own database and runs independently. 
+If the payment service fails, customers can still browse products because the product service works separately.
 How Do They Communicate?
 
 Microservices talk to each other using REST APIs, messaging queues (like RabbitMQ), or event-driven systems.
