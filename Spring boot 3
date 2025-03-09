@@ -181,6 +181,141 @@ Metrics track system performance.
 Together, they help in fixing problems, improving speed, securing data, and preventing failures. 🚀
 -----------------------------------------------------------------------------------------------------------------
 
+Logging in Simple Terms
+Logging is a way to keep track of what your application is doing. It helps in debugging issues, monitoring the system, and understanding how the application behaves.
+
+1. Different Levels of Logs (Log Levels)
+Logs have different importance levels:
+
+TRACE → Very detailed information (rarely used).
+DEBUG → Useful for developers to debug issues.
+INFO → General information about the application's normal behavior.
+WARN → Something unusual happened, but the application is still running fine.
+ERROR → Something went wrong, but the application is still running.
+FATAL → A critical issue; the application might stop working.
+📌 Example:
+
+java
+Copy
+Edit
+Logger logger = LoggerFactory.getLogger(MyClass.class);
+logger.info("Application started");
+logger.error("Something went wrong");
+2. Hierarchical Nature of Logs
+Logs follow a hierarchy based on package or class names.
+
+For example:
+
+com.app.Main → Parent Logger
+com.app.service.UserService → Child Logger
+com.app.controller.UserController → Child Logger
+If the parent logger is set to INFO, all child loggers will also follow INFO unless they have a different level set.
+
+3. Color Coding of Logs
+Different log levels can have different colors to easily identify them in the console:
+
+INFO → White/Green
+DEBUG → Blue
+WARN → Yellow
+ERROR → Red
+📌 In Spring Boot, you can enable colored logs using:
+
+properties
+Copy
+Edit
+spring.output.ansi.enabled=always
+4. Saving Logs
+Logs can be saved to files for future analysis.
+
+📌 Example: In Spring Boot, add this to application.properties:
+
+properties
+Copy
+Edit
+logging.file.name=app.log
+This will save logs to app.log.
+
+Metrics in Simple Terms
+Metrics help monitor the application’s performance, resource usage, and behavior.
+
+1. Generating Metrics
+Metrics can track things like:
+
+CPU usage
+Memory usage
+Number of requests per second
+Database queries per second
+2. Micrometer (For Metrics in Spring Boot)
+Micrometer is a library that helps collect and send metrics to monitoring systems like Prometheus and Grafana.
+
+📌 Add Micrometer to your Spring Boot project:
+
+xml
+Copy
+Edit
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-core</artifactId>
+    <version>latest-version</version>
+</dependency>
+It automatically collects system metrics (CPU, memory, etc.).
+
+3. Prometheus (Stores Metrics)
+Prometheus collects metrics and stores them in a time-series database.
+
+Your application pushes metrics to Prometheus.
+Prometheus stores and processes them.
+📌 Example Prometheus metric format:
+
+lua
+Copy
+Edit
+http_requests_total{method="GET", status="200"} 100
+This means 100 GET requests were received with status 200.
+
+4. Grafana (Visualizes Metrics)
+Grafana is a tool to visualize Prometheus metrics with beautiful dashboards.
+
+It connects to Prometheus.
+It shows graphs, charts, and alerts.
+📌 Example: A dashboard showing CPU usage over time.
+
+5. Custom Metrics
+You can define your own metrics based on what you want to monitor.
+
+📌 Example: Counting how many times a method is called in a Spring Boot app.
+
+java
+Copy
+Edit
+@RestController
+public class MyController {
+
+    private final Counter requestCounter;
+
+    public MyController(MeterRegistry registry) {
+        this.requestCounter = Counter.builder("custom_requests_total")
+                                     .description("Total requests received")
+                                     .register(registry);
+    }
+
+    @GetMapping("/hello")
+    public String hello() {
+        requestCounter.increment();
+        return "Hello!";
+    }
+}
+Every time /hello is called, custom_requests_total increases.
+You can see this metric in Prometheus & Grafana.
+Summary
+✅ Logging → Tracks what’s happening in your app (INFO, DEBUG, ERROR).
+✅ Micrometer → Collects app performance metrics.
+✅ Prometheus → Stores the collected metrics.
+✅ Grafana → Visualizes and displays metrics in dashboards.
+✅ Custom Metrics → Define your own metrics (e.g., number of API calls).
+
+-----------------------------------------------------------------------------------
+
 
 
 
