@@ -181,69 +181,98 @@ Metrics track system performance.
 Together, they help in fixing problems, improving speed, securing data, and preventing failures. 🚀
 -----------------------------------------------------------------------------------------------------------------
 Different Levels of Logs (Explained Simply)
-Logs help track what’s happening in your application. Different log levels indicate how important the message is.
+Understanding Different Levels of Logs in Detail
+Logging is a way to record important events in your application. It helps in debugging, monitoring, and understanding how your system behaves. Different levels of logging are used based on the importance and severity of the message.
 
-1. TRACE (Very Detailed Logs)
-📌 Used for: Tracking every single step (Too much information).
-📌 When to use? Debugging very complex issues.
-📌 Example:
+1. TRACE (Most Detailed Logging - Too Much Information)
+🔹 What is it?
+TRACE logs contain the most detailed information about the application's execution.
+It records every small step, function call, and variable change.
+🔹 When to Use?
+When you need deep debugging and want to see every execution step.
+For example, if you're trying to track how a value is changing inside a loop.
+🔹 Example Scenario
+Imagine you have a function that calculates the total price of items in a cart. If you enable TRACE, you can see:
+✅ When the function starts.
+✅ What each item’s price is.
+✅ How the total is updated step by step.
 
-java
-Copy
-Edit
-logger.trace("Starting the application...");
-2. DEBUG (Useful for Developers)
-📌 Used for: Debugging and checking values in the code.
-📌 When to use? When you need extra details while fixing issues.
-📌 Example:
+📌 Problem: TRACE logs create too much data, making it hard to read. That’s why it is rarely enabled in production.
 
-java
-Copy
-Edit
-int x = 5;
-logger.debug("Value of x is: " + x);
-3. INFO (General Application Events)
-📌 Used for: Informational messages (Normal flow of the application).
-📌 When to use? Logging important events (e.g., app started, user logged in).
-📌 Example:
+2. DEBUG (Used for Debugging - Useful for Developers)
+🔹 What is it?
+DEBUG logs provide information useful for developers while coding.
+It helps track variable values, function calls, and conditions.
+🔹 When to Use?
+When developing a new feature or fixing a bug.
+When you want to see values inside the code but don’t want excessive data like TRACE.
+🔹 Example Scenario
+You are working on an order placement system. With DEBUG logs enabled, you can track:
+✅ When a user adds an item to the cart.
+✅ The total price before and after tax is applied.
+✅ Whether the discount code is applied correctly.
 
-java
-Copy
-Edit
-logger.info("User logged in successfully");
-4. WARN (Something is Wrong, But App Still Runs)
-📌 Used for: When something unusual happens, but it’s not a critical issue.
-📌 When to use? When there might be a future problem.
-📌 Example:
+📌 Debug logs are usually disabled in production because they expose too much internal information.
 
-java
-Copy
-Edit
-logger.warn("Memory usage is high!");
-5. ERROR (Something Went Wrong!)
-📌 Used for: When an actual error occurs, but the app keeps running.
-📌 When to use? Catching exceptions, database errors, etc.
-📌 Example:
+3. INFO (General Information - Normal Application Behavior)
+🔹 What is it?
+INFO logs track general events in the application that are useful but not required for debugging.
+They give an idea of how the application is working.
+🔹 When to Use?
+When you need a record of key events (e.g., when an application starts or a user logs in).
+These logs help in monitoring but don’t contain detailed debugging data.
+🔹 Example Scenario
+In a banking application, INFO logs can track:
+✅ When a user logs into their account.
+✅ When a transaction is successfully completed.
+✅ When a scheduled job (like generating a monthly statement) starts.
 
-java
-Copy
-Edit
-try {
-    int result = 10 / 0;
-} catch (Exception e) {
-    logger.error("An error occurred: " + e.getMessage());
-}
-6. FATAL (Critical Issue, App Might Crash!)
-📌 Used for: Very serious problems that might stop the application.
-📌 When to use? If the system cannot continue running.
-📌 Example:
+📌 INFO logs are often enabled in production because they help in monitoring system behavior.
 
-java
-Copy
-Edit
-logger.fatal("Database connection failed! Shutting down...");
-(Note: FATAL is not supported in some frameworks like SLF4J.)
+4. WARN (Warning - Something Unusual Happened, But App Still Works)
+🔹 What is it?
+WARN logs indicate potential problems, but they don’t stop the application.
+They act as early warnings for possible future failures.
+🔹 When to Use?
+When something unexpected happens, but the system can recover.
+Example: A database query is slower than expected, but the result is still returned.
+🔹 Example Scenario
+In an e-commerce website, WARN logs might be used for:
+✅ High memory usage – If memory usage is above 80%, log a warning.
+✅ Slow database queries – If a query takes more than 2 seconds, log a warning.
+✅ API rate limits reached – If a user makes too many API requests in a short time.
 
+📌 Warnings don’t stop the application but should be investigated to prevent future failures.
+
+5. ERROR (Something Went Wrong, But the App is Still Running)
+🔹 What is it?
+ERROR logs indicate failures in the application.
+The application continues to run, but an operation has failed.
+🔹 When to Use?
+When something cannot be recovered automatically.
+Example: A failed database connection, an API request failure, or an unexpected user input error.
+🔹 Example Scenario
+In an online payment system, ERROR logs might be triggered when:
+✅ A payment gateway fails to process a transaction.
+✅ A database fails to update an order status.
+✅ An API call to another service fails (e.g., fetching user details from a remote server).
+
+📌 ERROR logs should be monitored closely because they indicate actual failures.
+
+6. FATAL (Critical Failure - App Might Crash!)
+🔹 What is it?
+FATAL logs indicate severe errors that will stop the application.
+The system cannot recover and must be restarted.
+🔹 When to Use?
+When a situation arises where the application cannot function anymore.
+Example: A missing essential configuration file or a complete database failure.
+🔹 Example Scenario
+In a healthcare system managing patient records, a FATAL log might be triggered if:
+✅ The database crashes, and no patient records can be accessed.
+✅ The application loses connection to all services.
+✅ A critical configuration file is missing, making the system unable to start.
+
+📌 FATAL logs are rare but require immediate attention.
 
 
 -----------------------------------------------------------------------------------
