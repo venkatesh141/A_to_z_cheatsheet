@@ -180,6 +180,70 @@ Logging records events and errors.
 Metrics track system performance.
 Together, they help in fixing problems, improving speed, securing data, and preventing failures. 🚀
 -----------------------------------------------------------------------------------------------------------------
+Different Levels of Logs (Explained Simply)
+Logs help track what’s happening in your application. Different log levels indicate how important the message is.
+
+1. TRACE (Very Detailed Logs)
+📌 Used for: Tracking every single step (Too much information).
+📌 When to use? Debugging very complex issues.
+📌 Example:
+
+java
+Copy
+Edit
+logger.trace("Starting the application...");
+2. DEBUG (Useful for Developers)
+📌 Used for: Debugging and checking values in the code.
+📌 When to use? When you need extra details while fixing issues.
+📌 Example:
+
+java
+Copy
+Edit
+int x = 5;
+logger.debug("Value of x is: " + x);
+3. INFO (General Application Events)
+📌 Used for: Informational messages (Normal flow of the application).
+📌 When to use? Logging important events (e.g., app started, user logged in).
+📌 Example:
+
+java
+Copy
+Edit
+logger.info("User logged in successfully");
+4. WARN (Something is Wrong, But App Still Runs)
+📌 Used for: When something unusual happens, but it’s not a critical issue.
+📌 When to use? When there might be a future problem.
+📌 Example:
+
+java
+Copy
+Edit
+logger.warn("Memory usage is high!");
+5. ERROR (Something Went Wrong!)
+📌 Used for: When an actual error occurs, but the app keeps running.
+📌 When to use? Catching exceptions, database errors, etc.
+📌 Example:
+
+java
+Copy
+Edit
+try {
+    int result = 10 / 0;
+} catch (Exception e) {
+    logger.error("An error occurred: " + e.getMessage());
+}
+6. FATAL (Critical Issue, App Might Crash!)
+📌 Used for: Very serious problems that might stop the application.
+📌 When to use? If the system cannot continue running.
+📌 Example:
+
+java
+Copy
+Edit
+logger.fatal("Database connection failed! Shutting down...");
+(Note: FATAL is not supported in some frameworks like SLF4J.)
+
 
 
 -----------------------------------------------------------------------------------
