@@ -151,7 +151,8 @@ How to Stay Safe?
 ---------------------------------------------------------------------------------------------
 
 Logging and Metrics – Simple Explanation
-When you build and run software, you need to track what’s happening inside your system. This helps in identifying issues, improving performance, and ensuring security. Logging and metrics help with this.
+When you build and run software, you need to track what’s happening inside your system. 
+This helps in identifying issues, improving performance, and ensuring security. Logging and metrics help with this.
 
 1. Debugging (Fixing Problems)
 Logging helps track errors in your code.
