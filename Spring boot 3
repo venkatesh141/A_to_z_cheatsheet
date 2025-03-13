@@ -318,6 +318,33 @@ Java Util Logging (JUL)	Built-in logging in Java but less flexible
 
 ---------------------------------------------------------------------------------------------
 
+Here’s a simple explanation of each security consideration:
+
+Sensitive Data Redaction
+
+Never log sensitive information like passwords, API keys, or personal data (PI - Personally Identifiable Information).
+Instead, replace them with ***** or REDACTED in logs.
+Log Level Control
+
+Use different levels for logging: INFO, DEBUG, ERROR, etc.
+Avoid logging sensitive data at DEBUG or INFO levels.
+Log File Access Control
+
+Restrict access to log files.
+Only authorized users should be able to view or modify them.
+Log Rotation and Retention
+
+Logs should not grow indefinitely.
+Rotate (archive and create new logs) and delete old logs after a certain period to avoid storage issues.
+Sanitization of Input
+
+Clean user inputs to remove harmful content before storing in logs.
+This prevents security risks like script injection.
+Protection Against Log Injection
+
+Attackers may insert fake log entries using newline characters (\n) or special characters.
+Escape or filter these characters to ensure logs remain accurate and safe.
+---------------------------------------------------------------------------------------------------
 
 
 
