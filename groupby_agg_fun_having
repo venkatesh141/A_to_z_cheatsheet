@@ -1,0 +1,156 @@
+In SQL, GROUP BY, HAVING, and aggregate functions are used to summarize and filter grouped data. Let’s go through each one in detail.
+ GROUP BY
+
+The GROUP BY clause is used to group rows that have the same values in specified columns into summary rows.
+
+ Example:
+
+SELECT department, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department;
+
+👉 This groups employees by department and calculates the total salary for each department.
+2️⃣ Aggregate Functions
+
+Aggregate functions perform calculations on a set of values and return a single value. Common aggregate functions include:
+Function	Description
+SUM()	Returns the sum of a column.
+AVG()	Returns the average value.
+COUNT()	Returns the number of rows.
+MAX()	Returns the maximum value.
+MIN()	Returns the minimum value.
+
+ Example:
+
+SELECT department, COUNT(*) AS employee_count, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department;
+
+ This counts employees and calculates the average salary for each department.
+ HAVING
+
+The HAVING clause is used to filter groups after aggregation (like WHERE, but for grouped data).
+
+ Example:
+
+SELECT department, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department
+HAVING SUM(salary) > 50000;
+
+ This filters out departments where the total salary is ≤ 50,000.
+ Difference between WHERE and HAVING
+Feature	WHERE	HAVING
+Works on	Individual rows	Grouped data
+Used with	SELECT, UPDATE, DELETE	GROUP BY
+Can filter	Before aggregation	After aggregation
+
+ Example:
+
+-- Filter employees before grouping
+SELECT department, SUM(salary) 
+FROM employees
+WHERE salary > 3000
+GROUP BY department;
+
+-- Filter departments after aggregation
+SELECT department, SUM(salary) 
+FROM employees
+GROUP BY department
+HAVING SUM(salary) > 50000;
+
+ Summary
+
+✔ GROUP BY → Groups rows based on a column.
+✔ Aggregate functions → Used to summarize data (SUM(), AVG(), etc.).
+✔ HAVING → Filters grouped data after aggregation.
+✔ Use WHERE to filter individual rows before grouping.
+
+examples 
+
+
+
+
+ 
+ChatGPT said:
+
+Here are three examples each for GROUP BY, HAVING, and aggregate functions using a sample employees table.
+🔹 Sample Table: employees
+id	name	department	salary	age	city
+1	John	IT	60000	30	New York
+2	Alice	IT	70000	28	Chicago
+3	Bob	HR	50000	35	New York
+4	Eve	HR	55000	40	Chicago
+5	Tom	Sales	45000	32	New York
+6	Rick	Sales	48000	29	Los Angeles
+7	Leo	IT	72000	27	Chicago
+✅ 1. GROUP BY Examples
+📌 Example 1: Grouping by Department
+
+SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department;
+
+👉 Counts the number of employees in each department.
+📌 Example 2: Total Salary by City
+
+SELECT city, SUM(salary) AS total_salary
+FROM employees
+GROUP BY city;
+
+👉 Calculates the total salary paid to employees in each city.
+📌 Example 3: Average Salary by Department
+
+SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department;
+
+👉 Finds the average salary for each department.
+--------------------------------------------------------------------------
+✅ 2. Aggregate Function Examples (SUM(), COUNT(), AVG(), etc.)
+📌 Example 1: Total Salary of All Employees
+
+SELECT SUM(salary) AS total_salary FROM employees;
+
+👉 Calculates the total salary paid to all employees.
+📌 Example 2: Highest and Lowest Salaries
+
+SELECT MAX(salary) AS highest_salary, MIN(salary) AS lowest_salary FROM employees;
+
+👉 Finds the highest and lowest salaries in the company.
+📌 Example 3: Counting Employees Over 30 Years Old
+
+SELECT COUNT(*) AS total_employees FROM employees WHERE age > 30;
+
+👉 Counts how many employees are older than 30.
+-----------------------------------------------------------------
+✅ 3. HAVING Examples
+📌 Example 1: Departments with More than 1 Employee
+
+SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 1;
+
+👉 Filters only departments that have more than one employee.
+📌 Example 2: Departments with Total Salary Above 100000
+
+SELECT department, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department
+HAVING SUM(salary) > 100000;
+
+👉 Displays only departments where the total salary exceeds 100,000.
+📌 Example 3: Cities with an Average Salary Above 50000
+
+SELECT city, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY city
+HAVING AVG(salary) > 50000;
+
+👉 Filters cities where the average salary is greater than 50,000.
+🎯 Summary
+Clause	Purpose	Example Use Case
+GROUP BY	Groups data by a column	Count employees in each department
+Aggregate Functions	Perform calculations on groups	Find total, average, min, max salary
+HAVING	Filters groups after aggregation	Show departments with total salary > 100000
