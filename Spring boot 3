@@ -1,5 +1,6 @@
 Password Encoding Algorithm (Simple Explanation)
-A password encoding algorithm is a way to convert a password into a secure format so that it cannot be easily read or hacked. This process is known as hashing or encryption.
+A password encoding algorithm is a way to convert a password into a secure format so that it cannot be easily read or hacked. 
+This process is known as hashing or encryption.
 
 🔹 Why Encode Passwords?
 Storing plain text passwords is risky.
@@ -105,7 +106,8 @@ Since you are already logged in, the bank thinks you made the request and transf
 
 ---------------------------------------------------------------------------------------------------
 XSS (Cross-Site Scripting) – A Simple Explanation
-🔴 Problem: A hacker injects malicious JavaScript into a website. When someone visits that page, the script runs in their browser and can steal data or take control of their session.
+🔴 Problem: A hacker injects malicious JavaScript into a website. When someone visits that page, the script
+runs in their browser and can steal data or take control of their session.
 
 Imagine This Scenario:
 1️⃣ You visit a website that allows users to post comments.
@@ -183,7 +185,8 @@ Together, they help in fixing problems, improving speed, securing data, and prev
 -----------------------------------------------------------------------------------------------------------------
 Different Levels of Logs (Explained Simply)
 Understanding Different Levels of Logs in Detail
-Logging is a way to record important events in your application. It helps in debugging, monitoring, and understanding how your system behaves. Different levels of logging are used based on the importance and severity of the message.
+Logging is a way to record important events in your application. It helps in debugging, monitoring, and understanding 
+how your system behaves. Different levels of logging are used based on the importance and severity of the message.
 
 1. TRACE (Most Detailed Logging - Too Much Information)
 🔹 What is it?
@@ -281,12 +284,14 @@ In a healthcare system managing patient records, a FATAL log might be triggered 
 
 SLF4J (Simple Logging Facade for Java) - Explained in Simple Terms
 What is SLF4J?
-SLF4J (Simple Logging Facade for Java) is not a logging framework itself. Instead, it acts as a middle layer that allows your application to work with different logging frameworks like:
+SLF4J (Simple Logging Facade for Java) is not a logging framework itself. Instead, it acts as a middle layer that allows your 
+application to work with different logging frameworks like:
 ✅ Log4j
 ✅ Logback
 ✅ Java Util Logging (JUL)
 
-Think of SLF4J as a universal remote control for logs. Instead of directly using a specific logging library (like Log4j), you use SLF4J, and it can redirect logs to any logging system you choose.
+Think of SLF4J as a universal remote control for logs. Instead of directly using a specific logging library (like Log4j), 
+you use SLF4J, and it can redirect logs to any logging system you choose.
 
 Why Use SLF4J? (Benefits)
 ✅ 1. Flexibility
@@ -314,7 +319,8 @@ Logging Framework	Description
 Logback	Modern and powerful logging framework (recommended)
 Log4j 2	An improved version of Log4j with better performance
 Java Util Logging (JUL)	Built-in logging in Java but less flexible
-📌 If you don’t specify a logging framework, SLF4J will use a default no-operation (NOP) implementation, which means logs won’t be recorded anywhere.
+📌 If you don’t specify a logging framework, SLF4J will use a default no-operation (NOP) implementation, which means 
+logs won’t be recorded anywhere.
 
 ---------------------------------------------------------------------------------------------
 
@@ -349,10 +355,12 @@ Escape or filter these characters to ensure logs remain accurate and safe.
 1. JUnit
 
     What is it?
-    JUnit is a framework (set of tools) used in Java programming for writing and running unit tests. It's like a helper that lets you check if individual parts of your code (like functions or methods) are working correctly.
+    JUnit is a framework (set of tools) used in Java programming for writing and running unit tests. It's like a helper that 
+lets you check if individual parts of your code (like functions or methods) are working correctly.
 
     Why is it useful?
-    It helps developers make sure that their code behaves as expected. If a unit test fails, it tells you that something might be wrong in that specific part of your code, which helps in debugging and improving the code.
+    It helps developers make sure that their code behaves as expected. If a unit test fails, it tells you that something 
+might be wrong in that specific part of your code, which helps in debugging and improving the code.
 
     Example:
     If you have a method that adds two numbers, you can write a JUnit test to check if the addition works correctly.
@@ -360,35 +368,48 @@ Escape or filter these characters to ensure logs remain accurate and safe.
 2. Unit Testing
 
     What is it?
-    Unit testing is the process of testing individual pieces of code, usually small parts like functions or methods, to ensure they work correctly in isolation.
+    Unit testing is the process of testing individual pieces of code, usually small parts like functions or methods, to 
+ensure they work correctly in isolation.
 
     Why is it important?
-    Unit testing helps catch problems early. It tests each part of the program on its own before they are integrated with the rest of the system. This ensures that the program works properly as you build it, and it makes the code more reliable.
+    Unit testing helps catch problems early. It tests each part of the program on its own before they are integrated with 
+the rest of the system. This ensures that the program works properly as you build it, and it makes the code more reliable.
 
     Example:
-    You might write a unit test for a method that calculates the area of a rectangle. The test would check if the area is calculated correctly for different inputs.
+    You might write a unit test for a method that calculates the area of a rectangle. The test would check if the area is
+calculated correctly for different inputs.
 
 3. Mockito
 
     What is it?
-    Mockito is a library used in Java to make mock objects. It helps with unit testing by allowing you to create "fake" objects that simulate real dependencies your code interacts with. These mock objects can be used to test your code without needing to rely on real external systems (like databases, APIs, etc.).
+    Mockito is a library used in Java to make mock objects. It helps with unit testing by allowing you to create "fake" 
+objects that simulate real dependencies your code interacts with. These mock objects can be used to test your code without 
+needing to rely on real external systems (like databases, APIs, etc.).
 
     Why is it useful?
-    In real applications, some parts might depend on things like external systems (like a database or a web service). These dependencies might be slow or not available during testing. Mockito allows you to create mock objects for these external systems so that you can test your code in isolation, focusing only on the unit being tested.
+    In real applications, some parts might depend on things like external systems (like a database or a web service).
+These dependencies might be slow or not available during testing. Mockito allows you to create mock objects for these
+external systems so that you can test your code in isolation, focusing only on the unit being tested.
 
     Example:
-    Suppose your code depends on a database to fetch user data. Instead of connecting to a real database during tests, you can use Mockito to create a mock database that returns fake data, allowing you to test how your code handles that data without actually connecting to a database.
+    Suppose your code depends on a database to fetch user data. Instead of connecting to a real database during tests,
+you can use Mockito to create a mock database that returns fake data, allowing you to test how your code handles that data 
+without actually connecting to a database.
 
 4. Integration Testing
 
     What is it?
-    Integration testing is a type of testing where you test how different parts of your application work together. While unit testing focuses on individual pieces, integration testing checks if all the components in the system work together as expected.
+    Integration testing is a type of testing where you test how different parts of your application work together. 
+While unit testing focuses on individual pieces, integration testing checks if all the components in the system work together as expected.
 
     Why is it important?
-    Even if each part of the code works well on its own (thanks to unit testing), they might not work correctly when combined. Integration testing helps ensure that different parts of the program work together smoothly.
+    Even if each part of the code works well on its own (thanks to unit testing), they might not work correctly when combined. 
+Integration testing helps ensure that different parts of the program work together smoothly.
 
     Example:
-    After writing unit tests for a login system (like checking if the password validation works), you would do integration testing to check if the whole login process (front-end and back-end working together) functions properly. For example, checking if a user can log in with the correct username and password and if the system correctly fetches user data from the database.
+    After writing unit tests for a login system (like checking if the password validation works), you would do integration 
+testing to check if the whole login process (front-end and back-end working together) functions properly. For example, checking 
+if a user can log in with the correct username and password and if the system correctly fetches user data from the database.
 
 In Summary:
 
@@ -399,7 +420,72 @@ In Summary:
 -----------------------------------------------------------------------------------------------------------
 
 
+What is this code doing?
+This code is testing a service (StudentsService) that has a method called increementService(). 
+The purpose of these tests is to check if the method works as expected.
 
+1. Mocking a Dependency
+java
+Copy
+StudentsDal studentsDal = Mockito.mock(StudentsDal.class);
+This line is creating a fake version of the StudentsDal class (called a mock). Normally, StudentsDal would 
+talk to a database, but since we don’t need a real database in the test, we create a fake one (mock).
+2. The First Test (shouldTestIncreementService)
+java
+Copy
+@Test
+public void shouldTestIncreementService() {
+    StudentsService studentsService = new StudentsService(studentsDal);
+This is the start of the first test.
+studentsService is the object you're testing. It's created by using the StudentsDal mock you made earlier.
+java
+Copy
+    int num = 0;
+    int result = studentsService.increementService(num);
+Here, you’re calling the method increementService() on studentsService. You pass the number 0 into the method, 
+and you expect the method to add 1 to it.
+The result of that is saved in the result variable.
+java
+Copy
+    Assertions.assertEquals(result, num + 1);
+}
+This line checks if the result is equal to 1 (since num + 1 is 1).
+If result is 1, the test passes. If not, the test fails.
+3. The Second Test (shouldFailTestIncreementService)
+java
+Copy
+@Test
+public void shouldFailTestIncreementService() {
+    StudentsService studentsService = new StudentsService(studentsDal);
+    int num = 0;
+    int result = studentsService.increementService(num);
+    Assertions.assertNotEquals(result, num);
+}
+This is the second test.
+It’s similar to the first one, but here, you’re making sure that the result is not the same as the original number (num), which is 0.
+You expect increementService() to change the number (by adding 1), so result should not be 0.
+If the result is different from 0, the test will pass.
+Summary:
+First test: Checks if the increementService() method increases the number by 1.
+Second test: Checks if the increementService() method changes the number at all (i.e., it shouldn’t stay the same).
+
+============================================================================================================
+What is @SpringBootTest?
+@SpringBootTest is an annotation used in Spring Boot tests. It's used to tell Spring that this test should run 
+with the full application context.
+
+What does that mean?
+Spring Boot has a lot of built-in features that help in building applications (like connecting to databases,
+handling web requests, etc.). When you're testing something in Spring Boot, you might want to test not just one
+part of the code, but the entire application or certain parts of it that interact with each other.
+By adding @SpringBootTest to a test, Spring Boot sets up everything needed to run your test, like it would for 
+the real application. This means it will create the actual objects and beans (like services, repositories, etc.) 
+as if the application were running.
+Why would you use it?
+You use @SpringBootTest when you need:
+
+To test components of your application that need the full Spring context (like services that talk to a database).
+To test how different parts of your application interact together, not just one isolated part.
 
 
 
