@@ -486,7 +486,35 @@ You use @SpringBootTest when you need:
 
 To test components of your application that need the full Spring context (like services that talk to a database).
 To test how different parts of your application interact together, not just one isolated part.
+------------------------------------------------------------------------------------------------------------------------
 
+
+1. Annotations:
+
+    @SpringBootTest: This tells Spring Boot to set up a full application context for testing. It starts the application so that
+the test can interact with the real components (like controllers, services, etc.).
+
+    @AutoConfigureMockMvc: This sets up the MockMvc object, which is used to send HTTP requests to your controller without 
+starting a real server. It's a way to test the API endpoints in isolation.
+
+2. MockMvc:
+
+    MockMvc: It allows you to simulate HTTP requests (like GET, POST) and check the responses. In this case, it's used to test a GET request.
+
+3. Test Method (shouldTestGetStudentsApi):
+
+    @Test: Marks the method as a test method to be executed by the testing framework (like JUnit).
+
+    Inside the method:
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/students/getStudents")): This simulates a GET request to the /students/getStudents
+endpoint.
+
+        .andExpect(MockMvcResultMatchers.status().isOk()): This checks that the response status is 200 (OK), meaning the 
+request was successful.
+
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 
 
