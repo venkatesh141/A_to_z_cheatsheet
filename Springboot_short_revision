@@ -1,7 +1,8 @@
 What is a Microservice? (Simple Explanation)
 
 A Microservice is like a small, independent part of a bigger application. 
-Instead of building one big system (monolithic architecture), we break it into small, separate services that can work on their own but communicate with each other.
+Instead of building one big system (monolithic architecture), we break it into small, separate services
+that can work on their own but communicate with each other.
 
 Each microservice:
 ✅ Handles only one specific task (like handling users, orders, or payments).
@@ -37,7 +38,8 @@ Benefits of Microservices:
 ----------------------------------------------------------------------------------------
 What is JUnit Testing? (Simple Explanation)
 
-JUnit is a testing framework used in Java to test if our code is working correctly. It helps us automate testing instead of manually checking outputs.
+JUnit is a testing framework used in Java to test if our code is working correctly.
+It helps us automate testing instead of manually checking outputs.
 
 🔹 Why use JUnit?
 ✅ Finds bugs early in the development process.
@@ -93,7 +95,8 @@ OIDC (OpenID Connect)
 
 Suppose the gym also needs to verify your identity before allowing entry.
 The receptionist confirms your identity and then gives you the gym access card.
-🔹 OIDC is built on OAuth but adds authentication (identity verification). It’s used when apps need to know who you are, not just access data.
+🔹 OIDC is built on OAuth but adds authentication (identity verification). It’s used when apps need to know who you are, 
+not just access data.
 
 Key Difference
 OAuth = Allows access to data (Authorization)
@@ -102,7 +105,8 @@ OIDC = Confirms who you are before granting access (Authentication + Authorizati
 
 User Persistence & JWT Explained Simply
 
-Imagine you log into a website, and even after refreshing the page, you stay logged in. That’s because of user persistence and JWT (JSON Web Token).
+Imagine you log into a website, and even after refreshing the page, you stay logged in. 
+That’s because of user persistence and JWT (JSON Web Token).
 🔹 What is User Persistence?
 
 👉 User persistence means keeping a user logged in even after a page refresh or app restart.
@@ -418,13 +422,17 @@ Think of Hibernate and Spring Data JPA like ordering food at a restaurant. 🍽�
 
 🔹 Hibernate vs Spring Data JPA
 Feature	Hibernate	Spring Data JPA
-Definition	A framework for managing database operations using Java objects.	A library built on top of JPA that simplifies database operations.
+Definition	A framework for managing database operations using Java objects.	
+A library built on top of JPA that simplifies database operations.
 Complexity	More complex (requires manual configuration).	Simpler (less code, handles setup automatically).
 Query Writing	Uses HQL (Hibernate Query Language) & Criteria API.	Uses built-in methods (like findById()), reducing manual query writing.
 Code Length	Requires more code (manually creating sessions, transactions, etc.).	Requires less code (handles database setup automatically).
-Boilerplate Code	More boilerplate code (session handling, entity management).	Less boilerplate code (Spring Data JPA provides built-in repository methods).
-Performance	Can be optimized manually for performance.	Uses Hibernate internally but optimizes queries automatically.
-Use Case	When you need full control over database operations.	When you want to save time by automating common database tasks.
+Boilerplate Code	More boilerplate code (session handling, entity management).	
+Less boilerplate code (Spring Data JPA provides built-in repository methods).
+Performance	Can be optimized manually for performance.	
+Uses Hibernate internally but optimizes queries automatically.
+Use Case	When you need full control over database operations.	
+When you want to save time by automating common database tasks.
 
 ---------------------------------------------------------------------------------------
 
