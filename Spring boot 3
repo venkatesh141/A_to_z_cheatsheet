@@ -709,6 +709,22 @@ it may differ between the student object and the saved resultStudent.
 .isEqualTo(student): Finally, this checks that the resultStudent object is equivalent to the original student object, ignoring the sid.
 
 -------------------------------------------------------
+@RequiredArgsConstructor
+This is a Lombok annotation used in Java.
+
+It automatically generates a constructor with required arguments (for all final fields and fields with @NonNull).
+
+Instead of manually writing the constructor, Lombok creates it for you.
+
+
+
+2️⃣ @Slf4j
+This is also a Lombok annotation.
+
+It automatically creates a logger for the class using SLF4J (Simple Logging Facade for Java).
+
+You don’t need to manually create the logger object.
+---------------------------------------------------------------------------------------------
 
 
 
