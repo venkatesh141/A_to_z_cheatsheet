@@ -425,8 +425,10 @@ Feature	Hibernate	Spring Data JPA
 Definition	A framework for managing database operations using Java objects.	
 A library built on top of JPA that simplifies database operations.
 Complexity	More complex (requires manual configuration).	Simpler (less code, handles setup automatically).
-Query Writing	Uses HQL (Hibernate Query Language) & Criteria API.	Uses built-in methods (like findById()), reducing manual query writing.
-Code Length	Requires more code (manually creating sessions, transactions, etc.).	Requires less code (handles database setup automatically).
+Query Writing	Uses HQL (Hibernate Query Language) & Criteria API.	Uses built-in methods (like findById()), 
+reducing manual query writing.
+Code Length	Requires more code (manually creating sessions, transactions, etc.).
+Requires less code (handles database setup automatically).
 Boilerplate Code	More boilerplate code (session handling, entity management).	
 Less boilerplate code (Spring Data JPA provides built-in repository methods).
 Performance	Can be optimized manually for performance.	
