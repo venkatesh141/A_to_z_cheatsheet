@@ -2023,7 +2023,7 @@ class Solution {
             }
             else
             {
-                idx=mid;
+                ind=mid;
                 if(isSearchingLeft)
                 {
                     right=mid-1;
