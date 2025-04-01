@@ -1514,10 +1514,10 @@ class BinarySearchTree {
         }
 
         // Otherwise, recur down the tree
-        if (data < root.data)
-            root.left = insertRec(root.left, data);
-        else 
+        if (data > root.data)
             root.right = insertRec(root.right, data);
+        else 
+            root.left = insertRec(root.left, data);
 
         // Return the (unchanged) node pointer
         return root;
