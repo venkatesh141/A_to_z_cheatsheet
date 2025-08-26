@@ -1,0 +1,81 @@
+1. Eureka Server
+
+Think of Eureka Server as a phone directory for your microservices.
+
+In microservices, we have many small services (like User-Service, Order-Service, Payment-Service). They keep starting and stopping, and their addresses (IP/Port) might change.
+
+Instead of remembering their exact addresses, each service registers itself with Eureka.
+
+So, if User-Service wants to talk to Order-Service, it just asks Eureka:
+👉 “Hey, where is Order-Service right now?”
+
+Eureka replies with the correct location.
+
+🔹 In short:
+Eureka = Service Registry = Keeps track of all running services.
+
+2. API Gateway
+
+Imagine you have many services (User-Service, Product-Service, Cart-Service).
+
+Without a gateway, the client (like frontend React app) has to call each service separately.
+Example:
+
+/user/getUser/1
+
+/product/getProduct/10
+
+/cart/getCart/5
+
+This becomes messy 😵.
+
+API Gateway acts like a single entry point.
+
+The client calls only the gateway (like /api/user/1),
+
+The gateway forwards the request to the correct service.
+
+🔹 Extra features of Gateway:
+
+Authentication (check if user is logged in).
+
+Logging.
+
+Rate limiting (control traffic).
+
+Route requests smartly.
+
+👉 In Spring Boot, Spring Cloud Gateway is commonly used.
+
+3. Load Balancer
+
+Suppose we have multiple instances of the same service (say 3 copies of User-Service) to handle more traffic.
+
+Who decides which instance should handle the next request? 🤔
+
+That’s the Load Balancer’s job.
+
+Example:
+
+Request 1 → goes to User-Service-1
+
+Request 2 → goes to User-Service-2
+
+Request 3 → goes to User-Service-3
+
+It keeps traffic balanced so that no single service is overloaded.
+
+👉 In Spring Boot microservices, Ribbon (old) or Spring Cloud LoadBalancer (new) is used.
+
+Putting It All Together 🚀
+
+Eureka Server → Keeps addresses of all services.
+
+API Gateway → Acts as one entry point, routes request to correct service.
+
+Load Balancer → Distributes requests evenly among multiple instances of a service.
+
+👉 Flow Example:
+Frontend → API Gateway → asks Eureka where the service is → Gateway forwards request → Load Balancer spreads load across service instances → Service responds.
+
+Do you want me to draw a diagram flow (step-by-step arrows) so you can see how these three work together?
