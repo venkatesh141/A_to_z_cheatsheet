@@ -1,0 +1,281 @@
+state and event
+import { useState } from "react";
+
+function App() {
+  const [name, setName] = useState("Guest");
+
+  function handleChange() {
+    setName("Venkatesh");  // update state when button clicked
+  }
+
+  return (
+    <div>
+      <h1>Hello {name}</h1>
+      <button onClick={handleChange}>Change Name</button>
+    </div>
+  );
+}
+export default App;
+--------------------------------------------------
+function Card({ title, color, children }) {
+  return (
+    <div
+      className="card"
+      style={{
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        padding: "16px",
+        margin: "12px",
+        backgroundColor: color || "white",
+      }}
+    >
+      {title && <h2>{title}</h2>}
+      {children}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <Card title="Welcome Card" color="lightblue">
+        <h1>Hello</h1>
+        <p>This is inside the card!</p>
+      </Card>
+
+      <Card title="Action Card" color="lightgreen">
+        <button>Click Me</button>
+      </Card>
+
+      <Card title="Simple Card">
+        <p>Card without custom color (default white)</p>
+      </Card>
+    </div>
+  );
+}
+
+export default App;
+
+-------------------------------------------------------------
+
+usercontext
+
+import { createContext, useContext } from "react";
+
+// 1. Create a context
+const UserContext = createContext();
+
+function App() {
+  const userData = {
+    name: "Venkatesh",
+    age: 25,
+    role: "Developer",
+    location: "India",
+  };
+
+  return (
+    <UserContext.Provider value={userData}>
+      <Profile />
+    </UserContext.Provider>
+  );
+}
+
+function Profile() {
+  // 2. Use context
+  const user = useContext(UserContext);
+
+  return (
+    <div>
+      <h1>Hello {user.name}</h1>
+      <p>Age: {user.age}</p>
+      <p>Role: {user.role}</p>
+      <p>Location: {user.location}</p>
+    </div>
+  );
+}
+
+export default App;
+----------------------------------------------
+use reducer
+
+import { useReducer } from "react";
+
+// reducer function
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <div>
+      <h1>Count: {state.count}</h1>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+    </div>
+  );
+}
+------------------------------------------------------------------------
+
+form submission handler
+import { useState } from "react";
+
+function LoginForm() {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(formData);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input 
+        type="email" 
+        name="email" 
+        value={formData.email} 
+        onChange={handleChange} 
+        placeholder="Enter email"
+      />
+      <input 
+        type="password" 
+        name="password" 
+        value={formData.password} 
+        onChange={handleChange} 
+        placeholder="Enter password"
+      />
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+
+export default LoginForm;
+
+_________________________________________________________________________
+conditional rendering
+
+function App() {
+  const showMessage = true;
+
+  return (
+    <div>
+      <h1>Hello User!</h1>
+      {showMessage && <p>This is a secret message 🤫</p>}
+    </div>
+  );
+}
+
+___________________________________________________________________________
+data rendering using map
+
+import React from "react";
+
+function App() {
+  const users = [
+    { id: 1, name: "Rahul", age: 25 },
+    { id: 2, name: "Priya", age: 22 },
+    { id: 3, name: "Venkatesh", age: 26 },
+  ];
+
+  return (
+    <div>
+      <h2>User Details:</h2>
+      {users.map((user) => (
+        <p key={user.id}>
+          {user.name} - {user.age} years old
+        </p>
+      ))}
+    </div>
+  );
+}
+
+export default App;
+--------------------------------------------------------------------------
+data fetching using useeffect and fetch
+import { useEffect, useState } from "react";
+
+function App() {
+  const [users, setUsers] = useState([]);
+
+  // Fetch data from backend when component loads
+  useEffect(() => {
+    fetch("http://localhost:5000/users") // 👈 call backend API
+      .then(response => response.json()) // convert to JSON
+      .then(data => setUsers(data))      // store in state
+      .catch(error => console.log(error));
+  }, []);
+
+  return (
+    <div>
+      <h1>Users from Backend</h1>
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>{user.name}</li> // render data
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+------------------------------------------------------------------------
+using axios
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/users")  // backend API
+      .then(response => {
+        setUsers(response.data);  // store data in state
+      })
+      .catch(error => {
+        console.error("Error fetching users:", error);
+      });
+  }, []);
+
+  return (
+    <div>
+      <h2>Users List</h2>
+      {users.map(user => (
+        <p key={user.id}>{user.name}</p>
+      ))}
+    </div>
+  );
+}
+
+export default App;
+-----------------------------------------------------------------
+use effect
+
+import { useEffect, useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]); // runs only when `count` changes
+
+  return <button onClick={() => setCount(c => c + 1)}>Count: {count}</button>;
+}
+----------------------------------------------------------------
+
+
+
+
+---------------
