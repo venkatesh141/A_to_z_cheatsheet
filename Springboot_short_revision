@@ -1,40 +1,5 @@
 What is a Microservice? (Simple Explanation)
 
-A Microservice is like a small, independent part of a bigger application. 
-Instead of building one big system (monolithic architecture), we break it into small, separate services
-that can work on their own but communicate with each other.
-
-Each microservice:
-✅ Handles only one specific task (like handling users, orders, or payments).
-✅ Runs independently and can be updated without affecting the whole system.
-✅ Communicates with other microservices using APIs (like REST API).
-Example: Online Shopping App
-
-Imagine an e-commerce website like Amazon. Instead of one large system, we break it into microservices:
-
-1️⃣ User Service – Manages user accounts, login, and profiles.
-2️⃣ Product Service – Handles products, categories, and stock.
-3️⃣ Order Service – Manages customer orders.
-4️⃣ Payment Service – Handles payments and transactions.
-5️⃣ Notification Service – Sends emails and SMS notifications.
-
-Each service has its own database and runs independently. 
-If the payment service fails, customers can still browse products because the product service works separately.
-How Do They Communicate?
-
-Microservices talk to each other using REST APIs, messaging queues (like RabbitMQ), or event-driven systems.
-
-For example:
-
-    When a user places an order, the Order Service calls the Payment Service to process payment.
-    After payment, the Notification Service sends an email confirmation.
-
-Benefits of Microservices:
-
-✅ Scalability – If more users join, we can scale only the User Service instead of the whole system.
-✅ Flexibility – Developers can work on different services independently.
-✅ Easy Maintenance – Fixing or updating one service does not affect others.
-✅ Faster Deployment – We can deploy changes faster without stopping the entire app.
 ----------------------------------------------------------------------------------------
 What is JUnit Testing? (Simple Explanation)
 
