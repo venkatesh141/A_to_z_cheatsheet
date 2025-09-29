@@ -74,8 +74,102 @@ They can send credentials (like cookies/auth).
 This rule applies to all your APIs.
 ---------------------------------------------------------------------------------------------
 
+@Component
+public class DataInitializer implements CommandLineRunner {
+👉 @Component tells Spring: This class should be automatically discovered and used by Spring.
+👉 implements CommandLineRunner means: Run this class’s run() method automatically when the application starts.
+
+java
+Copy code
+@Autowired
+private UserRepository userRepository;
+👉 This injects (@Autowired) the UserRepository so you can save and find users in the database.
+
+java
+Copy code
+private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
+👉 Creates a password encoder with strength 12.
+This means when you save passwords, they’ll be encrypted (hashed) securely.
+(You never save raw passwords in the database).
+
+java
+Copy code
+@Override
+public void run(String... args) throws Exception {
+👉 This method runs automatically after Spring Boot starts.
+Here you write code that should run at application startup (like inserting a default admin).
+
+java
+Copy code
+String adminEmail = "admin@opticwave.com";
+👉 Sets the email ID of the default super admin user.
+
+java
+Copy code
+if (userRepository.findByEmail(adminEmail).isEmpty()) {
+👉 Checks in the database: Is there already a user with this email?
+
+If no such user → create one.
+
+If user exists → don’t create again.
+
+java
+Copy code
+User superAdmin = new User();
+👉 Creates a new User object (super admin user).
+
+java
+Copy code
+superAdmin.setUsername("superadmin");
+superAdmin.setEmail(adminEmail);
+superAdmin.setRole(UserRole.ROLE_ADMIN);
+👉 Sets the user’s:
+
+Username = superadmin
+
+Email = admin@opticwave.com
+
+Role = ROLE_ADMIN (so he has admin powers).
+
+java
+Copy code
+superAdmin.setPassword(passwordEncoder.encode("Opticwave@superAdmin@May@2025"));
+👉 Sets the password for this user, but not in plain text!
+It encrypts it using BCryptPasswordEncoder before saving.
+(Default password → should be changed in production).
+
+java
+Copy code
+userRepository.save(superAdmin);
+👉 Saves the new admin user into the database.
+
+java
+Copy code
+System.out.println("✅ Super Admin initialized with email: " + adminEmail);
+👉 Prints a message in the console saying a new super admin is created.
+
+java
+Copy code
+} else {
+    System.out.println("ℹ️ Super Admin already exists.");
+}
+👉 If an admin already exists, just print a message instead of creating a new one.
+
+✅ In short:
+This code runs when the app starts and ensures there’s always one super admin in the database. If it’s missing, it creates one with default credentials.
+
+----------------------------------------------------------------------
 
 
 
 
-Is this conversation helpful so far?
+
+
+
+
+
+
+
+
+
+
