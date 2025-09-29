@@ -831,6 +831,126 @@ validateToken duplicate methods.
 If you want, I can fix this entire JwtUtil class so it’s clean and runnable with proper syntax and key handling.
 
 --------------------------------------------------------------------------------------
+1. Class Declaration
+@Service
+public class MyUserDetailsService implements UserDetailsService {
+
+
+@Service → Marks this as a Spring service class (business logic class).
+Spring will automatically manage this class as a bean.
+
+implements UserDetailsService → This tells Spring Security that this class will load user details (like username, password, roles) during login.
+
+2. Inject User Repository
+@Autowired
+private UserRepository userRepo;
+
+
+@Autowired → Spring automatically gives us the instance of UserRepository.
+
+UserRepository → This is your interface for talking to the database and fetching user details.
+
+💡 Think of it as:
+
+"Spring, please give me the database access object to fetch users."
+
+3. loadUserByUsername Method
+@Override
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+
+@Override → Means we are implementing a method from UserDetailsService.
+
+Method name: loadUserByUsername → This is called by Spring Security during login.
+
+Parameter: String username → Username entered during login.
+
+Returns: UserDetails → An object containing user information (username, password, roles) for authentication.
+
+4. Fetch User from Database
+User user = userRepo.findByUsername(username).orElseThrow();
+
+
+userRepo.findByUsername(username) → Fetches user from database using the username.
+
+.orElseThrow() → If no user found, it throws an exception.
+
+User → Your entity class representing the user table in DB.
+
+⚠ Issue: The .orElseThrow() here doesn’t specify an exception, so it will throw NoSuchElementException by default.
+Better approach:
+
+.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+5. Check if User Exists
+if(user == null) {
+    throw new UsernameNotFoundException("user not found");
+}
+
+
+This is checking again if the user is null.
+
+But it’s redundant, because .orElseThrow() already throws if the user is missing.
+
+So this check can be removed.
+
+6. Return UserDetails
+return new UserPrinciple(user);
+
+
+Returns a UserPrinciple object.
+
+UserPrinciple → A custom class that implements UserDetails, containing:
+
+Username
+
+Password
+
+Roles/Authorities
+
+Other info required by Spring Security.
+
+Spring Security will then use this UserPrinciple object to:
+
+Check password during login.
+
+Assign roles and permissions.
+
+Full Explanation in Simple Words
+
+This class basically tells Spring Security:
+
+“Here’s how to load user details from the database for authentication.”
+
+Process:
+
+Spring calls loadUserByUsername(username) when someone tries to log in.
+
+The method searches the database for the user using UserRepository.
+
+If the user is not found, it throws an exception.
+
+If found, it wraps the user in a UserPrinciple object (so Spring knows how to read username, password, and roles).
+
+Spring then uses that info to check the password and allow login.
+
+💡 Clean version of this code:
+
+@Service
+public class MyUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UserRepository userRepo;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepo.findByUsername(username)
+                            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return new UserPrinciple(user);
+    }
+}
+
+--------------------------------------------------------------------------------------
 
 
 
