@@ -243,57 +243,138 @@ Creates a StandardCheckoutClient bean you can inject (@Autowired) anywhere in yo
 Do you also want me to write the example application.properties entries you need for this config?
 
 -------------------------------------------------------------------------------------------------------
-
-
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	
-	@Autowired
-	private UserDetailsService userDetailsService;
-	
-	@Autowired
-	private JwtFilter jwtFilter;
-	
-	@Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring()
-            .requestMatchers("/payment/callback");
-    }
-	
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		return http.csrf(customizer -> customizer.disable())
-			.authorizeHttpRequests(request -> 
-			request.requestMatchers("/auth/**").permitAll()
-			.anyRequest().permitAll())
-			.httpBasic(Customizer.withDefaults())
-			.sessionManagement(session -> session
-					.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-			.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-			.build();
-	}
-	
-	@Bean
-	public AuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-		provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
-		provider.setUserDetailsService(userDetailsService);
-		return provider;
-	}
-	
-	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-		return config.getAuthenticationManager();
-	}
+👉 @Configuration: This class is a configuration class managed by Spring.
+👉 @EnableWebSecurity: Turns on Spring Security for your project.
+This is where you define how authentication and authorization work.
 
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(12);
-	}
+java
+Copy code
+@Autowired
+private UserDetailsService userDetailsService;
+👉 Spring will inject your UserDetailsService.
+This is used to load user details (like username, password, roles) from DB when someone logs in.
 
+java
+Copy code
+@Autowired
+private JwtFilter jwtFilter;
+👉 Injects your custom JwtFilter.
+This filter checks every request for a JWT token and validates it.
+
+java
+Copy code
+@Bean
+public WebSecurityCustomizer webSecurityCustomizer() {
+    return (web) -> web.ignoring()
+        .requestMatchers("/payment/callback");
 }
+👉 This says: Ignore security for the /payment/callback endpoint.
+That means Spring Security won’t apply filters for that URL (needed because payment gateways call back without authentication).
+
+java
+Copy code
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+👉 Defines the main security rules for your app.
+Spring Boot will use this to decide who can access which endpoints.
+
+java
+Copy code
+return http.csrf(customizer -> customizer.disable())
+👉 Disables CSRF protection (Cross-Site Request Forgery).
+Usually disabled for APIs since JWT is used instead of sessions.
+
+java
+Copy code
+.authorizeHttpRequests(request -> 
+    request.requestMatchers("/auth/**").permitAll()
+    .anyRequest().permitAll())
+👉 Authorization rules:
+
+Any request starting with /auth/** → allowed for everyone (login, signup, etc.).
+
+.anyRequest().permitAll() → Right now, every other request is also open to everyone.
+⚠️ Usually you would use .authenticated() here for secured APIs.
+
+java
+Copy code
+.httpBasic(Customizer.withDefaults())
+👉 Enables basic authentication (username & password in headers).
+(Not used much when JWT is enabled, but it’s there as a fallback).
+
+java
+Copy code
+.sessionManagement(session -> session
+    .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+👉 Tells Spring Security: Don’t create sessions, we’re using JWT (stateless authentication).
+So, every request must carry a token.
+
+java
+Copy code
+.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+👉 Adds your custom jwtFilter before the normal UsernamePasswordAuthenticationFilter.
+This makes sure JWT is checked before Spring processes login.
+
+java
+Copy code
+.build();
+👉 Builds the SecurityFilterChain with all rules.
+
+java
+Copy code
+@Bean
+public AuthenticationProvider authenticationProvider() {
+    DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+    provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
+    provider.setUserDetailsService(userDetailsService);
+    return provider;
+}
+👉 This sets up how authentication should happen:
+
+Uses DaoAuthenticationProvider (checks users in DB).
+
+Uses BCryptPasswordEncoder(12) for password hashing.
+
+Uses your userDetailsService to load users from DB.
+
+java
+Copy code
+@Bean
+public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+    return config.getAuthenticationManager();
+}
+👉 Exposes an AuthenticationManager bean.
+This object is used by Spring to authenticate users with username + password.
+
+java
+Copy code
+@Bean
+public BCryptPasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder(12);
+}
+👉 Creates a reusable password encoder bean so you can inject it anywhere to encode/verify passwords.
+
+✅ In short:
+
+Ignores /payment/callback security.
+
+/auth/** is open to everyone.
+
+Everything else is currently also open (since .anyRequest().permitAll()).
+
+JWT filter checks tokens before normal login filter.
+
+Users are loaded from DB via UserDetailsService.
+
+Passwords are securely stored with BCrypt.
+
+App is stateless → no sessions, JWT only.
+
+
+
 
 -----------------------------------------------------------------------------------------------------
 
