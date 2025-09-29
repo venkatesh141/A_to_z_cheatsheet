@@ -1,0 +1,81 @@
+@Configuration
+public class CorsConfig {
+
+
+👉 @Configuration tells Spring Boot: This class contains bean definitions (like settings/configurations) that Spring should manage.
+Here, we’re making a configuration for CORS (Cross-Origin Resource Sharing).
+
+@Bean
+public CorsFilter corsFilter() {
+
+
+👉 @Bean tells Spring: This method will create an object (bean) that should be used inside the application.
+We are creating a CorsFilter bean here.
+CorsFilter is a Spring filter that controls which domains can call your API.
+
+CorsConfiguration config = new CorsConfiguration();
+
+
+👉 This makes a new CORS configuration object where we will set rules (who is allowed, what methods are allowed, etc.).
+
+config.setAllowedOrigins(Arrays.asList( "https://opticwave.in/", "https://www.opticwave.in/" ));
+
+
+👉 This sets which websites are allowed to call your backend.
+Here, only https://opticwave.in and https://www.opticwave.in are allowed.
+⚠️ Note: You should not put a trailing / (like https://opticwave.in/) — keep it as https://opticwave.in.
+
+config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+
+
+👉 This tells: These HTTP methods are allowed from those websites.
+Example: GET for reading, POST for creating, PUT for updating, DELETE for deleting, etc.
+
+config.setAllowedHeaders(Arrays.asList("*"));
+
+
+👉 This means: Allow all headers (like Authorization, Content-Type, etc.).
+If you didn’t allow them, the browser might block some requests.
+
+config.setAllowCredentials(true);
+
+
+👉 This means: Allow credentials like cookies, tokens, or authorization headers.
+If this is false, the frontend won’t be able to send cookies or Authorization headers.
+
+UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+
+
+👉 This creates a CORS source object that maps URL paths (like /api/**) to the CORS configuration.
+
+source.registerCorsConfiguration("/**", config);
+
+
+👉 This means: Apply the above CORS rules to all API paths (/** means everything).
+So, no matter which endpoint is called, these CORS rules apply.
+
+return new CorsFilter(source);
+
+
+👉 Finally, return a new CorsFilter with our rules.
+Spring Boot will use this filter to check every request and block/allow based on the rules.
+
+✅ In short:
+This config says:
+
+Only https://opticwave.in and https://www.opticwave.in can call your API.
+
+They can use methods: GET, POST, PUT, DELETE, OPTIONS, PATCH.
+
+They can send any headers.
+
+They can send credentials (like cookies/auth).
+
+This rule applies to all your APIs.
+---------------------------------------------------------------------------------------------
+
+
+
+
+
+Is this conversation helpful so far?
