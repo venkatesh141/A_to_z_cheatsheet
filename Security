@@ -953,6 +953,72 @@ public class MyUserDetailsService implements UserDetailsService {
 --------------------------------------------------------------------------------------
 
 
+Code Explanation
+@Service
+
+
+This tells Spring that this class is a service component.
+
+Spring will automatically create an object of this class and manage it (Dependency Injection).
+
+public class MyUserDetailsService implements UserDetailsService {
+
+
+We create a class named MyUserDetailsService.
+
+It implements UserDetailsService, which is a Spring Security interface.
+
+This interface requires us to define a method to load user details for authentication.
+
+@Autowired
+private UserRepository userRepo;
+
+
+@Autowired tells Spring to inject the dependency automatically.
+
+Here, userRepo is an object of UserRepository (used to interact with the database to fetch user info).
+
+@Override
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+
+@Override means we are implementing a method from UserDetailsService.
+
+loadUserByUsername is the method Spring Security uses when someone tries to log in.
+
+It takes a username and returns user details needed for authentication.
+
+It can throw UsernameNotFoundException if the user doesn’t exist.
+
+User user = userRepo.findByUsername(username).orElseThrow();
+
+
+This fetches the user from the database using the username.
+
+findByUsername(username) is a method in UserRepository.
+
+.orElseThrow() means: if the user is not found, throw an exception automatically.
+
+⚡ Note: This line already handles the "user not found" case, so the next if check is redundant.
+
+if(user == null) {
+    throw new UsernameNotFoundException("user not found");
+}
+
+
+This checks again if the user is null and throws an exception.
+
+But because .orElseThrow() is used above, this check will never actually run — it’s unnecessary.
+
+return new UserPrinciple(user);
+
+
+Returns a UserPrinciple object (which implements Spring Security’s UserDetails).
+
+This object contains user information like username, password, and roles that Spring Security uses to authenticate and authorize the user.
+
+----------------------------------------------------------------------------
+
 
 
 
