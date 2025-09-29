@@ -378,6 +378,218 @@ App is stateless → no sessions, JWT only.
 
 -----------------------------------------------------------------------------------------------------
 
+@Component
+public class JwtFilter extends OncePerRequestFilter {
+@Component: tells Spring to create and manage an instance of this class automatically (so it can be injected elsewhere).
+
+public class JwtFilter extends OncePerRequestFilter: this defines a filter that runs once for every HTTP request. OncePerRequestFilter ensures the filter logic runs exactly one time per request.
+
+java
+Copy code
+    @Autowired
+    private JwtUtil jwtService;
+@Autowired injects an instance of JwtUtil (your helper that extracts/validates data from JWTs).
+
+jwtService will be used to read username from token and validate tokens.
+
+java
+Copy code
+    @Autowired
+    ApplicationContext context;
+This injects the Spring ApplicationContext. You later use it to fetch the MyUserDetailsService bean dynamically (instead of directly @Autowireding the service). This is a way to get beans at runtime.
+
+java
+Copy code
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+doFilterInternal is the method that runs for each incoming HTTP request.
+
+You receive the request, response, and filterChain so you can inspect the request and either block it or pass it along (filterChain.doFilter(...)).
+
+java
+Copy code
+        String uri = request.getRequestURI();
+        String method = request.getMethod();
+Read and store the request path (e.g., /products/123) in uri.
+
+Read and store the HTTP method (GET/POST/PUT/DELETE) in method.
+
+You use these to decide whether the request needs JWT checks or can be allowed freely.
+
+java
+Copy code
+        // Logging the request URI and method
+        System.out.println("Request URI: " + uri + " Method: " + method);
+Simple console log of the request path and method. Useful for debugging to see incoming requests. (Note: in production, prefer a logger instead of System.out.println.)
+
+java
+Copy code
+        if (request.getRequestURI().startsWith("/payment/")) {
+            filterChain.doFilter(request, response);  // Skip JWT processing
+            return;
+        }
+If the request path begins with /payment/, skip all JWT checks and continue the filter chain.
+
+This is common when payment callbacks come from external services and you must allow them through unauthenticated.
+
+java
+Copy code
+        // Skip auth/cart endpoints
+        if (uri.startsWith("/auth/") || uri.startsWith("/cart/") || uri.startsWith("/products/filter")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+If the path starts with /auth/, /cart/, or /products/filter, the filter does not enforce JWT and just forwards request on.
+
+Typical: /auth/** contains login/signup endpoints that must be public.
+
+java
+Copy code
+        // Publicly accessible GET endpoints
+        if (method.equals("GET") && (
+                uri.equals("/slides") ||
+                uri.equals("/products") ||
+                uri.startsWith("/products/all") ||
+                ...
+                uri.equals("/cart")
+        )) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+This big if permits certain GET requests without authentication.
+
+It checks many GET endpoints (slides, product lists, categories, colors, coupons, search, etc.) and if the current request matches one of them, the filter allows it to continue without token checks.
+
+Notice use of equals for exact matches and startsWith for prefix patterns (e.g., /products/123).
+
+After filterChain.doFilter(...) the method returns — meaning no JWT validation for those endpoints.
+
+java
+Copy code
+        // JWT Validation
+        String authHeader = request.getHeader("Authorization");
+        String username = null;
+        String token = null;
+Now we begin JWT processing.
+
+Read the Authorization header into authHeader.
+
+Prepare username and token variables (will fill them if a Bearer token is present).
+
+java
+Copy code
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            token = authHeader.substring(7);
+            username = jwtService.extractUsername(token);
+        }
+If the Authorization header exists and starts with Bearer :
+
+Remove the "Bearer " prefix (substring(7)) to get the raw token.
+
+Ask jwtService to extract the username (or subject) embedded in the token.
+
+If header is missing or not Bearer-type, both token and username remain null.
+
+java
+Copy code
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+Proceed only if we extracted a username and there is no existing authentication in the security context.
+
+This prevents re-authenticating if someone already set authentication earlier.
+
+java
+Copy code
+            UserDetails userDetails = context.getBean(MyUserDetailsService.class).loadUserByUsername(username);
+Use ApplicationContext to get your MyUserDetailsService bean, then call loadUserByUsername(username) to get the UserDetails object (contains password hash and authorities).
+
+You need UserDetails so you can validate the token against the user's data (for example to check if the token was issued for this user or if user is still active).
+
+java
+Copy code
+            if (jwtService.validateToken(token, userDetails)) {
+Ask jwtService to validate the token (signature, expiry, and optionally checks against userDetails).
+
+If validation passes, we will create a Spring Authentication object and set it in the context.
+
+java
+Copy code
+                UsernamePasswordAuthenticationToken authToken =
+                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+Create an Authentication object representing the authenticated user:
+
+Principal = userDetails
+
+Credentials = null (we don't keep raw password here)
+
+Authorities = user's roles/permissions
+
+java
+Copy code
+                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+Add extra details (like remote address, session id) to the auth token. This is optional but common so downstream code can access request-specific info from the authentication object.
+
+java
+Copy code
+                SecurityContextHolder.getContext().setAuthentication(authToken);
+Put the newly created authentication into Spring Security’s SecurityContext.
+
+From now on (for the rest of this request processing) SecurityContextHolder.getContext().getAuthentication() will return this authenticated user — so controllers and security checks will see the user as logged-in.
+
+java
+Copy code
+            }
+        }
+Ends the token validation and authentication-setting block.
+
+java
+Copy code
+        filterChain.doFilter(request, response);
+    }
+Continue the filter chain for the request (either unauthenticated or now authenticated).
+
+This call passes control to the next filter or ultimately to the controller that will handle the request.
+
+java
+Copy code
+}
+End of class.
+
+Quick summary (very short)
+This filter inspects every incoming request.
+
+It logs URI+method.
+
+It skips JWT checks for certain public paths (/payment/*, /auth/*, some cart/product endpoints, and many public GET endpoints).
+
+For other requests it looks for a Bearer <token> header, extracts username, loads user details, validates token, and if valid sets authentication into Spring Security so the app treats the request as authenticated. Then it continues the chain.
+
+Small helpful notes / possible improvements
+Use a logger (org.slf4j.Logger) instead of System.out.println.
+
+Be careful with trailing slashes (e.g., "/orders/" vs "/orders"); inconsistent slashes can cause unexpected behavior. Consider normalizing uri or using more robust path matching (Ant matchers or ServletPathMatcher).
+
+Instead of calling context.getBean(...) every time, you could @Autowired your MyUserDetailsService directly unless you have a specific reason to get it from context.
+
+For large sets of public URLs, consider centralizing rules in security config or use patterns to avoid a very long if condition.
+
+If you want, I can:
+
+show a cleaned-up version of this filter with improvements, or
+
+convert the long public-GET list to a reusable helper so the code is easier to read.
+
+-----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
 
