@@ -579,7 +579,258 @@ show a cleaned-up version of this filter with improvements, or
 
 convert the long public-GET list to a reusable helper so the code is easier to read.
 
------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+
+1. Class Declaration
+@Service
+public class JwtUtil {
+
+
+@Service → This tells Spring that this is a service class (business logic), and Spring will manage it automatically as a bean.
+
+public class JwtUtil → This is your class to handle JWT tokens.
+
+2. Secret Key
+private SecretKey secretKey = Jwts.SIG.HS256.key().build();
+
+
+SecretKey → This is the key used to sign and verify JWT tokens.
+
+Jwts.SIG.HS256.key().build() → This tries to build a key for HS256 signing algorithm.
+
+⚡ Note: The above key creation method may not work properly depending on JJWT version. Usually, we use KeyGenerator (like your constructor does).
+
+3. Constructor
+public JwtUtil() {
+    try {
+        KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
+        SecretKey key = keyGen.generateKey();
+    } catch(Exception e) {
+        e.printStackTrace();
+    }
+}
+
+
+This constructor tries to generate a new secret key for signing tokens.
+
+KeyGenerator.getInstance("HmacSHA256") → creates a generator for HMAC SHA-256 algorithm.
+
+keyGen.generateKey() → generates a secret key.
+
+But here, the generated key is stored in key and not assigned to secretKey, so your secretKey remains unchanged (bug).
+
+e.printStackTrace() → prints error if key generation fails.
+
+💡 You should fix this so it actually assigns the generated key:
+
+secretKey = keyGen.generateKey();
+
+4. generateToken
+public String generateToken(String username, Long userId, UserRole role) {
+
+
+This method creates a JWT token.
+
+Inside:
+Map<String,Object> claims = new HashMap<>();
+claims.put("userId", userId);
+claims.put("role", role);
+
+
+claims → extra information stored in the JWT.
+
+userId → stores user ID.
+
+role → stores user role.
+
+return Jwts.builder()
+        .claims()
+        .add(claims)
+        .subject(username)
+        .issuedAt(new Date())
+        .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
+        .and()
+        .signWith(secretKey)
+        .compact();
+
+
+.claims().add(claims) → adds extra data to the token.
+
+.subject(username) → main subject of the token (usually username).
+
+.issuedAt(new Date()) → token creation time.
+
+.expiration(...) → sets expiry (here 24 hours later).
+
+.signWith(secretKey) → signs the token with the secret key.
+
+.compact() → builds the token into a string format.
+
+⚠ Problem:
+.claims() and .add(claims) are not correct JJWT syntax. Usually, we do:
+
+.claims(claims)
+
+5. extractUsername
+public String extractUsername(String token) {
+    return extractClaim(token, Claims::getSubject);
+}
+
+
+Reads the username from a token.
+
+Uses extractClaim helper function.
+
+6. extractClaim
+private <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
+    final Claims claims = extractAllClaims(token);
+    return claimResolver.apply(claims);
+}
+
+
+A generic method that can extract any claim from token.
+
+Uses claimResolver function to specify what to extract.
+
+Example: Claims::getSubject → extracts the username.
+
+7. extractAllClaims
+private Claims extractAllClaims(String token) {
+    return Jwts.parser()
+            .verifyWith(secretKey)
+            .build()
+            .parseSignedClaims(token)
+            .getPayload();
+}
+
+
+Parses the JWT token and verifies it with your secret key.
+
+Returns all claims (data inside token).
+
+8. validateToken
+public boolean validateToken(String token, UserDetails userDetails) {
+    final String username = extractUsername(token);
+    return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+}
+
+
+Checks if token is valid.
+
+Valid if:
+
+Username in token matches the logged-in username.
+
+Token is not expired.
+
+9. isTokenExpired
+private boolean isTokenExpired(String token) {
+    return extractExpiration(token).before(new Date());
+}
+
+
+Returns true if token expiry date is before the current date (expired).
+
+10. extractExpiration
+private Date extractExpiration(String token) {
+    return extractClaim(token, Claims::getExpiration);
+}
+
+
+Gets expiration date from token.
+
+11. extractUserId
+public Long extractUserId(String token) {
+    Claims claims = Jwts.parser()
+            .verifyWith(secretKey)
+            .build()
+            .parseSignedClaims(token)
+            .getPayload();
+
+    return Long.parseLong(claims.get("userId").toString());
+}
+
+
+Reads userId claim from token.
+
+12. extractRole
+public UserRole extractRole(String token) {
+    Claims claims = Jwts.parser()
+            .verifyWith(secretKey)
+            .build()
+            .parseSignedClaims(token)
+            .getPayload();
+
+    String roleStr = claims.get("role", String.class);
+
+    if (roleStr == null) {
+        throw new RuntimeException("Role not found in the token");
+    }
+
+    try {
+        return UserRole.valueOf(roleStr);
+    } catch (IllegalArgumentException ex) {
+        throw new RuntimeException("Invalid role value in token: " + roleStr, ex);
+    }
+}
+
+
+Reads role from token.
+
+Converts string → UserRole enum.
+
+Throws exception if role missing or invalid.
+
+13. refreshToken
+public String refreshToken(String oldToken) {
+    if (!validateToken(oldToken)) {
+        throw new RuntimeException("Invalid token");
+    }
+
+    Claims claims = extractAllClaims(oldToken);
+    return Jwts.builder()
+            .claims(claims)
+            .issuedAt(new Date())
+            .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+            .signWith(secretKey)
+            .compact();
+}
+
+
+Refreshes a token (extends expiry).
+
+Checks if old token is valid.
+
+Copies all claims and signs a new token with extended expiration.
+
+14. validateToken (private)
+private boolean validateToken(String token) {
+    try {
+        extractAllClaims(token);
+        return !isTokenExpired(token);
+    } catch (Exception e) {
+        return false;
+    }
+}
+
+
+Checks if token is valid without user details.
+
+Returns false if parsing fails or token expired.
+
+✅ Summary:
+This class generates, reads, validates, and refreshes JWT tokens.
+But there are some bugs:
+
+Secret key generation not assigned properly.
+
+.claims().add(claims) is not correct syntax.
+
+validateToken duplicate methods.
+
+If you want, I can fix this entire JwtUtil class so it’s clean and runnable with proper syntax and key handling.
+
+--------------------------------------------------------------------------------------
 
 
 
