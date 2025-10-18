@@ -60,4 +60,3 @@ List<String> result = names.stream()
 System.out.println(result);
 
 -----------------------------------------------------------------------------------
-
