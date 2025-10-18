@@ -1,0 +1,63 @@
+What is Stream API?
+
+The Stream API in Java is used to process collections (like lists or sets) in a simple and efficient way.
+It helps you filter, sort, and transform data easily — without writing long loops.
+
+💡 Think of it like this:
+
+Imagine you have a list of numbers or names.
+Normally, you use a for loop to check or change each element.
+With Streams, you just say what you want to do, and Java handles the looping for you.
+
+
+Example:
+
+Without Stream:
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+List<Integer> evenNumbers = new ArrayList<>();
+
+for (int n : numbers) {
+    if (n % 2 == 0) {
+        evenNumbers.add(n);
+    }
+}
+
+System.out.println(evenNumbers);
+
+
+With Stream:
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+List<Integer> evenNumbers = numbers.stream()
+                                   .filter(n -> n % 2 == 0)
+                                   .toList();
+
+System.out.println(evenNumbers);
+
+
+
+Both print [2, 4],
+but the Stream version is cleaner and more readable.
+
+⚙️ Common Stream Operations
+Operation	Description	Example
+filter()	Select items based on condition	filter(n -> n > 10)
+map()	Change/transform each item	map(n -> n * 2)
+sorted()	Sort the stream	sorted()
+forEach()	Loop and do something	forEach(System.out::println)
+collect()	Convert result back to list	collect(Collectors.toList())
+
+
+List<String> names = Arrays.asList("venky", "arun", "mani", "ajay");
+
+List<String> result = names.stream()
+                           .filter(name -> name.startsWith("a"))
+                           .map(String::toUpperCase)
+                           .toList();
+
+System.out.println(result);
+
+-----------------------------------------------------------------------------------
+
