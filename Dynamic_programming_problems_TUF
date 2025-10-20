@@ -185,7 +185,7 @@ class Solution {
     }
 }
 ------------------------------------------------------------Trust the work you will win
-8 Minimum Path Sum leetcode 64
+9 Minimum Path Sum leetcode 64
 class Solution {
     public int minPathSum(int[][] grid) {
         int m = grid.length;
