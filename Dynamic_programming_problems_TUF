@@ -296,6 +296,33 @@ public class Main {
     }
 }
 ------------------------------------------------------------Trust the work you will win
+12 print all subsequence
+
+public class Main {
+    public static void main(String[] args) {
+        String str = "abc";
+        printSubsequence(str, "");
+    }
+
+    static void printSubsequence(String str, String ans) {
+        // Base case: when string becomes empty
+        if (str.length() == 0) {
+            System.out.println(ans);
+            return;
+        }
+
+        char ch = str.charAt(0);
+        String remaining = str.substring(1);
+
+        // Include the character
+        printSubsequence(remaining, ans + ch);
+
+        // Exclude the character
+        printSubsequence(remaining, ans);
+    }
+}
+------------------------------------------------------------Trust the work you will win
+
 
 
  
