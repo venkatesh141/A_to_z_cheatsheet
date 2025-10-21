@@ -272,6 +272,31 @@ static void lcs(String s1, String s2) {
     System.out.println("Longest Common Substring: " + substring);
 }
 ------------------------------------------------------------Trust the work you will win
+11 print all substrings
+public class Main {
+    public static void main(String[] args) {
+        String str = "abc";
+        printSubstrings(str, 0, 0);
+    }
+
+    static void printSubstrings(String str, int start, int end) {
+        // Base case: if we reach end of string
+        if (start == str.length()) {
+            return;
+        }
+
+        // If end reached, move start to next index
+        if (end == str.length()) {
+            printSubstrings(str, start + 1, start + 1);
+        } else {
+            // Print substring from start to end
+            System.out.println(str.substring(start, end + 1));
+            printSubstrings(str, start, end + 1);
+        }
+    }
+}
+------------------------------------------------------------Trust the work you will win
+
 
  
 
