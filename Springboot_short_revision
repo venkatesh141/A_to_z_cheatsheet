@@ -686,6 +686,26 @@ Think of annotations as shortcuts that tell Spring Boot what to do without writi
 🔸 Spring Annotations = Shortcuts to simplify coding.
 
 😊 Spring Boot saves time and makes development effortless—just like using a meal kit instead of cooking from scratch! 
+---------------------------------------------------------------------------------------
+@EnableAutoConfiguration
+
+Spring Boot automatically configures your application based on the libraries in your project.
+
+Example: If you have spring-boot-starter-web, it will automatically set up Tomcat server, Spring MVC, and necessary beans.
+
+You don’t have to write all configuration manually.
+
+@ComponentScan
+
+Tells Spring to scan your project packages to find classes annotated with @Component, @Service, @Repository, @Controller, etc., and register them as beans.
+
+This is how Spring knows which classes to manage and inject.
+
+@Configuration
+
+Marks the class as a configuration class.
+
+You can define custom beans in this class using @Bean.
 
 
 
