@@ -106,7 +106,8 @@ Share common settings easily.
 
 Keep working even if one service fails.
 ----------------------------------------------------------------------------------------
-Imagine you have a bunch of services talking to each other. If Service A calls Service B, but Service B is slow or completely down, Service A could keep waiting, causing delays or even crashing. To prevent this, you use a circuit breaker.
+Imagine you have a bunch of services talking to each other. If Service A calls Service B, but Service B is slow or completely down, 
+Service A could keep waiting, causing delays or even crashing. To prevent this, you use a circuit breaker.
 
 🔥 How it works:
 ✅ Normal state (Closed):
