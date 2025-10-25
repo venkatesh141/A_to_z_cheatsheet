@@ -187,26 +187,34 @@ Spring Boot DevTools improves developer experience by:
 ✅ Speeds up development.
 
 -------------------------------------------------------------------------------------------
-OAuth and OIDC in Simple Terms
-Imagine you go to a hotel and want to enter a gym inside it.
+OAuth and OIDC in Simple TermsFirst, what is OAuth?
 
-OAuth (Open Authorization)
+👉 OAuth (Open Authorization) is a way to let users log in to your app using another service (like Google, Facebook, GitHub) without sharing their password.
 
-You go to the hotel reception and show your ID.
-The receptionist gives you a gym access card (but not a hotel room key).
-Now, you can enter the gym without showing your ID again.
-🔹 OAuth allows apps to access your data without needing your password. It’s commonly used for "Login with Google/Facebook" features.
+It’s mainly used for authorization — which means deciding what the user is allowed to do.
+
+Example:
+
+You open a website and click “Login with Google.”
+
+Your app redirects you to Google’s login page.
+
+You log in to Google (so you never share your Google password with that app).
+
+Google sends your app an access token — like a permission slip.
+
+Your app uses that token to access your basic Google data (like your email).
+
+✅ So, OAuth helps your app get permission to use another app’s data safely.
 
 OIDC (OpenID Connect)
+what about OIDC (OpenID Connect)?
 
-Suppose the gym also needs to verify your identity before allowing entry.
-The receptionist confirms your identity and then gives you the gym access card.
-🔹 OIDC is built on OAuth but adds authentication (identity verification). It’s used when apps need to know who you are, 
-not just access data.
+👉 OIDC is built on top of OAuth.
+OAuth only tells what the user can do (authorization),
+but OIDC also tells who the user is (authentication).
 
-Key Difference
-OAuth = Allows access to data (Authorization)
-OIDC = Confirms who you are before granting access (Authentication + Authorization)
+So, OIDC gives you user identity (like name, email, profile info) along with the access token.
 -------------------------------------------------------------------------------------
 
 User Persistence & JWT Explained Simply
