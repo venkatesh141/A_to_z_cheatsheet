@@ -533,22 +533,16 @@ Think of Hibernate and Spring Data JPA like ordering food at a restaurant. 🍽�
 
     Hibernate is like cooking your own food using recipes (manual database queries).
     Spring Data JPA is like using Swiggy/Zomato to order food easily (automatic database queries).
+| 🔹 **Feature**       | **Hibernate**                                                        | **Spring Data JPA**                                                           |
+| -------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Definition**       | A framework for managing database operations using Java objects.     | A library built on top of JPA that simplifies database operations.            |
+| **Complexity**       | More complex (requires manual configuration).                        | Simpler (less code, handles setup automatically).                             |
+| **Query Writing**    | Uses HQL (Hibernate Query Language) & Criteria API.                  | Uses built-in methods (like `findById()`), reducing manual query writing.     |
+| **Code Length**      | Requires more code (manually creating sessions, transactions, etc.). | Requires less code (handles database setup automatically).                    |
+| **Boilerplate Code** | More boilerplate code (session handling, entity management).         | Less boilerplate code (Spring Data JPA provides built-in repository methods). |
+| **Performance**      | Can be optimized manually for performance.                           | Uses Hibernate internally but optimizes queries automatically.                |
+| **Use Case**         | When you need full control over database operations.                 | When you want to save time by automating common database tasks.               |
 
-🔹 Hibernate vs Spring Data JPA
-Feature	Hibernate	Spring Data JPA
-Definition	A framework for managing database operations using Java objects.	
-A library built on top of JPA that simplifies database operations.
-Complexity	More complex (requires manual configuration).	Simpler (less code, handles setup automatically).
-Query Writing	Uses HQL (Hibernate Query Language) & Criteria API.	Uses built-in methods (like findById()), 
-reducing manual query writing.
-Code Length	Requires more code (manually creating sessions, transactions, etc.).
-Requires less code (handles database setup automatically).
-Boilerplate Code	More boilerplate code (session handling, entity management).	
-Less boilerplate code (Spring Data JPA provides built-in repository methods).
-Performance	Can be optimized manually for performance.	
-Uses Hibernate internally but optimizes queries automatically.
-Use Case	When you need full control over database operations.	
-When you want to save time by automating common database tasks.
 
 ---------------------------------------------------------------------------------------
 
