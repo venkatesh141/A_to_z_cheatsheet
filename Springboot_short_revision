@@ -706,6 +706,84 @@ This is how Spring knows which classes to manage and inject.
 Marks the class as a configuration class.
 
 You can define custom beans in this class using @Bean.
+---------------------------------------------------------------------------------------
+What is the Spring Boot Main Class?
+
+In every Spring Boot project, you’ll see a file like this:
+
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+}
+
+
+Let’s break this line by line 👇
+
+🔹 @SpringBootApplication
+
+This is a special annotation that tells Spring Boot:
+
+“This is the main starting point of the entire application.”
+
+It actually combines three important annotations:
+
+@SpringBootConfiguration → marks this class as a configuration class.
+
+@EnableAutoConfiguration → automatically configures Spring components for you.
+
+@ComponentScan → scans your project for classes like controllers, services, repositories, etc.
+
+So with just one line, Spring Boot:
+
+Finds all your classes with annotations like @Controller, @Service, etc.
+
+Configures your app automatically.
+
+Gets it ready to run.
+
+🔹 public static void main(String[] args)
+
+This is the starting point of your Java program (just like normal Java).
+
+It runs this line:
+
+SpringApplication.run(MyApplication.class, args);
+
+
+This line:
+
+Starts the Spring Boot application.
+
+Creates a Spring container (called ApplicationContext).
+
+Initializes all your beans, controllers, and configurations.
+
+Starts an embedded server (like Tomcat) to handle web requests.
+
+⚙️ What Happens If You Delete It?
+
+If you delete the main class:
+
+The Spring Boot application won’t start.
+
+You’ll get an error because there’s no entry point to run the project.
+
+Even if your other classes (controllers, services) exist, they won’t work, because Spring never gets started.
+
+Basically:
+
+Without the main class, your project becomes just plain Java files — not a running Spring Boot app.
+
+🧠 In Simple Words:
+Part	Meaning
+@SpringBootApplication	Tells Spring Boot “start from here”
+main() method	Actual Java entry point
+SpringApplication.run()	Starts the whole Spring system
+Delete it	App won’t run at all 🚫
+
+Would you like me to show what exactly happens inside SpringApplication.run() (step by step in simple form)?
 
 
 
