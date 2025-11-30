@@ -5597,7 +5597,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 169
+question 169 (first_preference)
 leetcode 503
 class Solution {//it is circular
     public int[] nextGreaterElements(int[] nums) {
@@ -5621,7 +5621,7 @@ class Solution {//it is circular
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 170
+question 170 (first_preference)
 Infix to prefix
 public class InfixToPrefix {
     // Method to reverse a string and swap parentheses
@@ -5662,7 +5662,7 @@ public class InfixToPrefix {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 171
+question 171 (first_preference)
 Previous smaller element
 NInput 1:
     A = [4, 5, 2, 10, 8]
@@ -5692,7 +5692,7 @@ return arr;
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 172
+question 172 (first_preference)
 leetcode 42  Rainwater Trapping
 class Solution {
     public int trap(int[] height) {
@@ -5733,7 +5733,7 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 173
-leetcode 907
+leetcode 907 (first_preference)
 class Solution  extends HelperMethod{ // inherit the class 
     public int sumSubarrayMins(int[] arr) {
         
@@ -5791,7 +5791,7 @@ class HelperMethod{
 }
     
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 174
+question 174 (first_preference)
 leetcode 63 unique paths 2
 
 class Solution {
@@ -5826,7 +5826,7 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 175
-leetcode 402
+leetcode 402 (first_preference)
 class Solution {
     public String removeKdigits(String num, int k) {
         if(num.length() == k) return "0";
@@ -5863,7 +5863,7 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 176
-leetcode 735
+leetcode 735 (first_preference)
 class Solution {
     public int[] asteroidCollision(int[] asteroids) {
         int n = asteroids.length;
@@ -6024,7 +6024,7 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 179
-leetcode 84
+leetcode 84 (first_preference)
 class Solution {
     public int largestRectangleArea(int[] arr) {
         int max =0;
@@ -6068,7 +6068,7 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 180
-leetcode 85
+leetcode 85 (first_preference)
 class Solution {
     private int hist(int[] heights) {
         int n = heights.length;
@@ -6111,7 +6111,7 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 181
-leetcode 239
+leetcode 239 (first_preference)
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         // Edge case: If input array is null or window size is invalid, return an empty array.
@@ -6149,7 +6149,7 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 182
-leetcode 901
+leetcode 901 (first_preference)
 class StockSpanner {
 
     Stack<int[]> st; // Stack to store pairs of (price, span).
@@ -6909,7 +6909,7 @@ public class GraphAdjacencyMatrix {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 206
+question 206 (first_preference)
 bfs
 public ArrayList<Integer> bfsOfGraph(int V, 
     ArrayList<ArrayList<Integer>> adj) {
@@ -6939,7 +6939,7 @@ public ArrayList<Integer> bfsOfGraph(int V,
         return bfs;
     }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 207
+question 207 (first_preference)
 qfs
  public static void dfs(int node, boolean vis[], ArrayList<ArrayList<Integer>> adj, 
     ArrayList<Integer> ls) {
@@ -6966,7 +6966,7 @@ qfs
     }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 208
-leetcode 547
+leetcode 547 (first_preference)
 class Solution {
     public int findCircleNum(int[][] isConnected) {
         boolean[] vis=new boolean[isConnected.length];
@@ -6991,7 +6991,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 209 leetcode 168
+question 209 leetcode 168 (first_preference)
 class Solution {   // 1->A , 28->AB
     public String convertToTitle(int c) {
         String s="";
@@ -7011,7 +7011,7 @@ class Solution {   // 1->A , 28->AB
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 210 leetcode 171
+question 210 leetcode 171 (first_preference)
 class Solution {// "A"->1  "ZY"-> 701
     public int titleToNumber(String columnTitle) {
         int sum = 0;
@@ -7030,7 +7030,7 @@ At a time the frog can climb either one or two steps. A height[N] array is also 
 Whenever the frog jumps from a stair i to stair j, the energy consumed in the jump is abs(height[i]- height[j]), where abs() means 
 the absolute difference. We need to return the minimum energy that can be used by the frog to jump from stair 0 to stair N-1.
 
-import java.util.*;
+import java.util.*; (first_preference)
 class TUF{
 public static void main(String args[]) {
 
@@ -7052,7 +7052,7 @@ public static void main(String args[]) {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 212
-leetcode 198
+leetcode 198 (first_preference)
 class Solution {
     public int rob(int[] nums) {
         
@@ -7076,7 +7076,7 @@ class Solution {
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
 question 213
-leetcode 213
+leetcode 213 (first_preference)
 class Solution {
     public int rob(int[] nums) {
         int n=nums.length;
@@ -7100,7 +7100,7 @@ class Solution {
     }
 }
 -----------------------trust the process you will win. brute force pannale optimize pannirlam
-question 214import java.util.*;
+question 214import java.util.*;(first_preference)
 class Date
 {
     int day,month,year;
