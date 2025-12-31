@@ -473,3 +473,21 @@ Just tell me 👍
 
 
 
+| Feature        | @Mock              | @InjectMocks                | @MockBean           |
+| -------------- | ------------------ | --------------------------- | ------------------- |
+| Purpose        | Create fake object | Inject fake into real class | Replace Spring bean |
+| Used in        | Unit Test          | Unit Test                   | Integration Test    |
+| Spring context | ❌ No               | ❌ No                        | ✅ Yes               |
+| Needs Mockito  | ✅ Yes              | ✅ Yes                       | ❌ No                |
+| Works alone    | ✅ Yes              | ❌ No                        | ✅ Yes               |
+| Example        | Fake repo          | Real service                | Fake service        |
+
+
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
