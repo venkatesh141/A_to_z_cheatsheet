@@ -155,5 +155,321 @@ Payment APIs → Integration Test
 
 -----------------------------------------------------------------
 
+@Test
+🔹 Meaning
+
+Marks a method as a test method
+
+🔹 Simple words
+
+👉 “This method is only for testing”
+
+🔹 Example
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class CalculatorTest {
+
+    @Test
+    void addTest() {
+        int result = 2 + 3;
+        assertEquals(5, result);
+    }
+}
+
+
+✔ JUnit will run only methods with @Test
+
+2️⃣ @ExtendWith(MockitoExtension.class)
+🔹 Meaning
+
+Enables Mockito support
+
+🔹 Simple words
+
+👉 “Allow fake objects (mocking)”
+
+🔹 Why needed
+
+Without this:
+
+@Mock ❌
+
+@InjectMocks ❌
+
+🔹 Example
+@ExtendWith(MockitoExtension.class)
+class PaymentServiceTest {
+}
+
+3️⃣ @Mock
+🔹 Meaning
+
+Creates a fake object
+
+🔹 Simple words
+
+👉 “Dummy object, not real one”
+
+🔹 Why needed
+
+Avoid database
+
+Avoid real API calls
+
+🔹 Example
+@Mock
+private PaymentRepository paymentRepository;
+
+
+✔ This repository will NOT hit database
+
+4️⃣ @InjectMocks
+🔹 Meaning
+
+Injects mocked objects into real class
+
+🔹 Simple words
+
+👉 “Put fake objects inside this class”
+
+🔹 Example
+@InjectMocks
+private PaymentService paymentService;
+
+
+📌 PaymentService will use:
+
+fake PaymentRepository
+
+fake dependencies
+
+🔹 Complete UNIT TEST Example
+@ExtendWith(MockitoExtension.class)
+class PaymentServiceTest {
+
+    @Mock
+    PaymentRepository paymentRepository;
+
+    @InjectMocks
+    PaymentService paymentService;
+
+    @Test
+    void testPaymentSuccess() {
+        when(paymentRepository.save(any())).thenReturn(new Payment());
+
+        Payment result = paymentService.makePayment();
+
+        assertNotNull(result);
+    }
+}
+
+
+👉 This is UNIT TESTING
+
+5️⃣ @SpringBootTest
+🔹 Meaning
+
+Starts full Spring Boot application
+
+🔹 Simple words
+
+👉 “Run app fully like real server”
+
+🔹 Used for
+
+✔ Integration Testing
+
+🔹 Example
+@SpringBootTest
+class PaymentIntegrationTest {
+}
+
+
+✔ Loads:
+
+Controller
+
+Service
+
+Repository
+
+Configs
+
+6️⃣ @AutoConfigureMockMvc
+🔹 Meaning
+
+Allows testing REST APIs
+
+🔹 Simple words
+
+👉 “Call APIs without starting server”
+
+🔹 Example
+@SpringBootTest
+@AutoConfigureMockMvc
+class PaymentControllerTest {
+}
+
+7️⃣ @Autowired
+🔹 Meaning
+
+Spring injects object automatically
+
+🔹 Simple words
+
+👉 “Spring, give me this object”
+
+🔹 Example
+@Autowired
+private MockMvc mockMvc;
+
+🔹 CONTROLLER TEST Example
+@SpringBootTest
+@AutoConfigureMockMvc
+class PaymentControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    void testSubmitPayment() throws Exception {
+        mockMvc.perform(post("/payment/submit"))
+               .andExpect(status().isOk());
+    }
+}
+
+
+👉 This is INTEGRATION TEST
+
+8️⃣ @MockBean
+🔹 Meaning
+
+Replaces real Spring bean with fake one
+
+🔹 Simple words
+
+👉 “Use fake bean instead of real”
+
+🔹 Example
+@MockBean
+private PaymentService paymentService;
+
+
+📌 Used when:
+
+Spring context is running
+
+But you want fake behavior
+
+9️⃣ @BeforeEach
+🔹 Meaning
+
+Runs before every test
+
+🔹 Simple words
+
+👉 “Prepare data before test”
+
+🔹 Example
+@BeforeEach
+void setup() {
+    System.out.println("Runs before each test");
+}
+
+🔟 @AfterEach
+🔹 Meaning
+
+Runs after every test
+
+🔹 Example
+@AfterEach
+void cleanup() {
+    System.out.println("Cleanup after test");
+}
+
+1️⃣1️⃣ @BeforeAll
+🔹 Meaning
+
+Runs once before all tests
+
+🔹 Rule
+
+Must be static
+
+🔹 Example
+@BeforeAll
+static void init() {
+    System.out.println("Runs once");
+}
+
+1️⃣2️⃣ @AfterAll
+🔹 Meaning
+
+Runs once after all tests
+
+@AfterAll
+static void destroy() {
+}
+
+1️⃣3️⃣ @DisplayName
+🔹 Meaning
+
+Readable test name
+
+🔹 Example
+@DisplayName("Payment success test")
+@Test
+void paymentTest() {
+}
+
+1️⃣4️⃣ @Transactional (Testing)
+🔹 Meaning
+
+Rollback DB after test
+
+🔹 Simple words
+
+👉 “Don’t save test data permanently”
+
+🔹 Example
+@SpringBootTest
+@Transactional
+class PaymentDBTest {
+}
+
+🔁 Summary (Easy Memory Trick)
+🧩 Unit Testing
+@ExtendWith(MockitoExtension.class)
+@Mock
+@InjectMocks
+@Test
+
+🔗 Integration Testing
+@SpringBootTest
+@AutoConfigureMockMvc
+@Autowired
+@Test
+
+🎯 Interview 1-Line Answers
+
+@Mock → Fake object
+
+@InjectMocks → Inject fake objects
+
+@SpringBootTest → Start full app
+
+@MockBean → Fake Spring bean
+
+@AutoConfigureMockMvc → Test APIs
+
+If you want next 🔥
+✔ Mockito when().thenReturn() explained simply
+✔ Service layer test from your real CMARF code
+✔ Controller test for /payment/submit step-by-step
+
+Just tell me 👍
+--------------------------------------------------------------------------
+
 
 
