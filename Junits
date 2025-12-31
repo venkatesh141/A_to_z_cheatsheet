@@ -1,0 +1,159 @@
+What is JUnit in Spring Boot?
+
+JUnit is a testing tool used in Java.
+
+👉 Purpose:
+To check whether your code works correctly or not.
+
+In Spring Boot, JUnit is used to:
+
+Test methods
+
+Test services
+
+Test controllers
+
+Catch bugs before production
+----------------------------------------------------------------------
+2️⃣ What is Unit Testing? (VERY SIMPLE)
+🔹 Meaning
+
+Unit Testing = Testing one small part of code
+
+That “small part” is usually:
+
+One method
+
+One class
+
+🔹 Example (Real Life)
+
+Checking only brakes of a bike 🚲
+(Not the engine, not the headlight)
+
+🔹 Example (Java Code)
+public int add(int a, int b) {
+    return a + b;
+}
+
+
+Unit Test will check:
+
+add(2,3) → should be 5
+
+add(5,5) → should be 10
+
+🔹 Spring Boot Example (Service Test)
+@Test
+void testAdd() {
+    CalculatorService service = new CalculatorService();
+    int result = service.add(2, 3);
+    assertEquals(5, result);
+}
+
+🔹 Important Points
+
+✔ Database ❌
+✔ API ❌
+✔ Other services ❌
+
+👉 Only this method, nothing else
+
+🔹 Tools Used
+
+JUnit
+
+Mockito (to fake dependencies)
+-----------------------------------------------------------------
+
+
+What is Integration Testing? (VERY SIMPLE)
+🔹 Meaning
+
+Integration Testing = Testing how multiple parts work together
+
+🔹 Example (Real Life)
+
+Test bike + engine + brakes + fuel together 🚲⛽
+
+🔹 Example (Spring Boot)
+
+Check:
+
+Controller
+
+Service
+
+Repository
+
+Database
+
+All together
+
+🔹 Example
+POST /payment/submit
+
+
+Integration test will check:
+
+Request comes to controller
+
+Service logic works
+
+Data saved in DB
+
+Response returned correctly
+
+🔹 Spring Boot Example
+@SpringBootTest
+@AutoConfigureMockMvc
+class PaymentControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    void testPaymentAPI() throws Exception {
+        mockMvc.perform(post("/payment/submit"))
+               .andExpect(status().isOk());
+    }
+}
+
+🔹 Important Points
+
+✔ Database ✅
+✔ Controller ✅
+✔ Service ✅
+✔ Repository ✅
+
+👉 Everything works together
+
+--------------------------------------------------------------------------------------------
+
+
+Unit Testing vs Integration Testing (Simple Table)
+Feature	Unit Testing	Integration Testing
+Tests	Single method/class	Full flow
+Speed	Very fast ⚡	Slower 🐢
+Database	❌ No	✅ Yes
+Spring Context	❌ No	✅ Yes
+Used for	Logic check	End-to-end flow
+
+----------------------------------------------------------------------------------
+
+
+Which One Should YOU Use?
+
+👉 During development → Unit Testing
+👉 Before deployment → Integration Testing
+
+In your Spring Boot project (CMARF / payment APIs):
+
+Service logic → Unit Test
+
+Payment APIs → Integration Test
+
+-----------------------------------------------------------------
+
+
+
