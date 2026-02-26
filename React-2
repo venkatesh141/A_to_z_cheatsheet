@@ -637,3 +637,190 @@ Interactive UI
 
 ------------------------Trust efforts you will win
 
+Good Venky 👌
+This is a **very important React concept**.
+
+I’ll explain in your favorite style → **step-by-step flow only**.
+
+---
+
+# ✅ What Does “Passing Function as Prop” Mean?
+
+👉 Parent component has a function
+👉 Parent sends that function to Child
+👉 Child calls that function
+
+This is how **child talks to parent**.
+
+---
+
+# 🧠 Big Picture Flow
+
+```
+Parent
+   ↓ (passes function)
+Child
+   ↓ (calls function)
+Parent function runs
+   ↓
+State updates
+```
+
+---
+
+# ✅ Step 1: Parent Component
+
+```jsx
+import React, { useState } from "react";
+import Child from "./Child";
+
+function Parent() {
+
+  const [message, setMessage] = useState("Hello");
+
+  function changeMessage() {
+    setMessage("Button Clicked 🚀");
+  }
+
+  return (
+    <div>
+      <h2>{message}</h2>
+
+      <Child onButtonClick={changeMessage} />
+
+    </div>
+  );
+}
+
+export default Parent;
+```
+
+---
+
+# ✅ Step 2: Child Component
+
+```jsx
+import React from "react";
+
+function Child(props) {
+
+  return (
+    <button onClick={props.onButtonClick}>
+      Click Me
+    </button>
+  );
+}
+
+export default Child;
+```
+
+---
+
+# 🔥 What Is Happening?
+
+### Step-by-step:
+
+```
+1️⃣ Parent creates function changeMessage()
+2️⃣ Parent passes it as prop → onButtonClick
+3️⃣ Child receives it in props
+4️⃣ Button click triggers props.onButtonClick()
+5️⃣ Parent function runs
+6️⃣ State updates
+7️⃣ Parent re-renders
+```
+
+---
+
+# 🎯 Why This Is Important?
+
+Because:
+
+👉 Data flows **down** (parent → child)
+👉 Events flow **up** (child → parent)
+
+This pattern is called:
+
+> 🔥 "Lifting State Up"
+
+---
+
+# ✅ Passing Parameter from Child to Parent
+
+Now advanced version 👇
+
+---
+
+### Parent
+
+```jsx
+function Parent() {
+
+  function handleData(data) {
+    console.log("Received:", data);
+  }
+
+  return <Child sendData={handleData} />;
+}
+```
+
+---
+
+### Child
+
+```jsx
+function Child(props) {
+
+  function clickHandler() {
+    props.sendData("Venky is learning React 🚀");
+  }
+
+  return (
+    <button onClick={clickHandler}>
+      Send Data
+    </button>
+  );
+}
+```
+
+---
+
+# 🔁 Flow
+
+```
+Child button click
+      ↓
+props.sendData("Venky...")
+      ↓
+Parent handleData() runs
+      ↓
+Parent receives value
+```
+
+---
+
+# 🧠 Very Important Concept
+
+This:
+
+```jsx
+<Child onClick={handleClick} />
+```
+
+Means:
+
+👉 We are not calling function
+👉 We are giving reference of function
+
+---
+
+# 🚀 Real World Example
+
+* Form submit button inside child
+* Modal close button
+* Reusable table component
+* Custom input component
+
+------------------------Trust efforts you will win
+
+
