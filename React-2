@@ -824,3 +824,181 @@ Means:
 ------------------------Trust efforts you will win
 
 
+Good Venky 👌
+Now let’s understand **Passing Custom Arguments to Event Functions in React** in a very simple flow.
+
+---
+
+# 🧠 Normal Event Function (No Arguments)
+
+```jsx
+function handleClick() {
+  console.log("Button clicked");
+}
+
+<button onClick={handleClick}>Click Me</button>
+```
+
+When button is clicked → `handleClick()` runs.
+
+---
+
+# 🔵 Problem
+
+What if you want to pass a custom value?
+
+Example:
+
+👉 When clicking button
+👉 Send `"Venky"` to function
+
+Like this:
+
+```js
+handleClick("Venky")
+```
+
+You CANNOT do this:
+
+```jsx
+<button onClick={handleClick("Venky")}>Click</button>
+```
+
+❌ This runs immediately when component renders
+Not when button is clicked.
+
+---
+
+# ✅ Correct Way – Using Arrow Function
+
+```jsx
+function handleClick(name) {
+  console.log("Hello " + name);
+}
+
+<button onClick={() => handleClick("Venky")}>
+  Click Me
+</button>
+```
+
+---
+
+## 🔁 Flow
+
+1️⃣ Button clicked
+2️⃣ Arrow function runs
+3️⃣ It calls `handleClick("Venky")`
+4️⃣ Console → Hello Venky
+
+---
+
+# 🔵 Example 2 – Passing ID
+
+Very common in real projects.
+
+```jsx
+function deleteUser(id) {
+  console.log("Deleting user with id:", id);
+}
+
+<button onClick={() => deleteUser(101)}>
+  Delete
+</button>
+```
+
+---
+
+# 🔵 Example 3 – Inside Map (Very Important 🔥)
+
+```jsx
+const users = [
+  { id: 1, name: "Venky" },
+  { id: 2, name: "Rahul" }
+];
+
+function showUser(id) {
+  console.log("User ID:", id);
+}
+
+function App() {
+  return (
+    <div>
+      {users.map((user) => (
+        <button 
+          key={user.id}
+          onClick={() => showUser(user.id)}
+        >
+          {user.name}
+        </button>
+      ))}
+    </div>
+  );
+}
+```
+
+When you click:
+
+* Venky → prints 1
+* Rahul → prints 2
+
+---
+
+# 🧠 Why We Use Arrow Function?
+
+Because:
+
+```jsx
+onClick={handleClick("Venky")}
+```
+
+means:
+
+👉 Execute immediately
+
+But:
+
+```jsx
+onClick={() => handleClick("Venky")}
+```
+
+means:
+
+👉 Execute ONLY when clicked
+
+---
+
+# ⚡ Extra Important (Event + Custom Argument)
+
+If you also want event object:
+
+```jsx
+function handleClick(event, name) {
+  console.log(event);
+  console.log(name);
+}
+
+<button onClick={(event) => handleClick(event, "Venky")}>
+  Click
+</button>
+```
+
+---
+
+# 🎯 Simple Rule
+
+If passing argument:
+
+```
+onClick={() => functionName(value)}
+```
+
+Without argument:
+
+```
+onClick={functionName}
+```
+
+---
+----------------------------------------Trust the process you will win
+
+
