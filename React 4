@@ -678,3 +678,145 @@ If you want, I can now explain:
 Tell me what you want next 👌
 --------------------------------------Trust the efforts you will win.
 
+Good Venky 👌
+Let’s understand this in **very simple flow**.
+
+---
+
+# 🔴 Problem: Props Are Not Forwarded to Inner Elements
+
+This usually happens when:
+
+👉 You pass props to a component
+👉 But that component does NOT pass them to the actual HTML element inside
+
+So the props “stop” there.
+
+---
+
+# 🧠 Simple Example
+
+### Step 1: Parent sends props
+
+```jsx
+function App() {
+  return <Button type="submit" />;
+}
+```
+
+You are sending:
+
+```
+type="submit"
+```
+
+---
+
+### Step 2: Button component
+
+```jsx
+function Button() {
+  return <button>Click Me</button>;
+}
+```
+
+⚠ Problem:
+
+You sent `type="submit"`
+But Button did NOT receive or pass it.
+
+So the real `<button>` does NOT get `type="submit"`.
+
+That means:
+
+👉 Props are NOT forwarded
+👉 They are lost
+
+---
+
+# 🟢 Correct Way (Forward Props)
+
+We must receive props and pass them inside.
+
+```jsx
+function Button(props) {
+  return <button type={props.type}>Click Me</button>;
+}
+```
+
+Now it works.
+
+---
+
+# 🟣 Even Better Way (Forward Everything Automatically)
+
+React gives a simple pattern using **spread operator**
+
+```jsx
+function Button(props) {
+  return <button {...props}>Click Me</button>;
+}
+```
+
+What this does:
+
+If parent sends:
+
+```jsx
+<Button type="submit" disabled />
+```
+
+Then inside:
+
+```jsx
+<button type="submit" disabled>
+```
+
+All props are forwarded automatically.
+
+---
+
+# 🔥 Why This Problem Happens
+
+Because custom components are NOT real HTML elements.
+
+When you write:
+
+```jsx
+<Button type="submit" />
+```
+
+React does NOT automatically attach `type` to inner `<button>`.
+
+You must forward it manually.
+
+---
+
+# 🧠 Very Simple Real-Life Analogy
+
+Imagine:
+
+You give a parcel 📦 to a delivery manager.
+
+If manager keeps it and doesn’t pass to worker → parcel never reaches customer.
+
+Same here:
+
+Parent → Component → HTML element
+
+If component does not forward → props stop there.
+
+---
+
+# 🎯 One-Line Understanding
+
+> Props are not forwarded because custom components do NOT automatically pass props to inner HTML elements.
+
+You must forward them using:
+
+```jsx
+{...props}
+```
+
+---------------------------Trust the process you will win
+
