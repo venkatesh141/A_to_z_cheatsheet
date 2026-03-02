@@ -819,4 +819,178 @@ You must forward them using:
 ```
 
 ---------------------------Trust the process you will win
+Good Venky 👌
+Now I’ll explain **forwarding props to wrapped elements** in very simple way.
 
+---
+
+# 🔵 First Understand “Wrapped Element”
+
+Wrapped element means:
+
+You create a custom component
+Inside it, you wrap a real HTML element.
+
+Example:
+
+```jsx
+function Button() {
+  return (
+    <div>
+      <button>Click</button>
+    </div>
+  );
+}
+```
+
+Here:
+
+* `Button` is custom component
+* `<button>` is wrapped inside `<div>`
+
+---
+
+# 🔴 The Problem
+
+If parent sends props:
+
+```jsx
+<Button type="submit" disabled />
+```
+
+Those props DO NOT automatically reach `<button>`.
+
+Why?
+
+Because React does NOT auto-forward props.
+
+They stop at `Button` component.
+
+---
+
+# 🟢 Simple Solution: Forward Props
+
+You must manually pass them.
+
+---
+
+## ✅ Step 1: Receive props
+
+```jsx
+function Button(props) {
+  return (
+    <div>
+      <button {...props}>Click</button>
+    </div>
+  );
+}
+```
+
+Now:
+
+```jsx
+<Button type="submit" disabled />
+```
+
+Becomes:
+
+```html
+<button type="submit" disabled>
+```
+
+Now props are forwarded correctly.
+
+---
+
+# 🧠 Flow Explanation (Very Simple)
+
+Parent
+⬇
+Button component
+⬇
+Real HTML element
+
+If you don’t use `{...props}`
+Props stop in the middle.
+
+---
+
+# 🟣 More Real Example (Common in Real Projects)
+
+Let’s say you want to add custom styling but still allow normal button props.
+
+---
+
+### Without Forwarding (Wrong)
+
+```jsx
+function CustomButton() {
+  return <button className="btn">Click</button>;
+}
+```
+
+Now:
+
+```jsx
+<CustomButton onClick={handleClick} />
+```
+
+❌ onClick will NOT work.
+
+---
+
+### With Forwarding (Correct)
+
+```jsx
+function CustomButton(props) {
+  return (
+    <button className="btn" {...props}>
+      Click
+    </button>
+  );
+}
+```
+
+Now:
+
+* onClick works
+* disabled works
+* type works
+* className works
+
+Everything works.
+
+---
+
+# 🔥 Even Better Pattern (Destructuring)
+
+```jsx
+function CustomButton({ children, ...props }) {
+  return (
+    <button className="btn" {...props}>
+      {children}
+    </button>
+  );
+}
+```
+
+Now you can do:
+
+```jsx
+<CustomButton type="submit">Save</CustomButton>
+```
+
+This is clean and professional way.
+
+---
+
+# 🎯 Final Simple Understanding
+
+Forwarding props means:
+
+> Taking props from parent
+> Passing them to inner HTML element
+> Using `{...props}`
+
+---
+--------------------------------------------trust the efforts you will win.
