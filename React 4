@@ -1193,3 +1193,199 @@ Multiple JSX slots means:
 
 ----------------------trust the process you will win
 
+
+In **React**, **“setting component types dynamically”** means:
+👉 The **component that renders changes based on some condition or data**.
+
+Instead of writing fixed components, we **decide which component to show at runtime**.
+
+Let’s understand this in a **very simple flow**.
+
+---
+
+# 1️⃣ Basic Idea
+
+Suppose we have two components.
+
+```jsx
+function Admin() {
+  return <h1>Admin Panel</h1>;
+}
+
+function User() {
+  return <h1>User Dashboard</h1>;
+}
+```
+
+Now we want to show **Admin or User component dynamically**.
+
+---
+
+# 2️⃣ Using a Variable for Component Type
+
+```jsx
+function App() {
+
+  const role = "admin";
+
+  let ComponentType;
+
+  if(role === "admin") {
+    ComponentType = Admin;
+  } else {
+    ComponentType = User;
+  }
+
+  return <ComponentType />;
+}
+```
+
+### Flow
+
+```
+role value
+   ↓
+decide component
+   ↓
+store in variable
+   ↓
+render using <ComponentType />
+```
+
+React will render whichever component the variable contains.
+
+---
+
+# 3️⃣ Dynamic Components using Object Mapping (Best Method)
+
+Instead of many `if` statements.
+
+```jsx
+const components = {
+  admin: Admin,
+  user: User
+};
+
+function App() {
+
+  const role = "admin";
+
+  const ComponentType = components[role];
+
+  return <ComponentType />;
+}
+```
+
+### Flow
+
+```
+role = admin
+   ↓
+components["admin"]
+   ↓
+Admin component selected
+   ↓
+render <Admin />
+```
+
+---
+
+# 4️⃣ Real World Example (Dashboard)
+
+Example:
+
+```
+Admin → AdminDashboard
+Manager → ManagerDashboard
+User → UserDashboard
+```
+
+```jsx
+const dashboards = {
+  admin: AdminDashboard,
+  manager: ManagerDashboard,
+  user: UserDashboard
+};
+
+function Dashboard({ role }) {
+
+  const Component = dashboards[role];
+
+  return <Component />;
+}
+```
+
+---
+
+# 5️⃣ Dynamic HTML Element (Another Meaning)
+
+Sometimes it also means **changing HTML tag dynamically**.
+
+Example:
+
+```jsx
+function Text({ type, children }) {
+
+  const Tag = type;
+
+  return <Tag>{children}</Tag>;
+}
+```
+
+Usage:
+
+```jsx
+<Text type="h1">Hello</Text>
+<Text type="p">Welcome</Text>
+```
+
+Render:
+
+```
+<h1>Hello</h1>
+<p>Welcome</p>
+```
+
+---
+
+# 6️⃣ Simple Interview Definition
+
+**Setting component types dynamically means:**
+
+> Selecting and rendering a React component at runtime based on condition, state, or data.
+
+Example triggers:
+
+* user role
+* API response
+* feature flag
+* configuration
+
+---
+
+# 7️⃣ Visual Flow
+
+```
+Data / State / Role
+        ↓
+Select Component
+        ↓
+Store in Variable
+        ↓
+Render <Component />
+```
+
+---
+
+💡 Since you were learning **React architecture (splitting components by feature & state)** earlier, **dynamic components are heavily used in:**
+
+* dashboards
+* CMS systems
+* admin panels
+* feature-based UI
+* plugin systems
+
+-----------------------Trust the process you will win.
+
+
+
