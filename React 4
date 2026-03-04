@@ -1386,6 +1386,177 @@ Render <Component />
 * plugin systems
 
 -----------------------Trust the process you will win.
+In **React**, **setting default prop values** means:
+
+👉 If a parent **does not pass a prop**, the component will use a **default value**.
+
+Simple idea:
+
+```
+Parent didn't send value
+        ↓
+Component uses default value
+```
+
+---
+
+# 1️⃣ Using Default Parameters (Most Common)
+
+```jsx
+function Greeting({ name = "Guest" }) {
+  return <h1>Hello {name}</h1>;
+}
+```
+
+### Usage
+
+```jsx
+<Greeting name="Venky" />
+<Greeting />
+```
+
+### Output
+
+```
+Hello Venky
+Hello Guest
+```
+
+### Flow
+
+```
+Parent sends prop
+       ↓
+Check value
+       ↓
+If missing → use default
+```
+
+---
+
+# 2️⃣ Using defaultProps (Older Method)
+
+```jsx
+function Greeting(props) {
+  return <h1>Hello {props.name}</h1>;
+}
+
+Greeting.defaultProps = {
+  name: "Guest"
+};
+```
+
+### Usage
+
+```jsx
+<Greeting />
+```
+
+Output:
+
+```
+Hello Guest
+```
+
+⚠️ This method is **older**.
+Now developers prefer **default parameters**.
+
+---
+
+# 3️⃣ Multiple Default Props
+
+```jsx
+function Button({ text = "Click", color = "blue" }) {
+  return <button style={{ color }}>{text}</button>;
+}
+```
+
+Usage:
+
+```jsx
+<Button />
+<Button text="Submit" />
+```
+
+Output:
+
+```
+Click (blue)
+Submit (blue)
+```
+
+---
+
+# 4️⃣ Real Project Example
+
+```jsx
+function UserCard({ name = "Anonymous", role = "User" }) {
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>{role}</p>
+    </div>
+  );
+}
+```
+
+Usage:
+
+```jsx
+<UserCard name="Venky" role="Admin"/>
+<UserCard name="John"/>
+<UserCard />
+```
+
+Output:
+
+```
+Venky - Admin
+John - User
+Anonymous - User
+```
+
+---
+
+# 5️⃣ Simple Interview Definition
+
+**Default props means:**
+
+> A fallback value used when a component does not receive a prop.
+
+---
+
+# 6️⃣ Simple Flow
+
+```
+Parent Component
+        ↓
+Pass props
+        ↓
+Child Component receives props
+        ↓
+If prop missing
+        ↓
+Use default value
+```
+
+---
+
+💡 **Important Interview Tip**
+
+Modern React uses:
+
+```jsx
+function Component({ prop = defaultValue })
+```
+
+instead of:
+
+```
+Component.defaultProps
+```
+
+-----------------Trust the process you will win
 
 
 
